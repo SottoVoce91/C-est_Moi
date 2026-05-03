@@ -1,0 +1,151 @@
+index.html
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #fff5f7, #fce4ec);
+      color: #4a2c2a;
+      scroll-behavior: smooth;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 60px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #b76e79;
+    }
+
+    p {
+      max-width: 500px;
+      line-height: 1.6;
+    }
+
+    .btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: none;
+      background: #b76e79;
+      color: white;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #9c5c66;
+    }
+
+    .hidden {
+      display: none;
+      margin-top: 15px;
+      font-style: italic;
+      color: #6e4b4b;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 20px;
+      margin: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      max-width: 300px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Intro -->
+<section>
+  <h1>Hi, MG here</h1>
+  <p>
+    You found this.  
+    That already says something about you.
+  </p>
+  <a href="#story"><button class="btn">Continue</button></a>
+</section>
+
+<!-- Story -->
+<section id="story">
+  <h1>Brief info about me</h1>
+  <p>
+    I’m the kind of person who doesn’t say much at first…  
+    but notices everything.
+  </p>
+  <p>
+    I spend my time solving things most people don’t see—  
+    like being on virtual labs,  
+    or figuring out where I am in the world on GeoGuessr.
+  </p>
+  <p>
+    Other times, I’m just staring at the sky on Reddit,  
+    thinking about planet objects and astrophotography.
+  </p>
+</section>
+
+<!-- Personality -->
+<section>
+  <h1>Personality</h1>
+  <div class="card">Introverted</div>
+  <div class="card">Observant</div>
+  <div class="card">Black cat energy</div>
+  <div class="card">Unexpectedly funny (eventually)</div>
+</section>
+
+<!-- Secrets -->
+<section>
+  <h1>Tap if you’re curious</h1>
+
+  <button class="btn" onclick="reveal('s1')">What I actually enjoy</button>
+  <p id="s1" class="hidden">Cybersecurity puzzles, random maps, and slow coffee bars.</p>
+
+  <button class="btn" onclick="reveal('s2')">What I notice first</button>
+  <p id="s2" class="hidden">Details. The small things people think no one sees.</p>
+
+  <button class="btn" onclick="reveal('s3')">What makes me stay</button>
+  <p id="s3" class="hidden">Consistency, efforts, empathy, shared-intentions, awareness of emotional investment. Small thoughtful gestures are hawt!</p>
+</section>
+
+<!-- Ending -->
+<section>
+  <h1>Final note</h1>
+  <p>
+    I don’t expect you to make it this far.  
+  </p>
+  <p>
+    But if you did…  
+    maybe we’d get along.
+  </p>
+
+  <p style="margin-top:20px;">
+    <b>Let’s get to know each other.</b>
+  </p>
+
+  <a href="https://instagram.com/allo_cheri" target="_blank">
+    <button class="btn">Say hi</button>
+  </a>
+</section>
+
+<script>
+function reveal(id) {
+  const el = document.getElementById(id);
+  el.style.display = el.style.display === "block" ? "none" : "block";
+}
+</script>
+
+</body>
+</html>
