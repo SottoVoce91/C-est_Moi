@@ -1,19 +1,13 @@
 
 <!DOCTYPE html>
 <html>
-<section id="intro">...</section>
-<section id="story">...</section>
-<section id="personality">...</section>
-<section id="secrets">...</section>
-<section id="space">...</section> <!-- your space/astro part -->
-<section id="ending">...</section>
 <head>
   <title>MG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-   body {
+    body {
       margin: 0;
-      font-family: 'Georgia', Open Sans;
+      font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(to bottom, #fff5f7, #fce4ec);
       color: #4a2c2a;
       scroll-behavior: smooth;
@@ -71,23 +65,12 @@
     }
   </style>
 </head>
-  <style>
-    .particle {
-  position: fixed;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  font-size: 14px;
-  opacity: 0.8;
-  transition: all 1s ease-out;
-  text-shadow: 0 0 8px rgba(255,255,255,0.6);
-}
-</style>
 
 <body>
 
 <!-- Intro -->
 <section>
-  <h1>Hi, MG here</h1>
+  <h1>Hi, I’m MG</h1>
   <p>
     You found this.  
     That already says something about you.
@@ -97,25 +80,26 @@
 
 <!-- Story -->
 <section id="story">
-  <h1>Brief info about me</h1>
+  <h1>A little about me</h1>
   <p>
-    I’m the kind of person who doesn’t say much at first,  
-    but notices details.
+    I’m the kind of person who doesn’t say much at first…  
+    but notices everything.
   </p>
   <p>
-    I spend my time being on virtual labs,  
+    I spend my time solving things most people don’t see—  
+    like challenges on TryHackMe,  
     or figuring out where I am in the world on GeoGuessr.
   </p>
   <p>
-    Other times, I’m just staring at the sky on Reddit,  
-    zooming in planet objects and wonder how some people set up their tools for astrophotography.
+    Other times, I’m just staring at the sky,  
+    thinking about planets and how small everything feels.
   </p>
 </section>
 
 <!-- Personality -->
 <section>
   <h1>Personality</h1>
-  <div class="card">Introverted and homebody, yet moderately active</div>
+  <div class="card">Introverted</div>
   <div class="card">Observant</div>
   <div class="card">Black cat energy</div>
   <div class="card">Unexpectedly funny (eventually)</div>
@@ -126,23 +110,23 @@
   <h1>Tap if you’re curious</h1>
 
   <button class="btn" onclick="reveal('s1')">What I actually enjoy</button>
-  <p id="s1" class="hidden">Cybersecurity puzzles, random maps, and slow coffee bars.</p>
+  <p id="s1" class="hidden">Cybersecurity puzzles, random maps, and quiet coffee places.</p>
 
   <button class="btn" onclick="reveal('s2')">What I notice first</button>
   <p id="s2" class="hidden">Details. The small things people think no one sees.</p>
 
   <button class="btn" onclick="reveal('s3')">What makes me stay</button>
-  <p id="s3" class="hidden">Consistency, efforts, empathy, shared-intentions, awareness of emotional investment. Small thoughtful gestures are hawt!</p>
+  <p id="s3" class="hidden">Good conversation, subtle humor, and someone who’s genuinely curious.</p>
 </section>
 
 <!-- Ending -->
 <section>
   <h1>Final note</h1>
   <p>
-    I don’t expect you to make it this far.  
+    I don’t expect everyone to make it this far.  
   </p>
   <p>
-    But if you did then  
+    But if you did…  
     maybe we’d get along.
   </p>
 
@@ -151,7 +135,7 @@
   </p>
 
   <a href="https://instagram.com/allo_cheri" target="_blank">
-    <button class="btn">Say hi (disclaimer: I'm low on social media presence)</button>
+    <button class="btn">Say hi</button>
   </a>
   <a href="https://angularfield-vmfwo.wordpress.com/" target="_blank">
   <button class="btn">View my portfolio</button>
@@ -164,84 +148,6 @@ function reveal(id) {
   el.style.display = el.style.display === "block" ? "none" : "block";
 }
 </script>
-<script>
-let lastSpawn = 0;
-let moveCount = 0;
-let revealed = false;
 
-function getCurrentSection() {
-  const sections = document.querySelectorAll("section");
-  let current = null;
-
-  sections.forEach(sec => {
-    const rect = sec.getBoundingClientRect();
-    if (rect.top <= window.innerHeight/2 && rect.bottom >= window.innerHeight/2) {
-      current = sec.id;
-    }
-  });
-
-  return current;
-}
-
-document.addEventListener("mousemove", function(e) {
-  const now = Date.now();
-  if (now - lastSpawn < 80) return;
-  lastSpawn = now;
-
-  const section = getCurrentSection();
-
-  // 🎯 Only allow effects in certain sections
-  if (!["intro","story","space"].includes(section)) return;
-
-  const particle = document.createElement("div");
-  particle.classList.add("particle");
-
-  // 🌙 Switch to stars in space section
-  if (section === "space") {
-    particle.innerHTML = "✦";
-    particle.style.color = "#ffd6e0";
-  } else {
-    particle.innerHTML = "❤";
-    particle.style.color = "#e6a4b4";
-  }
-
-  particle.style.left = e.clientX + "px";
-  particle.style.top = e.clientY + "px";
-
-  document.body.appendChild(particle);
-
-  setTimeout(() => {
-    particle.style.top = (e.clientY - 40) + "px";
-    particle.style.opacity = 0;
-    particle.style.transform = "translate(-50%, -50%) scale(1.6)";
-  }, 10);
-
-  setTimeout(() => particle.remove(), 1000);
-
-  // 💌 Hidden message trigger
-  moveCount++;
-  if (moveCount > 120 && !revealed) {
-    revealed = true;
-
-    const msg = document.createElement("div");
-    msg.innerText = "You stayed long enough… I like that.";
-    
-    msg.style.position = "fixed";
-    msg.style.bottom = "20px";
-    msg.style.left = "50%";
-    msg.style.transform = "translateX(-50%)";
-    msg.style.background = "#fff";
-    msg.style.color = "#b76e79";
-    msg.style.padding = "10px 20px";
-    msg.style.borderRadius = "20px";
-    msg.style.boxShadow = "0 4px 20px rgba(0,0,0,0.1)";
-    msg.style.fontSize = "14px";
-
-    document.body.appendChild(msg);
-
-    setTimeout(() => msg.remove(), 4000);
-  }
-});
-</script>
 </body>
 </html>
