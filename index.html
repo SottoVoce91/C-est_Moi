@@ -83,23 +83,22 @@
   <h1>A little about me</h1>
   <p>
     I’m the kind of person who doesn’t say much at first…  
-    but notices everything.
+    but notices details in each individual
   </p>
   <p>
-    I spend my time solving things most people don’t see—  
-    like challenges on TryHackMe,  
-    or figuring out where I am in the world on GeoGuessr.
+    I spend my time being on virtual machines,  
+    or figuring out where I am in the world randomly.
   </p>
   <p>
-    Other times, I’m just staring at the sky,  
-    thinking about planets and how small everything feels.
+    Other times, I’m just staring at the sky through Reddit,  
+    being in awe about planet objects and wondering how some people manage to do astrophotography.
   </p>
 </section>
 
 <!-- Personality -->
 <section>
   <h1>Personality</h1>
-  <div class="card">Introverted</div>
+  <div class="card">Introverted and homebody, yet moderately active</div>
   <div class="card">Observant</div>
   <div class="card">Black cat energy</div>
   <div class="card">Unexpectedly funny (eventually)</div>
@@ -110,23 +109,45 @@
   <h1>Tap if you’re curious</h1>
 
   <button class="btn" onclick="reveal('s1')">What I actually enjoy</button>
-  <p id="s1" class="hidden">Cybersecurity puzzles, random maps, and quiet coffee places.</p>
+  <p id="s1" class="hidden">Cybersecurity puzzles, random maps, and slow coffee bars.</p>
 
   <button class="btn" onclick="reveal('s2')">What I notice first</button>
   <p id="s2" class="hidden">Details. The small things people think no one sees.</p>
 
   <button class="btn" onclick="reveal('s3')">What makes me stay</button>
-  <p id="s3" class="hidden">Good conversation, subtle humor, and someone who’s genuinely curious.</p>
+  <p id="s3" class="hidden">Consistency, efforts, empathy, shared-intentions, awareness of emotional investment. Small thoughtful gestures are hawt!</p>
 </section>
 
 <!-- Ending -->
 <section>
+<div id="codeBox" style="margin-top:20px; display:none;">
+  <p style="font-size:14px; opacity:0.8;">You made it this far.</p>
+  <p><b>Your code:</b></p>
+
+  <div style="
+    background:#fff;
+    padding:10px 20px;
+    border-radius:15px;
+    display:inline-block;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+    margin:10px 0;
+    font-weight:bold;
+    color:#b76e79;
+  " id="userCode"></div>
+
+  <br>
+  <button class="btn" onclick="copyCode()">Copy code</button>
+
+  <p style="font-size:13px; margin-top:10px;">
+    Send me this code… I’ll know you paid attention.
+  </p>
+</div>
   <h1>Final note</h1>
   <p>
-    I don’t expect everyone to make it this far.  
+    I don’t expect you to make it this far.  
   </p>
   <p>
-    But if you did…  
+    But if you did then  
     maybe we’d get along.
   </p>
 
@@ -135,7 +156,7 @@
   </p>
 
   <a href="https://instagram.com/allo_cheri" target="_blank">
-    <button class="btn">Say hi</button>
+    <button class="btn">Say hi (Disclaimer: I'm low on social media presence)</button>
   </a>
   <a href="https://angularfield-vmfwo.wordpress.com/" target="_blank">
   <button class="btn">View my portfolio</button>
@@ -148,6 +169,43 @@ function reveal(id) {
   el.style.display = el.style.display === "block" ? "none" : "block";
 }
 </script>
+<script>
+function generateCode() {
+  let existing = localStorage.getItem("mg_code");
+  if (existing) return existing;
 
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let code = "MG-";
+
+  for (let i = 0; i < 5; i++) {
+    code += chars[Math.floor(Math.random() * chars.length)];
+  }
+
+  localStorage.setItem("mg_code", code);
+  return code;
+}
+
+function showCode() {
+  const code = generateCode();
+  document.getElementById("userCode").innerText = code;
+  document.getElementById("codeBox").style.display = "block";
+}
+
+function copyCode() {
+  const text = document.getElementById("userCode").innerText;
+  navigator.clipboard.writeText(text);
+  alert("Code copied 😉");
+}
+
+// Show code when user reaches final section
+window.addEventListener("scroll", () => {
+  const endSection = document.querySelector("#ending");
+  const rect = endSection.getBoundingClientRect();
+
+  if (rect.top < window.innerHeight - 100) {
+    showCode();
+  }
+});
+</script>
 </body>
 </html>
