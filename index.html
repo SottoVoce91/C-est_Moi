@@ -1,4 +1,83 @@
 
+<script>
+let lastSpawn = 0;
+let moveCount = 0;
+let revealed = false;
+
+function getCurrentSection() {
+  const sections = document.querySelectorAll("section");
+  let current = null;
+
+  sections.forEach(sec => {
+    const rect = sec.getBoundingClientRect();
+    if (rect.top <= window.innerHeight/2 && rect.bottom >= window.innerHeight/2) {
+      current = sec.id;
+    }
+  });
+
+  return current;
+}
+
+document.addEventListener("mousemove", function(e) {
+  const now = Date.now();
+  if (now - lastSpawn < 80) return;
+  lastSpawn = now;
+
+  const section = getCurrentSection();
+
+  // 🎯 Only allow effects in certain sections
+  if (!["intro","story","space"].includes(section)) return;
+
+  const particle = document.createElement("div");
+  particle.classList.add("particle");
+
+  // 🌙 Switch to stars in space section
+  if (section === "space") {
+    particle.innerHTML = "✦";
+    particle.style.color = "#ffd6e0";
+  } else {
+    particle.innerHTML = "❤";
+    particle.style.color = "#e6a4b4";
+  }
+
+  particle.style.left = e.clientX + "px";
+  particle.style.top = e.clientY + "px";
+
+  document.body.appendChild(particle);
+
+  setTimeout(() => {
+    particle.style.top = (e.clientY - 40) + "px";
+    particle.style.opacity = 0;
+    particle.style.transform = "translate(-50%, -50%) scale(1.6)";
+  }, 10);
+
+  setTimeout(() => particle.remove(), 1000);
+
+  // 💌 Hidden message trigger
+  moveCount++;
+  if (moveCount > 120 && !revealed) {
+    revealed = true;
+
+    const msg = document.createElement("div");
+    msg.innerText = "You stayed long enough… I like that.";
+    
+    msg.style.position = "fixed";
+    msg.style.bottom = "20px";
+    msg.style.left = "50%";
+    msg.style.transform = "translateX(-50%)";
+    msg.style.background = "#fff";
+    msg.style.color = "#b76e79";
+    msg.style.padding = "10px 20px";
+    msg.style.borderRadius = "20px";
+    msg.style.boxShadow = "0 4px 20px rgba(0,0,0,0.1)";
+    msg.style.fontSize = "14px";
+
+    document.body.appendChild(msg);
+
+    setTimeout(() => msg.remove(), 4000);
+  }
+});
+</script>
 
 <!DOCTYPE html>
 <html>
