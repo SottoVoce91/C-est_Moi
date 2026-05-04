@@ -2,290 +2,260 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MG</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MG</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Georgia', sans-serif;
-      background: linear-gradient(to bottom, #fff5f7, #fce4ec);
-      color: #4a2c2a;
-      scroll-behavior: smooth;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #fff5f7, #fce4ec);
+  color: #4a2c2a;
+  scroll-behavior: smooth;
+}
 
-    section {
-      min-height: 100vh;
-      padding: 60px 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
+section {
+  min-height: 100vh;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 
-    h1 {
-      font-size: 2.5em;
-      color: #b76e79;
-    }
+h1 {
+  font-size: 1.8em;
+  color: #b76e79;
+}
 
-    p {
-      max-width: 500px;
-      line-height: 1.6;
-    }
+p {
+  max-width: 500px;
+  line-height: 1.6;
+  font-size: 14px;
+}
 
-    .btn {
-      margin-top: 20px;
-      padding: 10px 20px;
-      border: none;
-      background: #b76e79;
-      color: white;
-      border-radius: 20px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+.btn {
+  margin-top: 15px;
+  padding: 10px 18px;
+  border: none;
+  background: #b76e79;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 13px;
+}
 
-    .btn:hover {
-      background: #9c5c66;
-    }
+.btn:hover {
+  background: #9c5c66;
+}
 
-    .hidden {
-      display: none;
-      margin-top: 15px;
-      font-style: italic;
-      color: #6e4b4b;
-    }
+.card {
+  background: white;
+  padding: 15px;
+  border-radius: 15px;
+  margin: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  max-width: 280px;
+  font-size: 13px;
+}
 
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 20px;
-      margin: 10px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-      max-width: 300px;
-    }
+.hidden {
+  display: none;
+  margin-top: 10px;
+  font-style: italic;
+}
 
-    /* ✨ particle */
-    .particle {
-      position: fixed;
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      font-size: 14px;
-      opacity: 0.7;
-      transition: all 1s ease-out;
-      text-shadow: 0 0 8px rgba(255,255,255,0.6);
-    }
+/* ✨ particles */
+.particle {
+  position: fixed;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  opacity: 0.8;
+  transition: all 1s ease-out;
+  text-shadow: 0 0 10px rgba(255,255,255,0.8);
+}
 
-    /* 💌 hidden message */
-    #secretMsg {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: white;
-      color: #b76e79;
-      padding: 10px 20px;
-      border-radius: 20px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      font-size: 13px;
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
-  </style>
+/* 💌 hidden message */
+.secret-msg {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  color: #b76e79;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 13px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+</style>
 </head>
 
 <body>
 
 <!-- Intro -->
 <section id="intro">
-  <h1>Hi, I’m MG</h1>
-  <p>Thanks for visiting this site. Let’s roll.</p>
-  <a href="#story"><button class="btn">Continue</button></a>
+<h1>Hi, I’m MG</h1>
+<p>Thanks for visiting. Let’s see if you’re curious enough.</p>
+<a href="#story"><button class="btn">Continue</button></a>
 </section>
 
 <!-- Story -->
 <section id="story">
-  <h1>A brief info about me</h1>
-  <p>I’m the kind of person who doesn’t say much at first, but notices details.</p>
-  <p>I spend time in virtual labs, or figuring out where I am in the world randomly.</p>
-  <p>Other times, I stare at the sky, thinking about space and astrophotography.</p>
-</section>
-
-<!-- Personality -->
-<section id="personality">
-  <h1>Personality & lifestyle</h1>
-  <div class="card">Introverted, but moderately active</div>
-  <div class="card">Observant</div>
-  <div class="card">Black cat energy</div>
-  <div class="card">Unexpectedly funny (eventually)</div>
-</section>
-
-<!-- Secrets -->
-<section id="secrets">
-  <h1>Tap if you’re curious</h1>
-
-  <button class="btn" onclick="reveal('s1')">What I enjoy</button>
-  <p id="s1" class="hidden">Cybersec puzzles, maps, and quiet coffee bars.</p>
-
-  <button class="btn" onclick="reveal('s2')">What I notice</button>
-  <p id="s2" class="hidden">Small details others miss.</p>
-
-  <button class="btn" onclick="reveal('s3')">What I admire</button>
-  <p id="s3" class="hidden">Consistency, empathy, and thoughtful gestures.</p>
+<h1>A brief info about me</h1>
+<p>I don’t say much at first, but I notice everything.</p>
+<p>I spend time in virtual labs or randomly navigating the world.</p>
 </section>
 
 <!-- Space Section 🌙 -->
 <section id="space">
-  <h1>Space thoughts</h1>
-  <p>Sometimes I just sit and think about how small we are in the universe.</p>
+<h1>Another side of me</h1>
+<p>Sometimes I just stare at the sky and wonder how small everything is.</p>
+<p>Astrophotography, planets, space… it’s calming in a way.</p>
+</section>
+
+<!-- Personality -->
+<section id="personality">
+<h1>Personality & lifestyle</h1>
+<div class="card">Introverted but observant</div>
+<div class="card">Black cat energy</div>
+<div class="card">Unexpectedly funny</div>
+</section>
+
+<!-- Secrets -->
+<section id="secrets">
+<h1>Tap if you’re curious</h1>
+
+<button class="btn" onclick="reveal('s1')">What I enjoy</button>
+<p id="s1" class="hidden">Cybersec puzzles, maps, quiet coffee places.</p>
+
+<button class="btn" onclick="reveal('s2')">What I notice</button>
+<p id="s2" class="hidden">Details most people miss.</p>
+
+<button class="btn" onclick="reveal('s3')">What I admire</button>
+<p id="s3" class="hidden">Consistency, effort, emotional awareness.</p>
 </section>
 
 <!-- Ending -->
 <section id="ending">
+<h1>Final note</h1>
+<p>If you made it this far… I’m impressed.</p>
 
 <div id="codeBox" style="display:none;">
-  <p>You made it this far.</p>
-  <p><b>Your code:</b></p>
-
-  <div id="userCode" style="
-    background:#fff;
-    padding:10px 20px;
-    border-radius:15px;
-    display:inline-block;
-    margin:10px 0;
-    font-weight:bold;
-    color:#b76e79;
-  "></div>
-
-  <br>
-  <button class="btn" onclick="copyCode()">Copy code</button>
-
-  <p style="font-size:13px;">
-    Send me this code… I’ll know you paid attention.
-  </p>
+<p>Your code:</p>
+<div id="userCode" style="font-weight:bold; color:#b76e79;"></div>
+<button class="btn" onclick="copyCode()">Copy code</button>
+<p style="font-size:12px;">Send it to me 😉</p>
 </div>
 
-  <h1>Final note</h1>
-  <p>I don’t expect you to make it this far.</p>
-  <p>But if you did… maybe we’d get along.</p>
+<a href="https://instagram.com/allo_cheri" target="_blank">
+<button class="btn">Say hi</button>
+</a>
 
-  <a href="https://instagram.com/allo_cheri" target="_blank">
-    <button class="btn">Say hi</button>
-  </a>
-
-  <a href="https://angularfield-vmfwo.wordpress.com/" target="_blank">
-    <button class="btn">View my portfolio</button>
-  </a>
-
+<a href="https://angularfield-vmfwo.wordpress.com/" target="_blank">
+<button class="btn">Portfolio</button>
+</a>
 </section>
-
-<!-- 💌 hidden message -->
-<div id="secretMsg">You stayed a while… I like that.</div>
 
 <script>
 function reveal(id) {
-  const el = document.getElementById(id);
+  let el = document.getElementById(id);
   el.style.display = el.style.display === "block" ? "none" : "block";
 }
 
-/* 🔐 code system */
+// 🔐 code
 function generateCode() {
   let existing = localStorage.getItem("mg_code");
   if (existing) return existing;
 
-  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
   let code = "MG-";
-
   for (let i = 0; i < 5; i++) {
     code += chars[Math.floor(Math.random() * chars.length)];
   }
-
   localStorage.setItem("mg_code", code);
   return code;
 }
 
 function showCode() {
-  const code = generateCode();
-  document.getElementById("userCode").innerText = code;
+  document.getElementById("userCode").innerText = generateCode();
   document.getElementById("codeBox").style.display = "block";
 }
 
 function copyCode() {
-  const text = document.getElementById("userCode").innerText;
-  navigator.clipboard.writeText(text);
-  alert("Code copied 😉");
+  navigator.clipboard.writeText(document.getElementById("userCode").innerText);
 }
 
-/* 🎯 show code when reaching ending */
-window.addEventListener("scroll", () => {
-  const endSection = document.querySelector("#ending");
-  const rect = endSection.getBoundingClientRect();
-
-  if (rect.top < window.innerHeight - 100) {
-    showCode();
-  }
-});
-
-/* ✨ particles system */
+// ✨🌙💌 particle system
 let lastSpawn = 0;
 let moveCount = 0;
 let revealed = false;
 
-function getCurrentSection() {
-  const sections = document.querySelectorAll("section");
-  let current = null;
-
-  sections.forEach(sec => {
-    const rect = sec.getBoundingClientRect();
+function getSection() {
+  let sections = document.querySelectorAll("section");
+  for (let sec of sections) {
+    let rect = sec.getBoundingClientRect();
     if (rect.top <= window.innerHeight/2 && rect.bottom >= window.innerHeight/2) {
-      current = sec.id;
+      return sec.id;
     }
-  });
-
-  return current;
+  }
 }
 
-document.addEventListener("mousemove", function(e) {
-  const now = Date.now();
+document.addEventListener("mousemove", e => {
+  let now = Date.now();
   if (now - lastSpawn < 80) return;
   lastSpawn = now;
 
-  const section = getCurrentSection();
+  let section = getSection();
 
+  // 🎯 limit sections
   if (!["intro","story","space"].includes(section)) return;
 
-  const particle = document.createElement("div");
-  particle.classList.add("particle");
+  let el = document.createElement("div");
+  el.classList.add("particle");
 
   if (section === "space") {
-    particle.innerHTML = "✦";
-    particle.style.color = "#f7c6d0";
+    el.innerHTML = "✦"; // 🌙 stars
+    el.style.color = "#ffd6e0";
   } else {
-    particle.innerHTML = "❤";
-    particle.style.color = "#e6a4b4";
+    el.innerHTML = "❤"; // ✨ hearts
+    el.style.color = "#e6a4b4";
   }
 
-  particle.style.left = e.clientX + "px";
-  particle.style.top = e.clientY + "px";
+  el.style.left = e.clientX + "px";
+  el.style.top = e.clientY + "px";
 
-  document.body.appendChild(particle);
+  document.body.appendChild(el);
 
   setTimeout(() => {
-    particle.style.top = (e.clientY - 40) + "px";
-    particle.style.opacity = 0;
+    el.style.top = (e.clientY - 40) + "px";
+    el.style.opacity = 0;
+    el.style.transform = "scale(1.5)";
   }, 10);
 
-  setTimeout(() => particle.remove(), 1000);
+  setTimeout(() => el.remove(), 1000);
 
-  /* 💌 hidden message */
+  // 💌 hidden message
   moveCount++;
   if (moveCount > 120 && !revealed) {
     revealed = true;
-    const msg = document.getElementById("secretMsg");
-    msg.style.opacity = 1;
 
-    setTimeout(() => msg.style.opacity = 0, 4000);
+    let msg = document.createElement("div");
+    msg.className = "secret-msg";
+    msg.innerText = "You stayed long enough… I like that.";
+
+    document.body.appendChild(msg);
+    setTimeout(() => msg.remove(), 4000);
   }
+});
+
+// show code on scroll
+window.addEventListener("scroll", () => {
+  let rect = document.querySelector("#ending").getBoundingClientRect();
+  if (rect.top < window.innerHeight - 100) showCode();
 });
 </script>
 
