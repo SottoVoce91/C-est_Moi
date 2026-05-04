@@ -5,13 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MG</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
+html { -webkit-text-size-adjust: 100%; }
+
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(to bottom, #fff5f7, #fce4ec);
   color: #4a2c2a;
-  overflow-x: hidden;
 }
 
 /* 🌌 background */
@@ -27,24 +30,28 @@ body {
 /* layout */
 section {
   min-height: 100vh;
-  padding: 50px 20px;
+  padding: 60px 20px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.container {
+  max-width: 500px;
   text-align: center;
 }
 
 h1 {
-  font-size: 1.8em;
   color: #b76e79;
+  font-size: 1.8rem;
 }
 
 p {
   font-size: 14px;
-  max-width: 320px;
+  line-height: 1.6;
 }
 
+/* buttons */
 .btn {
   margin-top: 15px;
   padding: 12px 18px;
@@ -52,20 +59,25 @@ p {
   background: #b76e79;
   color: white;
   border-radius: 25px;
-  font-size: 14px;
   cursor: pointer;
+}
+
+/* cards */
+.card-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .card {
   background: white;
-  padding: 12px;
-  border-radius: 12px;
-  margin: 6px;
-  font-size: 13px;
-  max-width: 260px;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
-.hidden { display: none; }
+/* hidden */
+.hidden { display:none; }
 
 /* 💌 message */
 .secret-msg {
@@ -74,19 +86,38 @@ p {
   left: 50%;
   transform: translateX(-50%);
   background: white;
-  color: #b76e79;
-  padding: 10px 16px;
+  padding: 10px 20px;
   border-radius: 20px;
-  font-size: 12px;
 }
 
-/* ✨ particles */
-.particle {
-  position: fixed;
-  pointer-events: none;
-  font-size: 14px;
-  opacity: 0.8;
-  transition: all 1s ease-out;
+/* 💻 DESKTOP UPGRADE */
+@media (min-width: 768px) {
+
+  .container {
+    max-width: 800px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  .card-group {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .card {
+    width: 220px;
+  }
+
+  .btn {
+    font-size: 14px;
+  }
 }
 </style>
 </head>
@@ -97,42 +128,65 @@ p {
 
 <!-- Intro -->
 <section id="intro">
-<h1>Hi, MG here</h1>
+<div class="container">
+<h1>Hi, I’m MG</h1>
 <p>Let’s see if you’re curious enough.</p>
 <button class="btn" onclick="go('story', event)">Continue</button>
+</div>
 </section>
 
 <!-- Story -->
 <section id="story">
+<div class="container">
 <h1>About me</h1>
-<p>I don’t say much at first, but I notice details and may mentally judge</p>
+<p>I don’t say much at first, but I notice everything.</p>
+</div>
 </section>
 
 <!-- Space -->
 <section id="space">
+<div class="container">
 <h1>Another side</h1>
-<p>I love books, space objects, astrophotography.</p>
+<p>I like space, quiet nights, and things that feel infinite.</p>
+</div>
+</section>
+
+<!-- Personality -->
+<section id="personality">
+<div class="container">
+<h1>Personality</h1>
+<div class="card-group">
+<div class="card">Introverted</div>
+<div class="card">Observant</div>
+<div class="card">Black cat energy</div>
+<div class="card">Unexpectedly funny</div>
+</div>
+</div>
 </section>
 
 <!-- Secrets -->
 <section id="secrets">
+<div class="container">
+
 <h1>Curious?</h1>
 
 <button class="btn" onclick="pick('curious'); show('s1', event)">What I enjoy</button>
-<p id="s1" class="hidden">Cybersec challenges, Geoguessr, slow coffee bars</p>
+<p id="s1" class="hidden">Cybersec, maps, coffee.</p>
 
 <button class="btn" onclick="pick('playful'); show('s2', event)">What I notice</button>
-<p id="s2" class="hidden">Small gestures.</p>
+<p id="s2" class="hidden">Small details.</p>
 
 <button class="btn" onclick="pick('romantic'); show('s3', event)">What I admire</button>
-<p id="s3" class="hidden">consistency, efforts, empathy, shared-intentions, awareness of emotional investment. Small gestures weaken my knees.</p>
+<p id="s3" class="hidden">Effort & consistency.</p>
 
+</div>
 </section>
 
 <!-- Ending -->
 <section id="ending">
-<h1>Final</h1>
+<div class="container">
 
+<h1>Final</h1>
 <div id="endingText"></div>
 
 <div id="codeBox" style="display:none;">
@@ -142,29 +196,31 @@ p {
 </div>
 
 <a href="https://instagram.com/allo_cheri" target="_blank">
-<button class="btn">Say hi (Disclaimer: I'm low on social media presence)</button>
+<button class="btn">Say hi</button>
 </a>
 
 <a href="https://angularfield-vmfwo.wordpress.com/" target="_blank">
 <button class="btn">Portfolio</button>
 </a>
+
+</div>
 </section>
 
 <audio id="music" loop></audio>
 
 <script>
-// 🌌 galaxy (lightweight)
+// 🌌 stars
 const c = document.getElementById("stars");
 const ctx = c.getContext("2d");
 
-function resize() {
+function resize(){
   c.width = innerWidth;
   c.height = innerHeight;
 }
 resize();
 window.addEventListener("resize", resize);
 
-let stars = Array.from({length:60},()=>({
+let stars = Array.from({length:80},()=>({
   x:Math.random()*c.width,
   y:Math.random()*c.height,
   r:Math.random()*1.5
@@ -184,84 +240,18 @@ function draw(){
 }
 draw();
 
-// 💖 heart burst (tap friendly)
-function burst(x,y){
-  for(let i=0;i<6;i++){
-    let h=document.createElement("div");
-    h.innerHTML="❤";
-    h.className="particle";
-    h.style.left=x+"px";
-    h.style.top=y+"px";
-    h.style.color="#e6a4b4";
-    document.body.appendChild(h);
-
-    let a=Math.random()*6.28,d=30+Math.random()*20;
-    setTimeout(()=>{
-      h.style.transform=`translate(${Math.cos(a)*d}px,${Math.sin(a)*d}px)`;
-      h.style.opacity=0;
-    },10);
-
-    setTimeout(()=>h.remove(),800);
-  }
-}
-
-// ✨ touch particles (mobile)
-let last=0, moves=0, shown=false;
-
-function currentSection(){
-  return document.elementFromPoint(innerWidth/2,innerHeight/2)?.closest("section")?.id;
-}
-
-document.addEventListener("touchmove",e=>{
-  let now=Date.now();
-  if(now-last<120)return;
-  last=now;
-
-  let t=e.touches[0];
-  let sec=currentSection();
-  if(!["intro","story","space"].includes(sec))return;
-
-  let el=document.createElement("div");
-  el.className="particle";
-  el.innerHTML = sec==="space"?"✦":"❤";
-  el.style.left=t.clientX+"px";
-  el.style.top=t.clientY+"px";
-  el.style.color=sec==="space"?"#ffd6e0":"#e6a4b4";
-
-  document.body.appendChild(el);
-
-  setTimeout(()=>{
-    el.style.top=(t.clientY-40)+"px";
-    el.style.opacity=0;
-  },10);
-
-  setTimeout(()=>el.remove(),1000);
-
-  moves++;
-  if(moves>80 && !shown){
-    shown=true;
-    let m=document.createElement("div");
-    m.className="secret-msg";
-    m.innerText="You stayed long enough… I like that.";
-    document.body.appendChild(m);
-    setTimeout(()=>m.remove(),4000);
-  }
-});
-
 // 🧠 personality
 let p={curious:0,playful:0,romantic:0};
-function pick(type){p[type]++;}
+function pick(t){p[t]++;}
 
 // reveal
 function show(id,e){
   document.getElementById(id).style.display="block";
-  burst(e.clientX,e.clientY);
 }
 
 // scroll
-function go(id,e){
+function go(id){
   document.getElementById(id).scrollIntoView({behavior:"smooth"});
-  burst(e.clientX,e.clientY);
 }
 
 // 🔐 code
@@ -275,12 +265,11 @@ function gen(){
   return c;
 }
 
-function copyCode(e){
+function copyCode(){
   navigator.clipboard.writeText(gen());
-  burst(e.clientX,e.clientY);
 }
 
-// 🎧 music (mobile safe)
+// 🎧 music
 const music=document.getElementById("music");
 const tracks={
   intro:"track1.mp3",
@@ -290,10 +279,16 @@ const tracks={
 
 let current="";
 
-// unlock audio
 document.addEventListener("click",()=>{
   music.play().catch(()=>{});
 },{once:true});
+
+// ✅ FIXED section detection
+function currentSection(){
+  let sections=document.querySelectorAll("section");
+  let index=Math.round(window.scrollY/window.innerHeight);
+  return sections[index]?.id;
+}
 
 window.addEventListener("scroll",()=>{
   let sec=currentSection();
@@ -305,7 +300,7 @@ window.addEventListener("scroll",()=>{
   }
 
   let r=document.getElementById("ending").getBoundingClientRect();
-  if(r.top<innerHeight-80){
+  if(r.top<innerHeight-100){
     document.getElementById("codeBox").style.display="block";
     document.getElementById("userCode").innerText=gen();
 
