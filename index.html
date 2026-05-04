@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,20 +9,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-html { -webkit-text-size-adjust: 100%; }
-
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(to bottom, #fff5f7, #fce4ec);
   color: #4a2c2a;
+  overflow-x: hidden;
 }
 
 /* 🌌 background */
 #stars {
   position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   z-index: -1;
@@ -30,94 +28,60 @@ body {
 /* layout */
 section {
   min-height: 100vh;
-  padding: 60px 20px;
+  padding: 50px 20px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
 .container {
-  max-width: 500px;
+  max-width: 340px;
   text-align: center;
 }
 
 h1 {
+  font-size: 1.6rem;
   color: #b76e79;
-  font-size: 1.8rem;
 }
 
 p {
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.6;
 }
 
-/* buttons */
 .btn {
-  margin-top: 15px;
+  margin-top: 14px;
   padding: 12px 18px;
   border: none;
   background: #b76e79;
   color: white;
-  border-radius: 25px;
+  border-radius: 22px;
+  font-size: 13px;
   cursor: pointer;
 }
 
-/* cards */
-.card-group {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.card {
-  background: white;
-  padding: 15px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-}
-
-/* hidden */
 .hidden { display:none; }
 
-/* 💌 message */
+/* 💌 secret */
 .secret-msg {
   position: fixed;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   background: white;
-  padding: 10px 20px;
+  color: #b76e79;
+  padding: 10px 16px;
   border-radius: 20px;
+  font-size: 12px;
 }
 
-/* 💻 DESKTOP UPGRADE */
-@media (min-width: 768px) {
-
-  .container {
-    max-width: 800px;
-  }
-
-  h1 {
-    font-size: 2.5rem;
-  }
-
-  p {
-    font-size: 16px;
-  }
-
-  .card-group {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .card {
-    width: 220px;
-  }
-
-  .btn {
-    font-size: 14px;
-  }
+/* ✨ particles */
+.particle {
+  position: fixed;
+  pointer-events: none;
+  font-size: 14px;
+  opacity: 0.8;
+  transition: all 1s ease-out;
 }
 </style>
 </head>
@@ -139,7 +103,7 @@ p {
 <section id="story">
 <div class="container">
 <h1>About me</h1>
-<p>I don’t say much at first, but I notice details and may internally judge</p>
+<p>I don’t say much at first, but I notice details.</p>
 </div>
 </section>
 
@@ -147,20 +111,7 @@ p {
 <section id="space">
 <div class="container">
 <h1>Another side</h1>
-<p>I like space objects, astrophotography, books.</p>
-</div>
-</section>
-
-<!-- Personality -->
-<section id="personality">
-<div class="container">
-<h1>Personality</h1>
-<div class="card-group">
-<div class="card">Introverted and homebody</div>
-<div class="card">Observant</div>
-<div class="card">Black cat energy</div>
-<div class="card">Unexpectedly funny</div>
-</div>
+<p>Space, quiet nights, and things that feel infinite.</p>
 </div>
 </section>
 
@@ -170,14 +121,14 @@ p {
 
 <h1>Curious?</h1>
 
-<button class="btn" onclick="pick('curious'); show('s1', event)">What I enjoy</button>
-<p id="s1" class="hidden">Cybersec challenges, Geoguessr, slow coffee bars</p>
+<button class="btn" onclick="pick('curious'); reveal('s1', event)">What I enjoy</button>
+<p id="s1" class="hidden">Cybersec, Geoguessr, coffee bars</p>
 
-<button class="btn" onclick="pick('playful'); show('s2', event)">What I notice</button>
-<p id="s2" class="hidden">Does it include a set of bulky veneered teeth?</p>
+<button class="btn" onclick="pick('playful'); reveal('s2', event)">What I notice</button>
+<p id="s2" class="hidden">Details others miss</p>
 
-<button class="btn" onclick="pick('romantic'); show('s3', event)">What I admire</button>
-<p id="s3" class="hidden"> consistency, efforts, empathy, shared-intentions, awareness of emotional investment. Small gestures weaken my knees</p>
+<button class="btn" onclick="pick('romantic'); reveal('s3', event)">What I admire</button>
+<p id="s3" class="hidden">Consistency & emotional awareness</p>
 
 </div>
 </section>
@@ -196,20 +147,14 @@ p {
 </div>
 
 <a href="https://instagram.com/allo_cheri" target="_blank">
-<button class="btn">Say hi (Disclaimer: I'm low on social media presence)</button>
-</a>
-
-<a href="https://angularfield-vmfwo.wordpress.com/" target="_blank">
-<button class="btn">Portfolio</button>
+<button class="btn">Say hi</button>
 </a>
 
 </div>
 </section>
 
-<audio id="music" loop></audio>
-
 <script>
-// 🌌 stars
+// 🌌 galaxy (lightweight)
 const c = document.getElementById("stars");
 const ctx = c.getContext("2d");
 
@@ -220,10 +165,10 @@ function resize(){
 resize();
 window.addEventListener("resize", resize);
 
-let stars = Array.from({length:80},()=>({
+let stars = Array.from({length:50},()=>({
   x:Math.random()*c.width,
   y:Math.random()*c.height,
-  r:Math.random()*1.5
+  r:Math.random()*1.2
 }));
 
 function draw(){
@@ -233,74 +178,116 @@ function draw(){
     ctx.beginPath();
     ctx.arc(s.x,s.y,s.r,0,6.28);
     ctx.fill();
-    s.y+=0.2;
+    s.y+=0.15;
     if(s.y>c.height)s.y=0;
   });
   requestAnimationFrame(draw);
 }
 draw();
 
+// 💖 heart burst
+function burst(x,y){
+  for(let i=0;i<5;i++){
+    let h=document.createElement("div");
+    h.innerHTML="❤";
+    h.className="particle";
+    h.style.left=x+"px";
+    h.style.top=y+"px";
+    h.style.color="#e6a4b4";
+    document.body.appendChild(h);
+
+    let a=Math.random()*6.28,d=30+Math.random()*20;
+    setTimeout(()=>{
+      h.style.transform=`translate(${Math.cos(a)*d}px,${Math.sin(a)*d}px)`;
+      h.style.opacity=0;
+    },10);
+
+    setTimeout(()=>h.remove(),800);
+  }
+}
+
+// ✨ section particles (touch)
+let last=0, moves=0, shown=false;
+
+function section(){
+  let sec=document.elementFromPoint(innerWidth/2,innerHeight/2);
+  return sec?.closest("section")?.id;
+}
+
+document.addEventListener("touchmove",e=>{
+  let now=Date.now();
+  if(now-last<120)return;
+  last=now;
+
+  let t=e.touches[0];
+  let sec=section();
+
+  if(!["intro","story","space"].includes(sec))return;
+
+  let el=document.createElement("div");
+  el.className="particle";
+  el.innerHTML=sec==="space"?"✦":"❤";
+  el.style.left=t.clientX+"px";
+  el.style.top=t.clientY+"px";
+  el.style.color=sec==="space"?"#ffd6e0":"#e6a4b4";
+
+  document.body.appendChild(el);
+
+  setTimeout(()=>{
+    el.style.top=(t.clientY-30)+"px";
+    el.style.opacity=0;
+  },10);
+
+  setTimeout(()=>el.remove(),900);
+
+  moves++;
+  if(moves>70 && !shown){
+    shown=true;
+    let m=document.createElement("div");
+    m.className="secret-msg";
+    m.innerText="You stayed… I like that.";
+    document.body.appendChild(m);
+    setTimeout(()=>m.remove(),4000);
+  }
+});
+
 // 🧠 personality
 let p={curious:0,playful:0,romantic:0};
 function pick(t){p[t]++;}
 
 // reveal
-function show(id,e){
+function reveal(id,e){
   document.getElementById(id).style.display="block";
+  burst(e.clientX,e.clientY);
 }
 
 // scroll
-function go(id){
+function go(id,e){
   document.getElementById(id).scrollIntoView({behavior:"smooth"});
+  burst(e.clientX,e.clientY);
 }
 
 // 🔐 code
 function gen(){
-  let c=localStorage.getItem("mg");
+  let c=localStorage.getItem("mg_code");
   if(c)return c;
   let chars="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
   c="MG-";
   for(let i=0;i<5;i++)c+=chars[Math.floor(Math.random()*chars.length)];
-  localStorage.setItem("mg",c);
+  localStorage.setItem("mg_code",c);
   return c;
 }
 
-function copyCode(){
+function copyCode(e){
   navigator.clipboard.writeText(gen());
+  burst(e.clientX,e.clientY);
 }
 
-// 🎧 music
-const music=document.getElementById("music");
-const tracks={
-  intro:"track1.mp3",
-  story:"track2.mp3",
-  space:"track3.mp3"
-};
-
-let current="";
-
-document.addEventListener("click",()=>{
-  music.play().catch(()=>{});
-},{once:true});
-
-// ✅ FIXED section detection
-function currentSection(){
-  let sections=document.querySelectorAll("section");
-  let index=Math.round(window.scrollY/window.innerHeight);
-  return sections[index]?.id;
-}
-
+// 🧠 ending logic
 window.addEventListener("scroll",()=>{
-  let sec=currentSection();
+  let rect=document.getElementById("ending").getBoundingClientRect();
 
-  if(tracks[sec] && current!==tracks[sec]){
-    music.src=tracks[sec];
-    music.play().catch(()=>{});
-    current=tracks[sec];
-  }
-
-  let r=document.getElementById("ending").getBoundingClientRect();
-  if(r.top<innerHeight-100){
+  if(rect.top<innerHeight-80){
     document.getElementById("codeBox").style.display="block";
     document.getElementById("userCode").innerText=gen();
 
