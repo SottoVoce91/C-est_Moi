@@ -11,7 +11,16 @@ body {
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(to bottom, #fff5f7, #fce4ec);
   color: #4a2c2a;
-  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+#stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 
 section {
@@ -25,13 +34,11 @@ section {
 }
 
 h1 {
-  font-size: 1.8em;
   color: #b76e79;
 }
 
 p {
   max-width: 500px;
-  line-height: 1.6;
   font-size: 14px;
 }
 
@@ -43,12 +50,6 @@ p {
   color: white;
   border-radius: 20px;
   cursor: pointer;
-  transition: 0.3s;
-  font-size: 13px;
-}
-
-.btn:hover {
-  background: #9c5c66;
 }
 
 .card {
@@ -58,27 +59,17 @@ p {
   margin: 8px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.05);
   max-width: 280px;
-  font-size: 13px;
 }
 
-.hidden {
-  display: none;
-  margin-top: 10px;
-  font-style: italic;
-}
+.hidden { display: none; }
 
-/* ✨ particles */
 .particle {
   position: fixed;
   pointer-events: none;
   transform: translate(-50%, -50%);
-  font-size: 14px;
-  opacity: 0.8;
   transition: all 1s ease-out;
-  text-shadow: 0 0 10px rgba(255,255,255,0.8);
 }
 
-/* 💌 hidden message */
 .secret-msg {
   position: fixed;
   bottom: 20px;
@@ -88,67 +79,53 @@ p {
   color: #b76e79;
   padding: 10px 20px;
   border-radius: 20px;
-  font-size: 13px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 </style>
 </head>
 
 <body>
 
-<!-- Intro -->
+<canvas id="stars"></canvas>
+
 <section id="intro">
 <h1>Hi, I’m MG</h1>
-<p>Thanks for visiting. Let’s see if you’re curious enough.</p>
-<a href="#story"><button class="btn">Continue</button></a>
+<p>Let’s see if you’re curious enough.</p>
+<button class="btn" onclick="scrollToSection('story', event)">Continue</button>
 </section>
 
-<!-- Story -->
 <section id="story">
-<h1>A brief info about me</h1>
+<h1>About me</h1>
 <p>I don’t say much at first, but I notice everything.</p>
-<p>I spend time in virtual labs or randomly navigating the world.</p>
 </section>
 
-<!-- Space Section 🌙 -->
 <section id="space">
-<h1>Another side of me</h1>
-<p>Sometimes I just stare at the sky and wonder how small everything is.</p>
-<p>Astrophotography, planets, space… it’s calming in a way.</p>
+<h1>Another side</h1>
+<p>I like space, quiet nights, and things that feel infinite.</p>
 </section>
 
-<!-- Personality -->
-<section id="personality">
-<h1>Personality & lifestyle</h1>
-<div class="card">Introverted but observant</div>
-<div class="card">Black cat energy</div>
-<div class="card">Unexpectedly funny</div>
-</section>
-
-<!-- Secrets -->
 <section id="secrets">
-<h1>Tap if you’re curious</h1>
+<h1>Curious?</h1>
 
-<button class="btn" onclick="reveal('s1')">What I enjoy</button>
-<p id="s1" class="hidden">Cybersec puzzles, maps, quiet coffee places.</p>
+<button class="btn" onclick="choose('curious'); reveal('s1', event)">What I enjoy</button>
+<p id="s1" class="hidden">Cybersec, maps, coffee.</p>
 
-<button class="btn" onclick="reveal('s2')">What I notice</button>
-<p id="s2" class="hidden">Details most people miss.</p>
+<button class="btn" onclick="choose('playful'); reveal('s2', event)">What I notice</button>
+<p id="s2" class="hidden">Small details.</p>
 
-<button class="btn" onclick="reveal('s3')">What I admire</button>
-<p id="s3" class="hidden">Consistency, effort, emotional awareness.</p>
+<button class="btn" onclick="choose('romantic'); reveal('s3', event)">What I admire</button>
+<p id="s3" class="hidden">Effort & consistency.</p>
+
 </section>
 
-<!-- Ending -->
 <section id="ending">
-<h1>Final note</h1>
-<p>If you made it this far… I’m impressed.</p>
+<h1>Final</h1>
+
+<div id="endingText"></div>
 
 <div id="codeBox" style="display:none;">
 <p>Your code:</p>
-<div id="userCode" style="font-weight:bold; color:#b76e79;"></div>
-<button class="btn" onclick="copyCode()">Copy code</button>
-<p style="font-size:12px;">Send it to me 😉</p>
+<div id="userCode"></div>
+<button class="btn" onclick="copyCode(event)">Copy code</button>
 </div>
 
 <a href="https://instagram.com/allo_cheri" target="_blank">
@@ -158,105 +135,157 @@ p {
 <a href="https://angularfield-vmfwo.wordpress.com/" target="_blank">
 <button class="btn">Portfolio</button>
 </a>
+
 </section>
 
+<audio id="music" loop></audio>
+
 <script>
-function reveal(id) {
-  let el = document.getElementById(id);
-  el.style.display = el.style.display === "block" ? "none" : "block";
+// 🌌 galaxy
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+
+let stars = Array.from({length:80},()=>({
+  x:Math.random()*canvas.width,
+  y:Math.random()*canvas.height,
+  r:Math.random()*1.5
+}));
+
+function drawStars(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle="#ffd6e0";
+  stars.forEach(s=>{
+    ctx.beginPath();
+    ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+    ctx.fill();
+    s.y+=0.2;
+    if(s.y>canvas.height) s.y=0;
+  });
+  requestAnimationFrame(drawStars);
+}
+drawStars();
+
+// 💖 heart burst
+function burst(x,y){
+  for(let i=0;i<8;i++){
+    let h=document.createElement("div");
+    h.innerHTML="❤";
+    h.style.position="fixed";
+    h.style.left=x+"px";
+    h.style.top=y+"px";
+    h.style.color="#e6a4b4";
+    h.style.transition="0.8s";
+    document.body.appendChild(h);
+    let a=Math.random()*6.28,d=40+Math.random()*30;
+    setTimeout(()=>{
+      h.style.transform=`translate(${Math.cos(a)*d}px,${Math.sin(a)*d}px)`;
+      h.style.opacity=0;
+    },10);
+    setTimeout(()=>h.remove(),800);
+  }
+}
+
+// ✨ particles
+let last=0, moves=0, revealed=false;
+function section(){
+  return document.elementFromPoint(innerWidth/2,innerHeight/2)?.closest("section")?.id;
+}
+
+document.addEventListener("mousemove",e=>{
+  if(Date.now()-last<80)return;
+  last=Date.now();
+  let sec=section();
+  if(!["intro","story","space"].includes(sec))return;
+
+  let el=document.createElement("div");
+  el.className="particle";
+  el.innerHTML= sec==="space"?"✦":"❤";
+  el.style.color= sec==="space"?"#ffd6e0":"#e6a4b4";
+  el.style.left=e.clientX+"px";
+  el.style.top=e.clientY+"px";
+  document.body.appendChild(el);
+
+  setTimeout(()=>{
+    el.style.top=(e.clientY-40)+"px";
+    el.style.opacity=0;
+  },10);
+  setTimeout(()=>el.remove(),1000);
+
+  moves++;
+  if(moves>120&&!revealed){
+    revealed=true;
+    let m=document.createElement("div");
+    m.className="secret-msg";
+    m.innerText="You stayed long enough… I like that.";
+    document.body.appendChild(m);
+    setTimeout(()=>m.remove(),4000);
+  }
+});
+
+// 🧠 personality
+let p={curious:0,playful:0,romantic:0};
+function choose(type){p[type]++;}
+
+// reveal
+function reveal(id,e){
+  document.getElementById(id).style.display="block";
+  burst(e.clientX,e.clientY);
 }
 
 // 🔐 code
-function generateCode() {
-  let existing = localStorage.getItem("mg_code");
-  if (existing) return existing;
-
-  let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-  let code = "MG-";
-  for (let i = 0; i < 5; i++) {
-    code += chars[Math.floor(Math.random() * chars.length)];
-  }
-  localStorage.setItem("mg_code", code);
-  return code;
+function gen(){
+  let c=localStorage.getItem("mg");
+  if(c)return c;
+  let chars="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  c="MG-";
+  for(let i=0;i<5;i++)c+=chars[Math.floor(Math.random()*chars.length)];
+  localStorage.setItem("mg",c);
+  return c;
 }
 
-function showCode() {
-  document.getElementById("userCode").innerText = generateCode();
-  document.getElementById("codeBox").style.display = "block";
+function copyCode(e){
+  navigator.clipboard.writeText(gen());
+  burst(e.clientX,e.clientY);
 }
 
-function copyCode() {
-  navigator.clipboard.writeText(document.getElementById("userCode").innerText);
-}
+// 🎧 music
+const music=document.getElementById("music");
+const tracks={
+  intro:"track1.mp3",
+  story:"track2.mp3",
+  space:"track3.mp3"
+};
+let cur="";
+document.addEventListener("click",()=>music.play().catch(()=>{}),{once:true});
 
-// ✨🌙💌 particle system
-let lastSpawn = 0;
-let moveCount = 0;
-let revealed = false;
-
-function getSection() {
-  let sections = document.querySelectorAll("section");
-  for (let sec of sections) {
-    let rect = sec.getBoundingClientRect();
-    if (rect.top <= window.innerHeight/2 && rect.bottom >= window.innerHeight/2) {
-      return sec.id;
-    }
-  }
-}
-
-document.addEventListener("mousemove", e => {
-  let now = Date.now();
-  if (now - lastSpawn < 80) return;
-  lastSpawn = now;
-
-  let section = getSection();
-
-  // 🎯 limit sections
-  if (!["intro","story","space"].includes(section)) return;
-
-  let el = document.createElement("div");
-  el.classList.add("particle");
-
-  if (section === "space") {
-    el.innerHTML = "✦"; // 🌙 stars
-    el.style.color = "#ffd6e0";
-  } else {
-    el.innerHTML = "❤"; // ✨ hearts
-    el.style.color = "#e6a4b4";
+window.addEventListener("scroll",()=>{
+  let sec=section();
+  if(tracks[sec] && cur!==tracks[sec]){
+    music.src=tracks[sec];
+    music.play().catch(()=>{});
+    cur=tracks[sec];
   }
 
-  el.style.left = e.clientX + "px";
-  el.style.top = e.clientY + "px";
+  let rect=document.getElementById("ending").getBoundingClientRect();
+  if(rect.top<innerHeight-100){
+    document.getElementById("codeBox").style.display="block";
+    document.getElementById("userCode").innerText=gen();
 
-  document.body.appendChild(el);
+    let msg="You’re playful.";
+    if(p.curious>1) msg="You’re curious. I like that.";
+    else if(p.romantic>1) msg="You notice feelings. Rare.";
 
-  setTimeout(() => {
-    el.style.top = (e.clientY - 40) + "px";
-    el.style.opacity = 0;
-    el.style.transform = "scale(1.5)";
-  }, 10);
-
-  setTimeout(() => el.remove(), 1000);
-
-  // 💌 hidden message
-  moveCount++;
-  if (moveCount > 120 && !revealed) {
-    revealed = true;
-
-    let msg = document.createElement("div");
-    msg.className = "secret-msg";
-    msg.innerText = "You stayed long enough… I like that.";
-
-    document.body.appendChild(msg);
-    setTimeout(() => msg.remove(), 4000);
+    document.getElementById("endingText").innerText=msg;
   }
 });
 
-// show code on scroll
-window.addEventListener("scroll", () => {
-  let rect = document.querySelector("#ending").getBoundingClientRect();
-  if (rect.top < window.innerHeight - 100) showCode();
-});
+// smooth scroll
+function scrollToSection(id,e){
+  document.getElementById(id).scrollIntoView({behavior:"smooth"});
+  burst(e.clientX,e.clientY);
+}
 </script>
 
 </body>
