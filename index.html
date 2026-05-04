@@ -4,10 +4,11 @@
 <head>
   <title>MG</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body {
       margin: 0;
-      font-family: 'Georgia', poppins;
+      font-family: 'Georgia', sans-serif;
       background: linear-gradient(to bottom, #fff5f7, #fce4ec);
       color: #4a2c2a;
       scroll-behavior: smooth;
@@ -63,113 +64,131 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.05);
       max-width: 300px;
     }
+
+    /* ✨ particle */
+    .particle {
+      position: fixed;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      font-size: 14px;
+      opacity: 0.7;
+      transition: all 1s ease-out;
+      text-shadow: 0 0 8px rgba(255,255,255,0.6);
+    }
+
+    /* 💌 hidden message */
+    #secretMsg {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      color: #b76e79;
+      padding: 10px 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      font-size: 13px;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
   </style>
 </head>
 
 <body>
 
 <!-- Intro -->
-<section>
+<section id="intro">
   <h1>Hi, I’m MG</h1>
-  <p>
-    Thanks for visiting this site.  
-    Let's roll!
-  </p>
+  <p>Thanks for visiting this site. Let’s roll.</p>
   <a href="#story"><button class="btn">Continue</button></a>
 </section>
 
 <!-- Story -->
 <section id="story">
   <h1>A brief info about me</h1>
-  <p>
-    I’m the kind of person who doesn’t say much at first,  
-    but notices details in each individual
-  </p>
-  <p>
-    I spend my time existing on virtual labs,  
-    or figuring out where I am in the world randomly.
-  </p>
-  <p>
-    Other times, I’m just staring at the sky through Reddit,  
-    being in awe of space objects and wondering how some people manage to do astrophotography or different tools they have to achieve a single picture.
-  </p>
+  <p>I’m the kind of person who doesn’t say much at first, but notices details.</p>
+  <p>I spend time in virtual labs, or figuring out where I am in the world randomly.</p>
+  <p>Other times, I stare at the sky, thinking about space and astrophotography.</p>
 </section>
 
 <!-- Personality -->
-<section>
+<section id="personality">
   <h1>Personality & lifestyle</h1>
-  <div class="card">Introverted and homebody, yet moderately active</div>
+  <div class="card">Introverted, but moderately active</div>
   <div class="card">Observant</div>
   <div class="card">Black cat energy</div>
   <div class="card">Unexpectedly funny (eventually)</div>
 </section>
 
 <!-- Secrets -->
-<section>
+<section id="secrets">
   <h1>Tap if you’re curious</h1>
 
-  <button class="btn" onclick="reveal('s1')">What I actually enjoy</button>
-  <p id="s1" class="hidden">Cybersec puzzles, random maps, and slow coffee bars.</p>
+  <button class="btn" onclick="reveal('s1')">What I enjoy</button>
+  <p id="s1" class="hidden">Cybersec puzzles, maps, and quiet coffee bars.</p>
 
-  <button class="btn" onclick="reveal('s2')">What I notice first</button>
-  <p id="s2" class="hidden">Every little thing that others sometimes might not notice.</p>
+  <button class="btn" onclick="reveal('s2')">What I notice</button>
+  <p id="s2" class="hidden">Small details others miss.</p>
 
-  <button class="btn" onclick="reveal('s3')">What I admire in an individual</button>
-  <p id="s3" class="hidden">Consistency, efforts, empathy, shared-intentions, awareness of emotional investment. Small thoughtful gestures are hawt!</p>
+  <button class="btn" onclick="reveal('s3')">What I admire</button>
+  <p id="s3" class="hidden">Consistency, empathy, and thoughtful gestures.</p>
+</section>
+
+<!-- Space Section 🌙 -->
+<section id="space">
+  <h1>Space thoughts</h1>
+  <p>Sometimes I just sit and think about how small we are in the universe.</p>
 </section>
 
 <!-- Ending -->
-<section>
-<div id="codeBox" style="margin-top:20px; display:none;">
-  <p style="font-size:14px; opacity:0.8;">You made it this far.</p>
+<section id="ending">
+
+<div id="codeBox" style="display:none;">
+  <p>You made it this far.</p>
   <p><b>Your code:</b></p>
 
-  <div style="
+  <div id="userCode" style="
     background:#fff;
     padding:10px 20px;
     border-radius:15px;
     display:inline-block;
-    box-shadow:0 4px 15px rgba(0,0,0,0.08);
     margin:10px 0;
     font-weight:bold;
     color:#b76e79;
-  " id="userCode"></div>
+  "></div>
 
   <br>
   <button class="btn" onclick="copyCode()">Copy code</button>
 
-  <p style="font-size:13px; margin-top:10px;">
+  <p style="font-size:13px;">
     Send me this code… I’ll know you paid attention.
   </p>
 </div>
-  <h1>Final note</h1>
-  <p>
-    I don’t expect you to make it this far.  
-  </p>
-  <p>
-    But if you did then  
-    maybe we’d get along.
-  </p>
 
-  <p style="margin-top:20px;">
-    <b>Let’s get to know each other.</b>
-  </p>
+  <h1>Final note</h1>
+  <p>I don’t expect you to make it this far.</p>
+  <p>But if you did… maybe we’d get along.</p>
 
   <a href="https://instagram.com/allo_cheri" target="_blank">
-    <button class="btn">Say hi (Disclaimer: I'm low on social media presence)</button>
+    <button class="btn">Say hi</button>
   </a>
+
   <a href="https://angularfield-vmfwo.wordpress.com/" target="_blank">
-  <button class="btn">View my portfolio</button>
-</a>
+    <button class="btn">View my portfolio</button>
+  </a>
+
 </section>
+
+<!-- 💌 hidden message -->
+<div id="secretMsg">You stayed a while… I like that.</div>
 
 <script>
 function reveal(id) {
   const el = document.getElementById(id);
   el.style.display = el.style.display === "block" ? "none" : "block";
 }
-</script>
-<script>
+
+/* 🔐 code system */
 function generateCode() {
   let existing = localStorage.getItem("mg_code");
   if (existing) return existing;
@@ -197,7 +216,7 @@ function copyCode() {
   alert("Code copied 😉");
 }
 
-// Show code when user reaches final section
+/* 🎯 show code when reaching ending */
 window.addEventListener("scroll", () => {
   const endSection = document.querySelector("#ending");
   const rect = endSection.getBoundingClientRect();
@@ -206,6 +225,69 @@ window.addEventListener("scroll", () => {
     showCode();
   }
 });
+
+/* ✨ particles system */
+let lastSpawn = 0;
+let moveCount = 0;
+let revealed = false;
+
+function getCurrentSection() {
+  const sections = document.querySelectorAll("section");
+  let current = null;
+
+  sections.forEach(sec => {
+    const rect = sec.getBoundingClientRect();
+    if (rect.top <= window.innerHeight/2 && rect.bottom >= window.innerHeight/2) {
+      current = sec.id;
+    }
+  });
+
+  return current;
+}
+
+document.addEventListener("mousemove", function(e) {
+  const now = Date.now();
+  if (now - lastSpawn < 80) return;
+  lastSpawn = now;
+
+  const section = getCurrentSection();
+
+  if (!["intro","story","space"].includes(section)) return;
+
+  const particle = document.createElement("div");
+  particle.classList.add("particle");
+
+  if (section === "space") {
+    particle.innerHTML = "✦";
+    particle.style.color = "#f7c6d0";
+  } else {
+    particle.innerHTML = "❤";
+    particle.style.color = "#e6a4b4";
+  }
+
+  particle.style.left = e.clientX + "px";
+  particle.style.top = e.clientY + "px";
+
+  document.body.appendChild(particle);
+
+  setTimeout(() => {
+    particle.style.top = (e.clientY - 40) + "px";
+    particle.style.opacity = 0;
+  }, 10);
+
+  setTimeout(() => particle.remove(), 1000);
+
+  /* 💌 hidden message */
+  moveCount++;
+  if (moveCount > 120 && !revealed) {
+    revealed = true;
+    const msg = document.getElementById("secretMsg");
+    msg.style.opacity = 1;
+
+    setTimeout(() => msg.style.opacity = 0, 4000);
+  }
+});
 </script>
+
 </body>
 </html>
