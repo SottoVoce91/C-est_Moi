@@ -1,11 +1,9 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>MG</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -13,207 +11,226 @@
 <style>
 
 *{
+  margin:0;
+  padding:0;
   box-sizing:border-box;
 }
 
 html{
   scroll-behavior:smooth;
-  -webkit-text-size-adjust:100%;
 }
 
 body{
-  margin:0;
   font-family:'Poppins',sans-serif;
   overflow-x:hidden;
-  color:#ffffff;
+  color:white;
+  background:black;
+}
 
-  /* 🌌 Background image */
+/* 🌌 background image */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
   background:
-  linear-gradient(
-    rgba(5,8,20,0.70),
-    rgba(20,10,25,0.72)
-  ),
-  url("mohammad-alizade-S5uV7ro4UPY-unsplash.jpg");
-
-  background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
-  background-attachment:fixed;
+    linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.55)),
+    url('background.jpg') center center / cover no-repeat;
+  z-index:-3;
 }
 
-/* 📱 mobile fix */
-@media (max-width:768px){
+/* ✨ animated overlay */
+#stars{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:-2;
+}
 
-  body{
-    background-attachment:scroll;
-    background-position:center;
+/* 🌙 floating blur */
+.blur{
+  position:fixed;
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  background:rgba(255,182,193,0.08);
+  filter:blur(70px);
+  z-index:-1;
+  animation:float 8s ease-in-out infinite;
+}
+
+.blur2{
+  top:65%;
+  left:60%;
+  animation-delay:3s;
+}
+
+@keyframes float{
+  0%,100%{
+    transform:translateY(0px);
   }
-
+  50%{
+    transform:translateY(-30px);
+  }
 }
 
+/* 📱 sections */
 section{
   min-height:100vh;
-  padding:50px 20px;
-
   display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
+  padding:60px 22px;
 }
 
 .container{
-
   width:100%;
-  max-width:360px;
-
+  max-width:420px;
   text-align:center;
-
-  padding:28px 24px;
-
+  backdrop-filter:blur(10px);
+  background:rgba(0,0,0,0.35);
+  border:1px solid rgba(255,255,255,0.08);
   border-radius:28px;
-
-  background:rgba(255,255,255,0.08);
-
-  backdrop-filter:blur(12px);
-
-  border:1px solid rgba(255,255,255,0.12);
-
-  box-shadow:
-  0 10px 40px rgba(0,0,0,0.28);
-
+  padding:32px 24px;
+  box-shadow:0 10px 40px rgba(0,0,0,0.3);
 }
 
 h1{
-  margin-top:0;
-  font-size:1.7rem;
-  color:#ffdce5;
-  text-shadow:0 2px 10px rgba(0,0,0,0.35);
+  font-size:2rem;
+  margin-bottom:18px;
+  color:#ffd6e7;
+  text-shadow:0 0 12px rgba(255,214,231,0.4);
 }
 
 p{
   font-size:14px;
   line-height:1.8;
-  color:#f7f7f7;
+  color:#f4f4f4;
 }
 
-/* 🌸 buttons */
+/* 💖 buttons */
 .btn{
-
-  width:100%;
-
-  margin-top:14px;
-
-  padding:13px 18px;
-
+  margin-top:18px;
+  padding:13px 22px;
   border:none;
-  border-radius:24px;
-
-  background:
-  linear-gradient(
-    to right,
-    #b76e79,
-    #d6919d
-  );
-
+  border-radius:999px;
+  background:linear-gradient(135deg,#d67b96,#b76e79);
   color:white;
-
   font-size:13px;
   font-weight:600;
-
   cursor:pointer;
-
-  transition:0.25s;
+  transition:0.3s;
+  box-shadow:0 5px 20px rgba(214,123,150,0.4);
 }
 
-.btn:active{
-  transform:scale(0.96);
+.btn:hover{
+  transform:scale(1.05);
 }
 
+a{
+  text-decoration:none;
+}
+
+/* ✨ hidden text */
 .hidden{
   display:none;
-  margin-top:12px;
+  margin-top:14px;
+  color:#ffeef4;
 }
 
-/* 💌 hidden message */
-.secret-msg{
-
-  position:fixed;
-
-  bottom:24px;
-  left:50%;
-
-  transform:translateX(-50%);
-
-  background:rgba(255,255,255,0.14);
-
-  backdrop-filter:blur(12px);
-
-  border:1px solid rgba(255,255,255,0.18);
-
-  color:white;
-
-  padding:12px 18px;
-
-  border-radius:20px;
-
-  font-size:12px;
-
-  z-index:9999;
-}
-
-/* ✨ particles */
+/* 🌙 particles */
 .particle{
-
   position:fixed;
-
   pointer-events:none;
-
-  opacity:0.9;
-
-  transition:all 1s ease-out;
-
   z-index:9999;
+  opacity:0.9;
+  transition:all 1s ease-out;
+  text-shadow:0 0 10px white;
 }
 
-/* 🔐 code */
-#codeBox{
-  margin-top:20px;
-}
-
-#userCode{
-
-  margin:12px auto;
-
-  padding:12px;
-
-  border-radius:16px;
-
-  background:rgba(255,255,255,0.12);
-
-  color:#ffdce5;
-
-  font-weight:bold;
-
-  letter-spacing:2px;
-}
-
-/* 📸 credit */
-.credit{
-
+/* 💌 hidden engagement msg */
+.secret-msg{
   position:fixed;
-
-  bottom:10px;
-  right:10px;
-
-  font-size:10px;
-
-  color:rgba(255,255,255,0.72);
-
+  bottom:25px;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,0.1);
+  padding:12px 18px;
+  border-radius:999px;
+  color:white;
+  font-size:12px;
   z-index:999;
 }
 
-.credit a{
-  color:rgba(255,255,255,0.88);
-  text-decoration:none;
+/* 🔐 code box */
+#codeBox{
+  display:none;
+  margin-top:24px;
+}
+
+#userCode{
+  margin:14px auto;
+  background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:16px;
+  padding:14px;
+  width:fit-content;
+  color:#ffd6e7;
+  font-weight:bold;
+  letter-spacing:2px;
+}
+
+/* 🎧 music player */
+.music-player{
+  position:fixed;
+  top:18px;
+  right:18px;
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(12px);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:18px;
+  z-index:999;
+  cursor:pointer;
+  border:1px solid rgba(255,255,255,0.1);
+}
+
+/* 📸 credits */
+.credit{
+  position:fixed;
+  bottom:10px;
+  right:10px;
+  font-size:10px;
+  color:rgba(255,255,255,0.6);
+  z-index:999;
+}
+
+/* 💻 desktop */
+@media(min-width:768px){
+
+  .container{
+    max-width:650px;
+    padding:50px;
+  }
+
+  h1{
+    font-size:3rem;
+  }
+
+  p{
+    font-size:16px;
+  }
+
+  .btn{
+    font-size:14px;
+  }
+
 }
 
 </style>
@@ -221,9 +238,23 @@ p{
 
 <body>
 
-<!-- Intro -->
-<section id="intro">
+<!-- ✨ overlays -->
+<canvas id="stars"></canvas>
+<div class="blur"></div>
+<div class="blur blur2"></div>
 
+<!-- 🎧 floating music button -->
+<div class="music-player" onclick="toggleMusic()">
+🎧
+</div>
+
+<!-- 🎵 uploaded mp3 -->
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- 🌌 Intro -->
+<section id="intro">
 <div class="container">
 
 <h1>Hi, MG here</h1>
@@ -232,17 +263,15 @@ p{
 Let’s see if you’re curious enough.
 </p>
 
-<button class="btn" onclick="go('story', event)">
+<button class="btn" onclick="go('story',event)">
 Continue
 </button>
 
 </div>
-
 </section>
 
-<!-- Story -->
+<!-- 🌙 Story -->
 <section id="story">
-
 <div class="container">
 
 <h1>About me</h1>
@@ -252,12 +281,10 @@ I don’t say much at first, but I notice details and may internally judge.
 </p>
 
 </div>
-
 </section>
 
-<!-- Space -->
+<!-- ✨ Space -->
 <section id="space">
-
 <div class="container">
 
 <h1>Another side</h1>
@@ -267,18 +294,15 @@ Astrophotography, books, space objects
 </p>
 
 </div>
-
 </section>
 
-<!-- Secrets -->
+<!-- 💌 Secrets -->
 <section id="secrets">
-
 <div class="container">
 
 <h1>Curious?</h1>
 
-<button class="btn"
-onclick="pick('curious'); reveal('s1', event)">
+<button class="btn" onclick="pick('curious'); reveal('s1',event)">
 What I enjoy
 </button>
 
@@ -286,8 +310,7 @@ What I enjoy
 Cybersec challenges, Geoguessr, slow coffee bars
 </p>
 
-<button class="btn"
-onclick="pick('playful'); reveal('s2', event)">
+<button class="btn" onclick="pick('playful'); reveal('s2',event)">
 What I notice
 </button>
 
@@ -295,8 +318,7 @@ What I notice
 Does it include a set of bulky veneered teeth?
 </p>
 
-<button class="btn"
-onclick="pick('romantic'); reveal('s3', event)">
+<button class="btn" onclick="pick('romantic'); reveal('s3',event)">
 What I admire
 </button>
 
@@ -305,165 +327,235 @@ Brainiac yet empathetic, small thoughtful gestures weaken my knees.
 </p>
 
 </div>
-
 </section>
 
-<!-- Ending -->
+<!-- 🔐 Ending -->
 <section id="ending">
-
 <div class="container">
 
 <h1>Final</h1>
 
 <div id="endingText"></div>
 
-<div id="codeBox" style="display:none;">
+<div id="codeBox">
 
-<p>Your code:</p>
+<p style="margin-top:20px;">
+Your code:
+</p>
 
 <div id="userCode"></div>
 
-<button class="btn"
-onclick="copyCode(event)">
+<button class="btn" onclick="copyCode(event)">
 Copy code
 </button>
 
-<p style="font-size:12px;opacity:0.85;">
-Send me the code and I’ll know you actually made it here.
+<p style="margin-top:14px;font-size:12px;">
+Send me this code… I’ll know you stayed.
 </p>
 
 </div>
 
-<a href="https://instagram.com/allo_cheri"
-target="_blank">
-
+<a href="https://instagram.com/allo_cheri" target="_blank">
 <button class="btn">
 Say hi (Disclaimer: I'm low on social media presence)
 </button>
-
 </a>
 
-<a href="https://angularfield-vmfwo.wordpress.com/"
-target="_blank">
+<br>
 
+<a href="https://angularfield-vmfwo.wordpress.com/" target="_blank">
 <button class="btn">
 Portfolio
 </button>
-
 </a>
 
 </div>
-
 </section>
 
-<!-- 📸 photo credit -->
+<!-- 📸 credits -->
 <div class="credit">
-Photo by
-<a href="https://unsplash.com/@mohammad_alizade"
-target="_blank">
-Mohammad Alizade
-</a>
-on
-<a href="https://unsplash.com/"
-target="_blank">
-Unsplash
-</a>
+Background by Mohammad Alizade — Unsplash
 </div>
 
 <script>
 
-/* 💖 burst effect */
+/* 🌌 lightweight galaxy */
+
+const canvas=document.getElementById("stars");
+const ctx=canvas.getContext("2d");
+
+function resize(){
+  canvas.width=innerWidth;
+  canvas.height=innerHeight;
+}
+
+resize();
+
+window.addEventListener("resize",resize);
+
+const stars=Array.from({length:60},()=>({
+  x:Math.random()*canvas.width,
+  y:Math.random()*canvas.height,
+  r:Math.random()*1.5,
+  o:Math.random()
+}));
+
+function animate(){
+
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  stars.forEach(s=>{
+
+    ctx.beginPath();
+    ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+
+    ctx.fillStyle=`rgba(255,255,255,${s.o})`;
+    ctx.fill();
+
+    s.y+=0.08;
+
+    if(s.y>canvas.height){
+      s.y=0;
+    }
+
+  });
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+/* 🎧 music */
+
+const music=document.getElementById("bgMusic");
+
+function startMusic(){
+  music.volume=0.4;
+  music.play().catch(()=>{});
+
+  document.removeEventListener("click",startMusic);
+  document.removeEventListener("touchstart",startMusic);
+}
+
+document.addEventListener("click",startMusic);
+document.addEventListener("touchstart",startMusic);
+
+function toggleMusic(){
+
+  if(music.paused){
+    music.play();
+  }else{
+    music.pause();
+  }
+
+}
+
+/* 💖 heart burst */
+
 function burst(x,y){
 
-  for(let i=0;i<6;i++){
+  for(let i=0;i<7;i++){
 
-    let el=document.createElement("div");
+    const p=document.createElement("div");
 
-    el.className="particle";
+    p.className="particle";
 
-    el.innerHTML=
-    Math.random()>0.5 ? "❤" : "✦";
+    let sec=currentSection();
 
-    el.style.left=x+"px";
-    el.style.top=y+"px";
+    p.innerHTML=sec==="space"?"✦":"❤";
 
-    el.style.color=
-    Math.random()>0.5
-    ? "#ffd6e0"
-    : "#fff2b3";
+    p.style.left=x+"px";
+    p.style.top=y+"px";
 
-    el.style.fontSize=
-    (12 + Math.random()*10) + "px";
+    p.style.color=sec==="space"
+      ? "#fff4c7"
+      : "#ffc0d6";
 
-    document.body.appendChild(el);
+    document.body.appendChild(p);
 
-    let angle=Math.random()*6.28;
-    let distance=30+Math.random()*40;
+    const angle=Math.random()*6.28;
+    const dist=40+Math.random()*30;
 
     setTimeout(()=>{
 
-      el.style.transform=
-      `translate(
-      ${Math.cos(angle)*distance}px,
-      ${Math.sin(angle)*distance}px
-      )`;
+      p.style.transform=
+      `translate(${Math.cos(angle)*dist}px,
+      ${Math.sin(angle)*dist}px)`;
 
-      el.style.opacity=0;
+      p.style.opacity=0;
 
     },10);
 
-    setTimeout(()=>{
-      el.remove();
-    },1000);
+    setTimeout(()=>p.remove(),900);
 
   }
 
 }
 
-/* 💌 hidden message */
+/* 🌙 current section */
+
+function currentSection(){
+
+  const sections=document.querySelectorAll("section");
+
+  let current="intro";
+
+  sections.forEach(sec=>{
+
+    const rect=sec.getBoundingClientRect();
+
+    if(rect.top<=innerHeight/2){
+      current=sec.id;
+    }
+
+  });
+
+  return current;
+}
+
+/* ✨ touch particles */
+
 let moves=0;
 let shown=false;
 let last=0;
 
-document.addEventListener("touchmove",(e)=>{
+document.addEventListener("touchmove",e=>{
 
-  let now=Date.now();
+  const now=Date.now();
 
   if(now-last<120)return;
 
   last=now;
 
-  let t=e.touches[0];
+  const t=e.touches[0];
 
-  let sparkle=document.createElement("div");
+  const sec=currentSection();
 
-  sparkle.className="particle";
+  if(!["intro","story","space"].includes(sec)) return;
 
-  sparkle.innerHTML=
-  Math.random()>0.5 ? "❤" : "✦";
+  const p=document.createElement("div");
 
-  sparkle.style.left=t.clientX+"px";
-  sparkle.style.top=t.clientY+"px";
+  p.className="particle";
 
-  sparkle.style.color=
-  Math.random()>0.5
-  ? "#ffdce5"
-  : "#fff2b3";
+  p.innerHTML=sec==="space"?"✦":"❤";
 
-  document.body.appendChild(sparkle);
+  p.style.left=t.clientX+"px";
+  p.style.top=t.clientY+"px";
+
+  p.style.color=sec==="space"
+    ? "#fff4c7"
+    : "#ffc0d6";
+
+  document.body.appendChild(p);
 
   setTimeout(()=>{
 
-    sparkle.style.top=
-    (t.clientY-35)+"px";
-
-    sparkle.style.opacity=0;
+    p.style.transform="translateY(-30px)";
+    p.style.opacity=0;
 
   },10);
 
-  setTimeout(()=>{
-    sparkle.remove();
-  },900);
+  setTimeout(()=>p.remove(),1000);
 
   moves++;
 
@@ -471,75 +563,74 @@ document.addEventListener("touchmove",(e)=>{
 
     shown=true;
 
-    let m=document.createElement("div");
+    const msg=document.createElement("div");
 
-    m.className="secret-msg";
+    msg.className="secret-msg";
 
-    m.innerText=
-    "You stayed… I like that.";
+    msg.innerText="You stayed… I like that.";
 
-    document.body.appendChild(m);
+    document.body.appendChild(msg);
 
-    setTimeout(()=>{
-      m.remove();
-    },4000);
+    setTimeout(()=>msg.remove(),4000);
 
   }
 
 });
 
 /* 🧠 personality */
-let p={
+
+let personality={
   curious:0,
   playful:0,
   romantic:0
 };
 
 function pick(type){
-  p[type]++;
+  personality[type]++;
 }
 
-/* reveal */
+/* 💌 reveal */
+
 function reveal(id,e){
 
-  document
-  .getElementById(id)
-  .style.display="block";
+  const el=document.getElementById(id);
+
+  el.style.display="block";
 
   burst(e.clientX,e.clientY);
+
 }
 
-/* scroll */
+/* 📱 smooth scroll */
+
 function go(id,e){
 
-  document
-  .getElementById(id)
+  document.getElementById(id)
   .scrollIntoView({
     behavior:"smooth"
   });
 
   burst(e.clientX,e.clientY);
+
 }
 
 /* 🔐 unique code */
-function gen(){
 
-  let code=
-  localStorage.getItem("mg_code");
+function generateCode(){
+
+  let code=localStorage.getItem("mg_code");
 
   if(code)return code;
 
-  let chars=
+  const chars=
   "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
   code="MG-";
 
   for(let i=0;i<5;i++){
 
-    code += chars[
-      Math.floor(
-        Math.random()*chars.length
-      )
+    code+=chars[
+      Math.floor(Math.random()*chars.length)
     ];
 
   }
@@ -547,46 +638,46 @@ function gen(){
   localStorage.setItem("mg_code",code);
 
   return code;
+
 }
 
 function copyCode(e){
 
-  navigator.clipboard.writeText(gen());
+  navigator.clipboard.writeText(generateCode());
 
   burst(e.clientX,e.clientY);
+
 }
 
-/* 🧠 ending logic */
+/* 🧠 ending */
+
 window.addEventListener("scroll",()=>{
 
-  let rect=
-  document
-  .getElementById("ending")
+  const end=
+  document.getElementById("ending")
   .getBoundingClientRect();
 
-  if(rect.top < innerHeight-80){
+  if(end.top<innerHeight-100){
 
-    document
-    .getElementById("codeBox")
+    document.getElementById("codeBox")
     .style.display="block";
 
-    document
-    .getElementById("userCode")
-    .innerText=gen();
+    document.getElementById("userCode")
+    .innerText=generateCode();
 
     let msg="I notice you.";
 
-    if(p.curious>1){
+    if(personality.curious>1){
       msg="You’re curious. I like that.";
     }
 
-    else if(p.romantic>1){
+    else if(personality.romantic>1){
       msg="You notice feelings. Rare.";
     }
 
-    document
-    .getElementById("endingText")
+    document.getElementById("endingText")
     .innerText=msg;
+
   }
 
 });
