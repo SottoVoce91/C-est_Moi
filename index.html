@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,93 +18,104 @@
 
 html{
   scroll-behavior:smooth;
+  -webkit-text-size-adjust:100%;
 }
 
 body{
   margin:0;
   font-family:'Poppins',sans-serif;
-  color:#fff;
   overflow-x:hidden;
+  color:#ffffff;
 
   /* 🌌 Background image */
   background:
   linear-gradient(
-    rgba(10,10,20,0.72),
-    rgba(30,15,35,0.78)
+    rgba(5,8,20,0.70),
+    rgba(20,10,25,0.72)
   ),
-  url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80');
+  url("mohammad-alizade-S5uV7ro4UPY-unsplash.jpg");
 
   background-size:cover;
   background-position:center;
+  background-repeat:no-repeat;
   background-attachment:fixed;
 }
 
-/* 📱 mobile optimization */
+/* 📱 mobile fix */
 @media (max-width:768px){
+
   body{
     background-attachment:scroll;
     background-position:center;
   }
+
 }
 
-/* sections */
 section{
   min-height:100vh;
+  padding:50px 20px;
+
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:50px 20px;
 }
 
 .container{
+
   width:100%;
-  max-width:380px;
-
-  background:rgba(255,255,255,0.08);
-  backdrop-filter:blur(10px);
-
-  border:1px solid rgba(255,255,255,0.12);
-
-  border-radius:28px;
-
-  padding:30px 24px;
+  max-width:360px;
 
   text-align:center;
 
+  padding:28px 24px;
+
+  border-radius:28px;
+
+  background:rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(12px);
+
+  border:1px solid rgba(255,255,255,0.12);
+
   box-shadow:
-  0 10px 40px rgba(0,0,0,0.25);
+  0 10px 40px rgba(0,0,0,0.28);
+
 }
 
-/* typography */
 h1{
   margin-top:0;
-  font-size:1.8rem;
-  color:#ffd6e0;
-  text-shadow:0 2px 10px rgba(0,0,0,0.3);
+  font-size:1.7rem;
+  color:#ffdce5;
+  text-shadow:0 2px 10px rgba(0,0,0,0.35);
 }
 
 p{
   font-size:14px;
   line-height:1.8;
-  color:#f7f1f3;
+  color:#f7f7f7;
 }
 
-/* buttons */
+/* 🌸 buttons */
 .btn{
+
   width:100%;
+
   margin-top:14px;
-  padding:14px 18px;
+
+  padding:13px 18px;
 
   border:none;
   border-radius:24px;
 
-  background:linear-gradient(
+  background:
+  linear-gradient(
     to right,
     #b76e79,
-    #d38c98
+    #d6919d
   );
 
   color:white;
+
   font-size:13px;
   font-weight:600;
 
@@ -116,77 +128,91 @@ p{
   transform:scale(0.96);
 }
 
-/* hidden */
 .hidden{
   display:none;
-  margin-top:10px;
+  margin-top:12px;
 }
 
-/* particles */
-.particle{
-  position:fixed;
-  pointer-events:none;
-  opacity:0.9;
-  transition:all 1s ease-out;
-  z-index:9999;
-}
-
-/* secret message */
+/* 💌 hidden message */
 .secret-msg{
+
   position:fixed;
 
-  bottom:25px;
+  bottom:24px;
   left:50%;
+
   transform:translateX(-50%);
 
-  background:rgba(255,255,255,0.15);
+  background:rgba(255,255,255,0.14);
+
   backdrop-filter:blur(12px);
 
-  border:1px solid rgba(255,255,255,0.2);
+  border:1px solid rgba(255,255,255,0.18);
 
   color:white;
 
   padding:12px 18px;
+
   border-radius:20px;
 
   font-size:12px;
 
-  z-index:999;
+  z-index:9999;
 }
 
-/* code box */
+/* ✨ particles */
+.particle{
+
+  position:fixed;
+
+  pointer-events:none;
+
+  opacity:0.9;
+
+  transition:all 1s ease-out;
+
+  z-index:9999;
+}
+
+/* 🔐 code */
 #codeBox{
   margin-top:20px;
 }
 
 #userCode{
-  margin:12px auto;
-  padding:12px;
 
-  background:rgba(255,255,255,0.12);
+  margin:12px auto;
+
+  padding:12px;
 
   border-radius:16px;
 
+  background:rgba(255,255,255,0.12);
+
+  color:#ffdce5;
+
   font-weight:bold;
-  color:#ffd6e0;
 
   letter-spacing:2px;
 }
 
-/* credit */
+/* 📸 credit */
 .credit{
+
   position:fixed;
+
   bottom:10px;
-  right:12px;
+  right:10px;
 
   font-size:10px;
-  color:rgba(255,255,255,0.65);
+
+  color:rgba(255,255,255,0.72);
 
   z-index:999;
 }
 
 .credit a{
-  color:rgba(255,255,255,0.8);
+  color:rgba(255,255,255,0.88);
   text-decoration:none;
 }
 
@@ -302,7 +328,7 @@ onclick="copyCode(event)">
 Copy code
 </button>
 
-<p style="font-size:12px; opacity:0.85;">
+<p style="font-size:12px;opacity:0.85;">
 Send me the code and I’ll know you actually made it here.
 </p>
 
@@ -330,7 +356,7 @@ Portfolio
 
 </section>
 
-<!-- 📸 image credit -->
+<!-- 📸 photo credit -->
 <div class="credit">
 Photo by
 <a href="https://unsplash.com/@mohammad_alizade"
@@ -338,7 +364,7 @@ target="_blank">
 Mohammad Alizade
 </a>
 on
-<a href="https://unsplash.com/photos/desert-under-starry-sky-S5uV7ro4UPY"
+<a href="https://unsplash.com/"
 target="_blank">
 Unsplash
 </a>
@@ -346,49 +372,52 @@ Unsplash
 
 <script>
 
-/* 💖 heart burst */
+/* 💖 burst effect */
 function burst(x,y){
 
   for(let i=0;i<6;i++){
 
-    let h=document.createElement("div");
+    let el=document.createElement("div");
 
-    h.innerHTML=Math.random()>0.5?"❤":"✦";
+    el.className="particle";
 
-    h.className="particle";
+    el.innerHTML=
+    Math.random()>0.5 ? "❤" : "✦";
 
-    h.style.left=x+"px";
-    h.style.top=y+"px";
+    el.style.left=x+"px";
+    el.style.top=y+"px";
 
-    h.style.color=
+    el.style.color=
     Math.random()>0.5
     ? "#ffd6e0"
-    : "#ffe7a6";
+    : "#fff2b3";
 
-    h.style.fontSize=
-    (12+Math.random()*10)+"px";
+    el.style.fontSize=
+    (12 + Math.random()*10) + "px";
 
-    document.body.appendChild(h);
+    document.body.appendChild(el);
 
     let angle=Math.random()*6.28;
     let distance=30+Math.random()*40;
 
     setTimeout(()=>{
 
-      h.style.transform=
+      el.style.transform=
       `translate(
       ${Math.cos(angle)*distance}px,
       ${Math.sin(angle)*distance}px
       )`;
 
-      h.style.opacity=0;
+      el.style.opacity=0;
 
     },10);
 
     setTimeout(()=>{
-      h.remove();
+      el.remove();
     },1000);
+
   }
+
 }
 
 /* 💌 hidden message */
@@ -410,21 +439,26 @@ document.addEventListener("touchmove",(e)=>{
 
   sparkle.className="particle";
 
-  sparkle.innerHTML=Math.random()>0.5?"❤":"✦";
+  sparkle.innerHTML=
+  Math.random()>0.5 ? "❤" : "✦";
 
   sparkle.style.left=t.clientX+"px";
   sparkle.style.top=t.clientY+"px";
 
   sparkle.style.color=
   Math.random()>0.5
-  ? "#ffd6e0"
+  ? "#ffdce5"
   : "#fff2b3";
 
   document.body.appendChild(sparkle);
 
   setTimeout(()=>{
-    sparkle.style.top=(t.clientY-35)+"px";
+
+    sparkle.style.top=
+    (t.clientY-35)+"px";
+
     sparkle.style.opacity=0;
+
   },10);
 
   setTimeout(()=>{
@@ -449,7 +483,9 @@ document.addEventListener("touchmove",(e)=>{
     setTimeout(()=>{
       m.remove();
     },4000);
+
   }
+
 });
 
 /* 🧠 personality */
@@ -459,8 +495,8 @@ let p={
   romantic:0
 };
 
-function pick(t){
-  p[t]++;
+function pick(type){
+  p[type]++;
 }
 
 /* reveal */
@@ -488,28 +524,29 @@ function go(id,e){
 /* 🔐 unique code */
 function gen(){
 
-  let c=
+  let code=
   localStorage.getItem("mg_code");
 
-  if(c)return c;
+  if(code)return code;
 
   let chars=
   "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
-  c="MG-";
+  code="MG-";
 
   for(let i=0;i<5;i++){
 
-    c+=chars[
+    code += chars[
       Math.floor(
         Math.random()*chars.length
       )
     ];
+
   }
 
-  localStorage.setItem("mg_code",c);
+  localStorage.setItem("mg_code",code);
 
-  return c;
+  return code;
 }
 
 function copyCode(e){
@@ -527,7 +564,7 @@ window.addEventListener("scroll",()=>{
   .getElementById("ending")
   .getBoundingClientRect();
 
-  if(rect.top<innerHeight-120){
+  if(rect.top < innerHeight-80){
 
     document
     .getElementById("codeBox")
@@ -551,6 +588,7 @@ window.addEventListener("scroll",()=>{
     .getElementById("endingText")
     .innerText=msg;
   }
+
 });
 
 </script>
