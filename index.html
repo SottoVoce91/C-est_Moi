@@ -1,307 +1,558 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>MG</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(to bottom, #fff5f7, #fce4ec);
-  color: #4a2c2a;
-  overflow-x: hidden;
+
+*{
+  box-sizing:border-box;
 }
 
-/* 🌌 background */
-#stars {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+html{
+  scroll-behavior:smooth;
 }
 
-/* layout */
-section {
-  min-height: 100vh;
-  padding: 50px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+body{
+  margin:0;
+  font-family:'Poppins',sans-serif;
+  color:#fff;
+  overflow-x:hidden;
+
+  /* 🌌 Background image */
+  background:
+  linear-gradient(
+    rgba(10,10,20,0.72),
+    rgba(30,15,35,0.78)
+  ),
+  url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80');
+
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed;
 }
 
-.container {
-  max-width: 340px;
-  text-align: center;
+/* 📱 mobile optimization */
+@media (max-width:768px){
+  body{
+    background-attachment:scroll;
+    background-position:center;
+  }
 }
 
-h1 {
-  font-size: 1.6rem;
-  color: #b76e79;
+/* sections */
+section{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:50px 20px;
 }
 
-p {
-  font-size: 13px;
-  line-height: 1.6;
+.container{
+  width:100%;
+  max-width:380px;
+
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(10px);
+
+  border:1px solid rgba(255,255,255,0.12);
+
+  border-radius:28px;
+
+  padding:30px 24px;
+
+  text-align:center;
+
+  box-shadow:
+  0 10px 40px rgba(0,0,0,0.25);
 }
 
-.btn {
-  margin-top: 14px;
-  padding: 12px 18px;
-  border: none;
-  background: #b76e79;
-  color: white;
-  border-radius: 22px;
-  font-size: 13px;
-  cursor: pointer;
+/* typography */
+h1{
+  margin-top:0;
+  font-size:1.8rem;
+  color:#ffd6e0;
+  text-shadow:0 2px 10px rgba(0,0,0,0.3);
 }
 
-.hidden { display:none; }
-
-/* 💌 secret */
-.secret-msg {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: white;
-  color: #b76e79;
-  padding: 10px 16px;
-  border-radius: 20px;
-  font-size: 12px;
+p{
+  font-size:14px;
+  line-height:1.8;
+  color:#f7f1f3;
 }
 
-/* ✨ particles */
-.particle {
-  position: fixed;
-  pointer-events: none;
-  font-size: 14px;
-  opacity: 0.8;
-  transition: all 1s ease-out;
+/* buttons */
+.btn{
+  width:100%;
+  margin-top:14px;
+  padding:14px 18px;
+
+  border:none;
+  border-radius:24px;
+
+  background:linear-gradient(
+    to right,
+    #b76e79,
+    #d38c98
+  );
+
+  color:white;
+  font-size:13px;
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:0.25s;
 }
+
+.btn:active{
+  transform:scale(0.96);
+}
+
+/* hidden */
+.hidden{
+  display:none;
+  margin-top:10px;
+}
+
+/* particles */
+.particle{
+  position:fixed;
+  pointer-events:none;
+  opacity:0.9;
+  transition:all 1s ease-out;
+  z-index:9999;
+}
+
+/* secret message */
+.secret-msg{
+  position:fixed;
+
+  bottom:25px;
+  left:50%;
+  transform:translateX(-50%);
+
+  background:rgba(255,255,255,0.15);
+  backdrop-filter:blur(12px);
+
+  border:1px solid rgba(255,255,255,0.2);
+
+  color:white;
+
+  padding:12px 18px;
+  border-radius:20px;
+
+  font-size:12px;
+
+  z-index:999;
+}
+
+/* code box */
+#codeBox{
+  margin-top:20px;
+}
+
+#userCode{
+  margin:12px auto;
+  padding:12px;
+
+  background:rgba(255,255,255,0.12);
+
+  border-radius:16px;
+
+  font-weight:bold;
+  color:#ffd6e0;
+
+  letter-spacing:2px;
+}
+
+/* credit */
+.credit{
+  position:fixed;
+  bottom:10px;
+  right:12px;
+
+  font-size:10px;
+  color:rgba(255,255,255,0.65);
+
+  z-index:999;
+}
+
+.credit a{
+  color:rgba(255,255,255,0.8);
+  text-decoration:none;
+}
+
 </style>
 </head>
 
 <body>
 
-<canvas id="stars"></canvas>
-
 <!-- Intro -->
 <section id="intro">
+
 <div class="container">
+
 <h1>Hi, MG here</h1>
-<p>Let’s see if you’re curious enough.</p>
-<button class="btn" onclick="go('story', event)">Continue</button>
+
+<p>
+Let’s see if you’re curious enough.
+</p>
+
+<button class="btn" onclick="go('story', event)">
+Continue
+</button>
+
 </div>
+
 </section>
 
 <!-- Story -->
 <section id="story">
+
 <div class="container">
+
 <h1>About me</h1>
-<p>I don’t say much at first, but I notice details and may internally judge.</p>
+
+<p>
+I don’t say much at first, but I notice details and may internally judge.
+</p>
+
 </div>
+
 </section>
 
 <!-- Space -->
 <section id="space">
+
 <div class="container">
+
 <h1>Another side</h1>
-<p>Astrophotography, books, space objects</p>
+
+<p>
+Astrophotography, books, space objects
+</p>
+
 </div>
+
 </section>
 
 <!-- Secrets -->
 <section id="secrets">
+
 <div class="container">
 
 <h1>Curious?</h1>
 
-<button class="btn" onclick="pick('curious'); reveal('s1', event)">What I enjoy</button>
-<p id="s1" class="hidden">Cybersec challenges, Geoguessr, slow coffee bars</p>
+<button class="btn"
+onclick="pick('curious'); reveal('s1', event)">
+What I enjoy
+</button>
 
-<button class="btn" onclick="pick('playful'); reveal('s2', event)">What I notice</button>
-<p id="s2" class="hidden">Does it include a set of bulky veneered teeth?</p>
+<p id="s1" class="hidden">
+Cybersec challenges, Geoguessr, slow coffee bars
+</p>
 
-<button class="btn" onclick="pick('romantic'); reveal('s3', event)">What I admire</button>
-<p id="s3" class="hidden"> Brainiac yet empathetic, small thoughtful gestures weaken my knees.</p>
+<button class="btn"
+onclick="pick('playful'); reveal('s2', event)">
+What I notice
+</button>
+
+<p id="s2" class="hidden">
+Does it include a set of bulky veneered teeth?
+</p>
+
+<button class="btn"
+onclick="pick('romantic'); reveal('s3', event)">
+What I admire
+</button>
+
+<p id="s3" class="hidden">
+Brainiac yet empathetic, small thoughtful gestures weaken my knees.
+</p>
 
 </div>
+
 </section>
 
 <!-- Ending -->
 <section id="ending">
+
 <div class="container">
 
 <h1>Final</h1>
+
 <div id="endingText"></div>
 
 <div id="codeBox" style="display:none;">
+
 <p>Your code:</p>
-<div id="userCode" style="font-weight:bold;color:#b76e79;"></div>
-<button class="btn" onclick="copyCode(event)">Copy code</button>
+
+<div id="userCode"></div>
+
+<button class="btn"
+onclick="copyCode(event)">
+Copy code
+</button>
+
+<p style="font-size:12px; opacity:0.85;">
+Send me the code and I’ll know you actually made it here.
+</p>
+
 </div>
 
-<a href="https://instagram.com/allo_cheri" target="_blank">
-<button class="btn">Say hi (Disclaimer: I'm low on social media presence)</button>
+<a href="https://instagram.com/allo_cheri"
+target="_blank">
+
+<button class="btn">
+Say hi (Disclaimer: I'm low on social media presence)
+</button>
+
 </a>
 
-<!-- ✅ Added your WordPress cleanly -->
-<a href="https://angularfield-vmfwo.wordpress.com/" target="_blank">
-<button class="btn">Portfolio</button>
+<a href="https://angularfield-vmfwo.wordpress.com/"
+target="_blank">
+
+<button class="btn">
+Portfolio
+</button>
+
 </a>
 
 </div>
+
 </section>
 
+<!-- 📸 image credit -->
+<div class="credit">
+Photo by
+<a href="https://unsplash.com/@mohammad_alizade"
+target="_blank">
+Mohammad Alizade
+</a>
+on
+<a href="https://unsplash.com/photos/desert-under-starry-sky-S5uV7ro4UPY"
+target="_blank">
+Unsplash
+</a>
+</div>
+
 <script>
-// 🌌 galaxy
-const c = document.getElementById("stars");
-const ctx = c.getContext("2d");
 
-function resize(){
-  c.width = innerWidth;
-  c.height = innerHeight;
-}
-resize();
-window.addEventListener("resize", resize);
-
-let stars = Array.from({length:50},()=>({
-  x:Math.random()*c.width,
-  y:Math.random()*c.height,
-  r:Math.random()*1.2
-}));
-
-function draw(){
-  ctx.clearRect(0,0,c.width,c.height);
-  ctx.fillStyle="#ffd6e0";
-  stars.forEach(s=>{
-    ctx.beginPath();
-    ctx.arc(s.x,s.y,s.r,0,6.28);
-    ctx.fill();
-    s.y+=0.15;
-    if(s.y>c.height)s.y=0;
-  });
-  requestAnimationFrame(draw);
-}
-draw();
-
-// 💖 heart burst
+/* 💖 heart burst */
 function burst(x,y){
-  for(let i=0;i<5;i++){
+
+  for(let i=0;i<6;i++){
+
     let h=document.createElement("div");
-    h.innerHTML="❤";
+
+    h.innerHTML=Math.random()>0.5?"❤":"✦";
+
     h.className="particle";
+
     h.style.left=x+"px";
     h.style.top=y+"px";
-    h.style.color="#e6a4b4";
+
+    h.style.color=
+    Math.random()>0.5
+    ? "#ffd6e0"
+    : "#ffe7a6";
+
+    h.style.fontSize=
+    (12+Math.random()*10)+"px";
+
     document.body.appendChild(h);
 
-    let a=Math.random()*6.28,d=30+Math.random()*20;
+    let angle=Math.random()*6.28;
+    let distance=30+Math.random()*40;
+
     setTimeout(()=>{
-      h.style.transform=`translate(${Math.cos(a)*d}px,${Math.sin(a)*d}px)`;
+
+      h.style.transform=
+      `translate(
+      ${Math.cos(angle)*distance}px,
+      ${Math.sin(angle)*distance}px
+      )`;
+
       h.style.opacity=0;
+
     },10);
 
-    setTimeout(()=>h.remove(),800);
+    setTimeout(()=>{
+      h.remove();
+    },1000);
   }
 }
 
-// ✨ section particles (touch)
-let last=0, moves=0, shown=false;
+/* 💌 hidden message */
+let moves=0;
+let shown=false;
+let last=0;
 
-function section(){
-  let sec=document.elementFromPoint(innerWidth/2,innerHeight/2);
-  return sec?.closest("section")?.id;
-}
+document.addEventListener("touchmove",(e)=>{
 
-document.addEventListener("touchmove",e=>{
   let now=Date.now();
+
   if(now-last<120)return;
+
   last=now;
 
   let t=e.touches[0];
-  let sec=section();
 
-  if(!["intro","story","space"].includes(sec))return;
+  let sparkle=document.createElement("div");
 
-  let el=document.createElement("div");
-  el.className="particle";
-  el.innerHTML=sec==="space"?"✦":"❤";
-  el.style.left=t.clientX+"px";
-  el.style.top=t.clientY+"px";
-  el.style.color=sec==="space"?"#ffd6e0":"#e6a4b4";
+  sparkle.className="particle";
 
-  document.body.appendChild(el);
+  sparkle.innerHTML=Math.random()>0.5?"❤":"✦";
+
+  sparkle.style.left=t.clientX+"px";
+  sparkle.style.top=t.clientY+"px";
+
+  sparkle.style.color=
+  Math.random()>0.5
+  ? "#ffd6e0"
+  : "#fff2b3";
+
+  document.body.appendChild(sparkle);
 
   setTimeout(()=>{
-    el.style.top=(t.clientY-30)+"px";
-    el.style.opacity=0;
+    sparkle.style.top=(t.clientY-35)+"px";
+    sparkle.style.opacity=0;
   },10);
 
-  setTimeout(()=>el.remove(),900);
+  setTimeout(()=>{
+    sparkle.remove();
+  },900);
 
   moves++;
+
   if(moves>70 && !shown){
+
     shown=true;
+
     let m=document.createElement("div");
+
     m.className="secret-msg";
-    m.innerText="You stayed… I like that.";
+
+    m.innerText=
+    "You stayed… I like that.";
+
     document.body.appendChild(m);
-    setTimeout(()=>m.remove(),4000);
+
+    setTimeout(()=>{
+      m.remove();
+    },4000);
   }
 });
 
-// 🧠 personality
-let p={curious:0,playful:0,romantic:0};
-function pick(t){p[t]++;}
+/* 🧠 personality */
+let p={
+  curious:0,
+  playful:0,
+  romantic:0
+};
 
-// reveal
+function pick(t){
+  p[t]++;
+}
+
+/* reveal */
 function reveal(id,e){
-  document.getElementById(id).style.display="block";
+
+  document
+  .getElementById(id)
+  .style.display="block";
+
   burst(e.clientX,e.clientY);
 }
 
-// scroll
+/* scroll */
 function go(id,e){
-  document.getElementById(id).scrollIntoView({behavior:"smooth"});
+
+  document
+  .getElementById(id)
+  .scrollIntoView({
+    behavior:"smooth"
+  });
+
   burst(e.clientX,e.clientY);
 }
 
-// 🔐 code
+/* 🔐 unique code */
 function gen(){
-  let c=localStorage.getItem("mg_code");
+
+  let c=
+  localStorage.getItem("mg_code");
+
   if(c)return c;
-  let chars="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+  let chars=
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
   c="MG-";
-  for(let i=0;i<5;i++)c+=chars[Math.floor(Math.random()*chars.length)];
+
+  for(let i=0;i<5;i++){
+
+    c+=chars[
+      Math.floor(
+        Math.random()*chars.length
+      )
+    ];
+  }
+
   localStorage.setItem("mg_code",c);
+
   return c;
 }
 
 function copyCode(e){
+
   navigator.clipboard.writeText(gen());
+
   burst(e.clientX,e.clientY);
 }
 
-// 🧠 ending logic
+/* 🧠 ending logic */
 window.addEventListener("scroll",()=>{
-  let rect=document.getElementById("ending").getBoundingClientRect();
 
-  if(rect.top<innerHeight-80){
-    document.getElementById("codeBox").style.display="block";
-    document.getElementById("userCode").innerText=gen();
+  let rect=
+  document
+  .getElementById("ending")
+  .getBoundingClientRect();
+
+  if(rect.top<innerHeight-120){
+
+    document
+    .getElementById("codeBox")
+    .style.display="block";
+
+    document
+    .getElementById("userCode")
+    .innerText=gen();
 
     let msg="I notice you.";
-    if(p.curious>1) msg="You’re curious. I like that.";
-    else if(p.romantic>1) msg="You notice feelings. Rare.";
 
-    document.getElementById("endingText").innerText=msg;
+    if(p.curious>1){
+      msg="You’re curious. I like that.";
+    }
+
+    else if(p.romantic>1){
+      msg="You notice feelings. Rare.";
+    }
+
+    document
+    .getElementById("endingText")
+    .innerText=msg;
   }
 });
+
 </script>
 
 </body>
