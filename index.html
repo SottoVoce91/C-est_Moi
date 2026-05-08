@@ -250,8 +250,16 @@ a{
 
 <!-- 🎵 uploaded mp3 -->
 <audio id="bgMusic" loop>
-  <source src="music.mp3" type="audio/mpeg">
+  <source src="https://raw.githubusercontent.com/SottoVoce91/C-est_Moi/refs/heads/main/music.mp3" type="audio/mpeg">
 </audio>
+
+<!-- ✅ mobile autoplay fix -->
+<script>
+document.addEventListener("click", () => {
+  const music = document.getElementById("bgMusic");
+  music.play().catch(()=>{});
+}, { once:true });
+</script>  
 
 <!-- 🌌 Intro -->
 <section id="intro">
