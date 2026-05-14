@@ -245,7 +245,7 @@ a{
 
 <!-- 🎧 floating music button -->
 <div class="music-player" onclick="toggleMusic()">
-🎧
+🔇
 </div>
 
 <!-- 🎵 uploaded mp3 -->
@@ -445,27 +445,45 @@ function animate(){
 
 animate();
 
-/* 🎧 music */
+/* 🎧 MUSIC */
 
-const music=document.getElementById("bgMusic");
+const music = document.getElementById("bgMusic");
+const musicButton = document.querySelector(".music-player");
 
-function startMusic(){
-  music.volume=0.4;
-  music.play().catch(()=>{});
+music.volume = 0.4;
 
-  document.removeEventListener("click",startMusic);
-  document.removeEventListener("touchstart",startMusic);
+/* mobile autoplay fix */
+function startMusic() {
+
+  music.play()
+  .then(() => {
+    musicButton.innerHTML = "🎵";
+  })
+  .catch(() => {
+    musicButton.innerHTML = "🔇";
+  });
+
+  document.removeEventListener("click", startMusic);
+  document.removeEventListener("touchstart", startMusic);
 }
 
-document.addEventListener("click",startMusic);
-document.addEventListener("touchstart",startMusic);
+/* first interaction starts audio */
+document.addEventListener("click", startMusic);
+document.addEventListener("touchstart", startMusic);
 
+/* toggle button */
 function toggleMusic(){
 
   if(music.paused){
+
     music.play();
-  }else{
+    musicButton.innerHTML = "🎵";
+
+  } else {
+
     music.pause();
+    musicButton.innerHTML = "🔇";
+
   }
 
 }
