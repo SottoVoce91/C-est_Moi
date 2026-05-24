@@ -2,13 +2,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>MG</title>
 
-<!-- ✨ fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+<!-- ✨ softer cursive fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Petit+Formal+Script&display=swap" rel="stylesheet">
 
 <style>
 
@@ -24,13 +24,14 @@ html{
 
 body{
   overflow-x:hidden;
-  background:#070814;
-  color:white;
-  font-family:'Quicksand',sans-serif;
+  background:#06050d;
+  color:#f8edf7;
   position:relative;
+
+  font-family:'Cormorant Garamond',serif;
 }
 
-/* 🌌 dreamy galaxy background */
+/* 🌌 dreamy dark background */
 
 body::before{
   content:"";
@@ -38,73 +39,87 @@ body::before{
   inset:0;
 
   background:
-  radial-gradient(circle at top,#4b2d63 0%,#1a1633 35%,#070814 75%);
+  radial-gradient(circle at top,
+  rgba(94,42,111,0.65) 0%,
+  rgba(28,18,49,0.9) 35%,
+  #06050d 75%);
 
-  z-index:-5;
+  z-index:-6;
 }
 
-/* ✨ stars canvas */
+/* ✨ moving stars */
 
 #stars{
   position:fixed;
   inset:0;
   width:100%;
   height:100%;
-  z-index:-4;
+  z-index:-5;
 }
 
-/* 💖 sparkles */
+/* 🌸 sparkles */
 
 .sparkle{
   position:fixed;
-  width:4px;
-  height:4px;
+  width:3px;
+  height:3px;
   border-radius:50%;
   background:white;
+
   box-shadow:
-    0 0 10px white,
-    0 0 20px #ffd6f5,
-    0 0 30px #ffb6e6;
-  animation:twinkle 3s infinite ease-in-out;
-  z-index:-3;
+  0 0 8px white,
+  0 0 16px #ffb8e6,
+  0 0 22px #d9a6ff;
+
+  animation:twinkle 3.5s infinite ease-in-out;
+
+  z-index:-4;
 }
 
 @keyframes twinkle{
+
   0%,100%{
-    opacity:0.2;
+    opacity:0.15;
     transform:scale(0.8);
   }
 
   50%{
     opacity:1;
-    transform:scale(1.4);
+    transform:scale(1.5);
   }
+
 }
 
-/* 🌸 floating glow */
+/* 🌙 soft glow */
 
 .glow{
   position:fixed;
-  width:320px;
-  height:320px;
+
+  width:300px;
+  height:300px;
+
   border-radius:50%;
+
   filter:blur(90px);
-  opacity:0.22;
-  z-index:-2;
-  animation:float 12s infinite ease-in-out;
+
+  opacity:0.18;
+
+  z-index:-3;
+
+  animation:float 12s ease-in-out infinite;
 }
 
 .glow1{
-  background:#ff8fd8;
-  top:-60px;
-  left:-60px;
+  background:#ff84d7;
+  top:-100px;
+  left:-100px;
 }
 
 .glow2{
-  background:#b28dff;
-  bottom:-100px;
-  right:-80px;
-  animation-delay:4s;
+  background:#8d7cff;
+  right:-120px;
+  bottom:-120px;
+  animation-delay:5s;
 }
 
 @keyframes float{
@@ -119,89 +134,116 @@ body::before{
 
 }
 
-/* 📱 sections */
+/* 📱 layout */
 
 section{
   min-height:100vh;
+
   display:flex;
-  align-items:center;
   justify-content:center;
-  padding:40px 20px;
+  align-items:center;
+
+  padding:30px 18px;
 }
 
 /* 🌸 glass container */
 
 .container{
+
   width:100%;
   max-width:420px;
 
-  background:rgba(255,255,255,0.08);
+  padding:30px 24px;
 
-  border:1px solid rgba(255,255,255,0.12);
-
-  backdrop-filter:blur(18px);
-
-  border-radius:32px;
-
-  padding:34px 26px;
+  border-radius:28px;
 
   text-align:center;
 
+  background:rgba(255,255,255,0.06);
+
+  backdrop-filter:blur(16px);
+
+  border:1px solid rgba(255,255,255,0.08);
+
   box-shadow:
-    0 10px 40px rgba(0,0,0,0.35),
-    0 0 40px rgba(255,182,230,0.08);
+  0 10px 35px rgba(0,0,0,0.35),
+  0 0 20px rgba(255,182,230,0.06);
+
 }
 
-/* ✨ headings */
+/* ✨ titles */
 
 h1{
-  font-family:'Parisienne',cursive;
-  font-size:3rem;
-  color:#ffd7f3;
 
-  margin-bottom:20px;
+  font-family:'Petit Formal Script',cursive;
+
+  font-size:2rem;
+
+  font-weight:400;
+
+  color:#ffd8ef;
+
+  margin-bottom:18px;
+
+  line-height:1.5;
 
   text-shadow:
-    0 0 10px rgba(255,214,245,0.5),
-    0 0 20px rgba(255,182,230,0.25);
+  0 0 10px rgba(255,216,239,0.3);
+
 }
 
-/* 🌙 paragraphs */
+/* 🌙 readable soft text */
 
 p{
-  font-size:14px;
+
+  font-size:15px;
+
+  font-weight:300;
+
   line-height:1.9;
-  color:#f5eaff;
+
+  color:#f6edf8;
+
+  letter-spacing:0.4px;
+
 }
 
 /* 💖 buttons */
 
 .btn{
+
   margin-top:18px;
 
-  padding:13px 24px;
+  padding:12px 24px;
 
   border:none;
+
   border-radius:999px;
 
-  background:linear-gradient(
-    135deg,
-    #ff8fd8,
-    #d89cff
+  background:
+  linear-gradient(
+  135deg,
+  #f59adf,
+  #b28cff
   );
 
   color:white;
 
-  font-family:'Quicksand',sans-serif;
-  font-weight:700;
-  font-size:13px;
+  font-family:'Cormorant Garamond',serif;
+
+  font-size:15px;
+
+  font-weight:500;
+
+  letter-spacing:0.6px;
 
   cursor:pointer;
 
   transition:0.35s ease;
 
   box-shadow:
-    0 6px 24px rgba(255,143,216,0.4);
+  0 5px 20px rgba(245,154,223,0.28);
+
 }
 
 .btn:hover{
@@ -209,7 +251,7 @@ p{
   transform:translateY(-2px) scale(1.03);
 
   box-shadow:
-    0 10px 28px rgba(255,143,216,0.55);
+  0 8px 24px rgba(245,154,223,0.45);
 
 }
 
@@ -217,64 +259,72 @@ a{
   text-decoration:none;
 }
 
-/* ✨ hidden reveal */
+/* ✨ reveal text */
 
 .hidden{
+
   display:none;
+
   margin-top:14px;
-  color:#ffeefe;
+
+  color:#ffeef9;
+
 }
 
-/* 🌸 floating particles */
+/* 🌸 particles */
 
 .particle{
-  position:fixed;
-  pointer-events:none;
-  z-index:9999;
 
-  font-size:16px;
+  position:fixed;
+
+  pointer-events:none;
+
+  z-index:9999;
 
   opacity:0.95;
 
   transition:all 1s ease-out;
 
   text-shadow:
-    0 0 10px white,
-    0 0 20px pink;
+  0 0 10px white,
+  0 0 20px pink;
+
 }
 
-/* 💌 secret message */
+/* 💌 secret */
 
 .secret-msg{
+
   position:fixed;
 
-  bottom:25px;
+  bottom:22px;
   left:50%;
 
   transform:translateX(-50%);
 
-  background:rgba(255,255,255,0.12);
+  background:rgba(255,255,255,0.1);
 
-  backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,0.08);
 
-  border:1px solid rgba(255,255,255,0.15);
-
-  padding:12px 20px;
+  backdrop-filter:blur(14px);
 
   border-radius:999px;
+
+  padding:12px 20px;
 
   font-size:12px;
 
   color:white;
 
   z-index:999;
+
 }
 
-/* 🔐 code box */
+/* 🔐 code */
 
 #codeBox{
   display:none;
-  margin-top:24px;
+  margin-top:22px;
 }
 
 #userCode{
@@ -283,43 +333,41 @@ a{
 
   margin:14px auto;
 
-  padding:14px 18px;
+  padding:12px 18px;
 
-  border-radius:18px;
+  border-radius:16px;
 
   background:rgba(255,255,255,0.08);
 
-  border:1px solid rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.08);
 
-  color:#ffd7f3;
+  color:#ffd7ef;
 
-  font-weight:bold;
+  font-size:14px;
 
   letter-spacing:2px;
 
-  box-shadow:
-    0 0 15px rgba(255,183,230,0.15);
 }
 
-/* 📱 mobile readability */
+/* 💻 desktop */
 
 @media(min-width:768px){
 
   .container{
     max-width:650px;
-    padding:50px;
+    padding:48px;
   }
 
   h1{
-    font-size:4.2rem;
+    font-size:2.8rem;
   }
 
   p{
-    font-size:16px;
+    font-size:18px;
   }
 
   .btn{
-    font-size:14px;
+    font-size:16px;
   }
 
 }
@@ -329,76 +377,93 @@ a{
 
 <body>
 
-<!-- 🌌 galaxy -->
+<!-- 🌌 stars -->
 <canvas id="stars"></canvas>
 
 <!-- 🌸 glow -->
 <div class="glow glow1"></div>
 <div class="glow glow2"></div>
 
-<!-- ✨ Intro -->
+<!-- 🌌 intro -->
 <section id="intro">
 
 <div class="container">
 
-<h1>Hi, MG here</h1>
+<h1>
+Hi, MG here
+</h1>
 
 <p>
 Let’s see if you’re curious enough.
 </p>
 
-<button class="btn" onclick="go('story',event)">
-Continue
+<button class="btn"
+onclick="go('story',event)">
+Continue →
 </button>
 
 </div>
 
 </section>
 
-<!-- 🌙 Story -->
+<!-- 🌙 story -->
 <section id="story">
 
 <div class="container">
 
-<h1>About me</h1>
+<h1>
+About me
+</h1>
 
 <p>
-I don’t say much at first, but I notice details and may internally judge.
+I don’t say much at first,
+but I notice details
+and may internally judge.
 </p>
 
-<button class="btn" onclick="go('story',event)">
-Continue
+<button class="btn"
+onclick="go('space',event)">
+Continue →
 </button>
-  
+
 </div>
 
 </section>
 
-<!-- 🌌 Another side -->
+<!-- ✨ space -->
 <section id="space">
 
 <div class="container">
 
-<h1>Another side</h1>
+<h1>
+Another side
+</h1>
 
 <p>
-Astrophotography, books, space objects.
+Astrophotography,
+books,
+space objects,
+quiet nights,
+and disappearing into random rabbit holes.
 </p>
 
-<button class="btn" onclick="go('story',event)">
-Continue
+<button class="btn"
+onclick="go('secrets',event)">
+Continue →
 </button>
-  
+
 </div>
 
 </section>
 
-<!-- 💌 Secrets -->
+<!-- 💌 secrets -->
 <section id="secrets">
 
 <div class="container">
 
-<h1>Curious?</h1>
+<h1>
+Curious?
+</h1>
 
 <button class="btn"
 onclick="pick('curious'); reveal('s1',event)">
@@ -406,7 +471,9 @@ What I enjoy
 </button>
 
 <p id="s1" class="hidden">
-Cybersec challenges, Geoguessr, slow coffee bars.
+Cybersec challenges,
+Geoguessr,
+slow coffee bars.
 </p>
 
 <button class="btn"
@@ -415,7 +482,8 @@ What I notice
 </button>
 
 <p id="s2" class="hidden">
-Does it include a set of bulky veneered teeth?
+Does it include
+a set of bulky veneered teeth?
 </p>
 
 <button class="btn"
@@ -424,23 +492,27 @@ What I admire
 </button>
 
 <p id="s3" class="hidden">
-Brainiac yet empathetic, small thoughtful gestures weaken my knees.
+Brainiac yet empathetic.
+Small thoughtful gestures weaken my knees.
 </p>
 
-<button class="btn" onclick="go('story',event)">
-Continue
+<button class="btn"
+onclick="go('ending',event)">
+Continue →
 </button>
-  
+
 </div>
 
 </section>
 
-<!-- 🔐 Ending -->
+<!-- 🔐 ending -->
 <section id="ending">
 
 <div class="container">
 
-<h1>Final</h1>
+<h1>
+Final
+</h1>
 
 <div id="endingText"></div>
 
@@ -457,36 +529,49 @@ onclick="copyCode(event)">
 Copy code
 </button>
 
-<p style="margin-top:14px;font-size:12px;">
-Send me this code… I’ll know you stayed.
+<p style="margin-top:14px;font-size:13px;">
+Send me this code…
+I’ll know you stayed.
 </p>
 
 </div>
 
-<a href="https://instagram.com/allo_cheri" target="_blank">
+<a href="https://instagram.com/allo_cheri"
+target="_blank">
+
 <button class="btn">
 Say hi
 </button>
+
 </a>
 
 <br>
 
-<a href="https://angularfield-vmfwo.wordpress.com/" target="_blank">
+<a href="https://angularfield-vmfwo.wordpress.com/"
+target="_blank">
+
 <button class="btn">
 Portfolio
 </button>
+
 </a>
 
-<a href="https://tryhackme.com/badges" target="_blank">
+<a href="https://tryhackme.com/badges"
+target="_blank">
+
 <button class="btn">
 THM
 </button>
+
 </a>
 
-<a href="https://www.geoguessr.com/user/67b56a4e780c347b534cd8e6" target="_blank">
+<a href="https://www.geoguessr.com/user/67b56a4e780c347b534cd8e6"
+target="_blank">
+
 <button class="btn">
 Geoguessr
 </button>
+
 </a>
 
 </div>
@@ -495,14 +580,16 @@ Geoguessr
 
 <script>
 
-/* 🌌 moving stars */
+/* 🌌 stars */
 
 const canvas=document.getElementById("stars");
 const ctx=canvas.getContext("2d");
 
 function resize(){
+
   canvas.width=window.innerWidth;
   canvas.height=window.innerHeight;
+
 }
 
 resize();
@@ -511,21 +598,31 @@ window.addEventListener("resize",resize);
 
 const stars=[];
 
-for(let i=0;i<140;i++){
+for(let i=0;i<160;i++){
 
   stars.push({
+
     x:Math.random()*canvas.width,
     y:Math.random()*canvas.height,
-    r:Math.random()*1.8,
-    speed:Math.random()*0.3+0.05,
+
+    r:Math.random()*1.7,
+
+    speed:Math.random()*0.35+0.05,
+
     opacity:Math.random()
+
   });
 
 }
 
 function animateStars(){
 
-  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.clearRect(
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  );
 
   stars.forEach(star=>{
 
@@ -561,9 +658,9 @@ function animateStars(){
 
 animateStars();
 
-/* ✨ random sparkles */
+/* ✨ sparkles */
 
-for(let i=0;i<35;i++){
+for(let i=0;i<40;i++){
 
   const s=document.createElement("div");
 
@@ -579,7 +676,7 @@ for(let i=0;i<35;i++){
 
 }
 
-/* 💖 burst effect */
+/* 💖 burst */
 
 function burst(x,y){
 
@@ -589,29 +686,30 @@ function burst(x,y){
 
     p.className="particle";
 
-    p.innerHTML=Math.random()>0.5
-      ? "✦"
-      : "❤";
+    p.innerHTML=
+    Math.random()>0.5
+    ? "✦"
+    : "❤";
 
     p.style.left=x+"px";
     p.style.top=y+"px";
 
     p.style.color=
-      Math.random()>0.5
-      ? "#ffd6f5"
-      : "#ffc6f2";
+    Math.random()>0.5
+    ? "#ffd6f5"
+    : "#ffc9ea";
 
     document.body.appendChild(p);
 
     const angle=Math.random()*6.28;
-    const dist=40+Math.random()*35;
+    const dist=35+Math.random()*35;
 
     setTimeout(()=>{
 
       p.style.transform=
       `translate(
-        ${Math.cos(angle)*dist}px,
-        ${Math.sin(angle)*dist}px
+      ${Math.cos(angle)*dist}px,
+      ${Math.sin(angle)*dist}px
       )`;
 
       p.style.opacity=0;
@@ -636,7 +734,7 @@ function reveal(id,e){
 
 }
 
-/* 🌙 scroll */
+/* 🌙 continue button */
 
 function go(id,e){
 
@@ -679,7 +777,7 @@ function generateCode(){
 
     code+=chars[
       Math.floor(
-        Math.random()*chars.length
+      Math.random()*chars.length
       )
     ];
 
@@ -700,7 +798,7 @@ function copyCode(e){
 
 }
 
-/* 💌 hidden message */
+/* 💌 hidden engagement */
 
 let moves=0;
 let shown=false;
@@ -725,7 +823,7 @@ document.addEventListener("touchmove",e=>{
   p.style.left=t.clientX+"px";
   p.style.top=t.clientY+"px";
 
-  p.style.color="#ffd6f5";
+  p.style.color="#ffd8ef";
 
   document.body.appendChild(p);
 
@@ -765,7 +863,7 @@ document.addEventListener("touchmove",e=>{
 
 });
 
-/* 🧠 ending logic */
+/* 🧠 ending */
 
 window.addEventListener("scroll",()=>{
 
