@@ -2,8 +2,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
 <title>MG</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -24,199 +25,282 @@ body{
   font-family:'Poppins',sans-serif;
   overflow-x:hidden;
   color:white;
-  background:black;
+  background:#050816;
+  position:relative;
 }
 
-/* 🌌 background image */
+/* 🌌 cinematic space background */
+
 body::before{
   content:"";
   position:fixed;
   inset:0;
+
   background:
-    linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.55)),
-    url('background.jpg') center center / cover no-repeat;
-  z-index:-3;
+    radial-gradient(circle at top left,
+    rgba(255,182,193,0.15),
+    transparent 30%),
+
+    radial-gradient(circle at bottom right,
+    rgba(160,120,255,0.14),
+    transparent 35%),
+
+    linear-gradient(
+      180deg,
+      #050816 0%,
+      #0d1328 45%,
+      #161b33 100%
+    );
+
+  z-index:-5;
 }
 
-/* ✨ animated overlay */
+/* ✨ stars canvas */
+
 #stars{
   position:fixed;
   inset:0;
   width:100%;
   height:100%;
-  z-index:-2;
+  z-index:-4;
 }
 
-/* 🌙 floating blur */
-.blur{
+/* 🌙 aurora glow */
+
+.glow{
   position:fixed;
-  width:220px;
-  height:220px;
   border-radius:50%;
-  background:rgba(255,182,193,0.08);
-  filter:blur(70px);
-  z-index:-1;
-  animation:float 8s ease-in-out infinite;
+  filter:blur(90px);
+  opacity:0.45;
+  pointer-events:none;
 }
 
-.blur2{
-  top:65%;
-  left:60%;
-  animation-delay:3s;
+.glow1{
+  width:260px;
+  height:260px;
+  background:#ff8fb1;
+  top:10%;
+  left:-5%;
+  animation:float1 10s ease-in-out infinite;
 }
 
-@keyframes float{
+.glow2{
+  width:320px;
+  height:320px;
+  background:#8f9bff;
+  bottom:0;
+  right:-10%;
+  animation:float2 12s ease-in-out infinite;
+}
+
+@keyframes float1{
+
   0%,100%{
     transform:translateY(0px);
   }
+
   50%{
-    transform:translateY(-30px);
+    transform:translateY(-35px);
   }
+
+}
+
+@keyframes float2{
+
+  0%,100%{
+    transform:translateY(0px);
+  }
+
+  50%{
+    transform:translateY(40px);
+  }
+
 }
 
 /* 📱 sections */
+
 section{
   min-height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
-  padding:60px 22px;
+  padding:70px 22px;
 }
 
+/* 🌙 glass card */
+
 .container{
+
   width:100%;
-  max-width:420px;
+  max-width:430px;
+
   text-align:center;
-  backdrop-filter:blur(10px);
-  background:rgba(0,0,0,0.35);
+
+  padding:34px 26px;
+
+  border-radius:30px;
+
+  background:rgba(255,255,255,0.06);
+
   border:1px solid rgba(255,255,255,0.08);
-  border-radius:28px;
-  padding:32px 24px;
-  box-shadow:0 10px 40px rgba(0,0,0,0.3);
+
+  backdrop-filter:blur(18px);
+
+  box-shadow:
+    0 10px 50px rgba(0,0,0,0.35),
+    inset 0 0 0.5px rgba(255,255,255,0.3);
+
 }
+
+/* ✨ typography */
 
 h1{
   font-size:2rem;
   margin-bottom:18px;
-  color:#ffd6e7;
-  text-shadow:0 0 12px rgba(255,214,231,0.4);
+  color:#ffe3ef;
+
+  text-shadow:
+    0 0 15px rgba(255,227,239,0.25);
 }
 
 p{
   font-size:14px;
-  line-height:1.8;
-  color:#f4f4f4;
+  line-height:1.9;
+  color:#edf1ff;
 }
 
 /* 💖 buttons */
+
 .btn{
+
   margin-top:18px;
-  padding:13px 22px;
+
+  padding:13px 24px;
+
   border:none;
+
   border-radius:999px;
-  background:linear-gradient(135deg,#d67b96,#b76e79);
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff8fb1,
+      #c084fc
+    );
+
   color:white;
+
   font-size:13px;
   font-weight:600;
+
   cursor:pointer;
-  transition:0.3s;
-  box-shadow:0 5px 20px rgba(214,123,150,0.4);
+
+  transition:0.35s;
+
+  box-shadow:
+    0 6px 22px rgba(192,132,252,0.35);
+
 }
 
 .btn:hover{
-  transform:scale(1.05);
+
+  transform:
+    translateY(-2px)
+    scale(1.03);
+
+  box-shadow:
+    0 10px 28px rgba(255,143,177,0.35);
+
 }
 
 a{
   text-decoration:none;
 }
 
-/* ✨ hidden text */
+/* 💌 hidden answers */
+
 .hidden{
   display:none;
   margin-top:14px;
-  color:#ffeef4;
+  color:#ffe8f3;
 }
 
-/* 🌙 particles */
+/* ✨ particles */
+
 .particle{
   position:fixed;
   pointer-events:none;
   z-index:9999;
-  opacity:0.9;
+  opacity:0.95;
   transition:all 1s ease-out;
-  text-shadow:0 0 10px white;
+  text-shadow:0 0 12px white;
 }
 
-/* 💌 hidden engagement msg */
+/* 🌙 engagement message */
+
 .secret-msg{
+
   position:fixed;
+
   bottom:25px;
   left:50%;
+
   transform:translateX(-50%);
-  background:rgba(255,255,255,0.12);
-  backdrop-filter:blur(12px);
-  border:1px solid rgba(255,255,255,0.1);
+
   padding:12px 18px;
+
   border-radius:999px;
+
+  background:rgba(255,255,255,0.08);
+
+  border:1px solid rgba(255,255,255,0.1);
+
+  backdrop-filter:blur(16px);
+
   color:white;
+
   font-size:12px;
+
   z-index:999;
+
 }
 
-/* 🔐 code box */
+/* 🔐 code section */
+
 #codeBox{
   display:none;
-  margin-top:24px;
+  margin-top:22px;
 }
 
 #userCode{
-  margin:14px auto;
-  background:rgba(255,255,255,0.1);
-  border:1px solid rgba(255,255,255,0.1);
-  border-radius:16px;
-  padding:14px;
+
   width:fit-content;
-  color:#ffd6e7;
+
+  margin:14px auto;
+
+  padding:14px 18px;
+
+  border-radius:16px;
+
+  background:rgba(255,255,255,0.08);
+
+  border:1px solid rgba(255,255,255,0.08);
+
+  color:#ffd8ea;
+
   font-weight:bold;
+
   letter-spacing:2px;
-}
 
-/* 🎧 music player */
-.music-player{
-  position:fixed;
-  top:18px;
-  right:18px;
-  width:52px;
-  height:52px;
-  border-radius:50%;
-  background:rgba(255,255,255,0.12);
-  backdrop-filter:blur(12px);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:18px;
-  z-index:999;
-  cursor:pointer;
-  border:1px solid rgba(255,255,255,0.1);
-}
-
-/* 📸 credits */
-.credit{
-  position:fixed;
-  bottom:10px;
-  right:10px;
-  font-size:10px;
-  color:rgba(255,255,255,0.6);
-  z-index:999;
 }
 
 /* 💻 desktop */
+
 @media(min-width:768px){
 
   .container{
     max-width:650px;
-    padding:50px;
+    padding:52px;
   }
 
   h1{
@@ -238,31 +322,17 @@ a{
 
 <body>
 
-<!-- ✨ overlays -->
+<!-- 🌌 animated layers -->
+
 <canvas id="stars"></canvas>
-<div class="blur"></div>
-<div class="blur blur2"></div>
 
-<!-- 🎧 floating music button -->
-<div class="music-player" onclick="toggleMusic()">
-🔇
-</div>
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
 
-<!-- 🎵 uploaded mp3 -->
-<audio id="bgMusic" loop>
-  <source src="https://raw.githubusercontent.com/SottoVoce91/C-est_Moi/refs/heads/main/music.mp3" type="audio/mpeg">
-</audio>
+<!-- 🌌 intro -->
 
-<!-- ✅ mobile autoplay fix -->
-<script>
-document.addEventListener("click", () => {
-  const music = document.getElementById("bgMusic");
-  music.play().catch(()=>{});
-}, { once:true });
-</script>  
-
-<!-- 🌌 Intro -->
 <section id="intro">
+
 <div class="container">
 
 <h1>Hi, MG here</h1>
@@ -276,69 +346,93 @@ Continue
 </button>
 
 </div>
+
 </section>
 
-<!-- 🌙 Story -->
+<!-- 🌙 about -->
+
 <section id="story">
+
 <div class="container">
 
 <h1>About me</h1>
 
 <p>
-I don’t say much at first, but I notice details and may internally judge.
+I don’t say much at first,
+but I notice details and may internally judge.
 </p>
 
 </div>
+
 </section>
 
-<!-- ✨ Space -->
+<!-- ✨ interests -->
+
 <section id="space">
+
 <div class="container">
 
 <h1>Another side</h1>
 
 <p>
-Astrophotography, books, space objects
+Astrophotography, books,
+space objects,
+and getting lost in maps for fun.
 </p>
 
 </div>
+
 </section>
 
-<!-- 💌 Secrets -->
+<!-- 💌 secrets -->
+
 <section id="secrets">
+
 <div class="container">
 
 <h1>Curious?</h1>
 
-<button class="btn" onclick="pick('curious'); reveal('s1',event)">
+<button class="btn"
+onclick="pick('curious'); reveal('s1',event)">
 What I enjoy
 </button>
 
 <p id="s1" class="hidden">
-Cybersec challenges, Geoguessr, slow coffee bars
+Cybersec challenges,
+Geoguessr,
+slow coffee bars.
 </p>
 
-<button class="btn" onclick="pick('playful'); reveal('s2',event)">
+<button class="btn"
+onclick="pick('playful'); reveal('s2',event)">
 What I notice
 </button>
 
 <p id="s2" class="hidden">
-Does it include a set of bulky veneered teeth?
+Confidence is attractive.
+Forced perfection isn’t.
 </p>
 
-<button class="btn" onclick="pick('romantic'); reveal('s3',event)">
+<button class="btn"
+onclick="pick('romantic'); reveal('s3',event)">
 What I admire
 </button>
 
 <p id="s3" class="hidden">
-Brainiac yet empathetic, small thoughtful gestures weaken my knees.
+Sharp mind,
+soft heart,
+good humor.
+Dangerous combination.
 </p>
 
 </div>
+
 </section>
 
-<!-- 🔐 Ending -->
+<!-- 🔐 final -->
+
 <section id="ending">
+
 <div class="container">
 
 <h1>Final</h1>
@@ -353,19 +447,21 @@ Your code:
 
 <div id="userCode"></div>
 
-<button class="btn" onclick="copyCode(event)">
+<button class="btn"
+onclick="copyCode(event)">
 Copy code
 </button>
 
 <p style="margin-top:14px;font-size:12px;">
-Send me this code… I’ll know you stayed.
+Send me this code…
+I’ll know you stayed.
 </p>
 
 </div>
 
 <a href="https://instagram.com/allo_cheri" target="_blank">
 <button class="btn">
-Say hi (Disclaimer: I'm low on social media presence)
+Say hi
 </button>
 </a>
 
@@ -381,7 +477,7 @@ Portfolio
 <button class="btn">
 THM
 </button>
-</a>  
+</a>
 
 <a href="https://www.geoguessr.com/user/67b56a4e780c347b534cd8e6" target="_blank">
 <button class="btn">
@@ -390,174 +486,185 @@ Geoguessr
 </a>
 
 </div>
-</section>
 
-<!-- 📸 credits -->
-<div class="credit">
-Background by Mohammad Alizade — Unsplash
-</div>
+</section>
 
 <script>
 
-/* 🌌 lightweight galaxy */
+/* 🌌 cinematic stars */
 
-const canvas=document.getElementById("stars");
-const ctx=canvas.getContext("2d");
+const canvas =
+document.getElementById("stars");
+
+const ctx =
+canvas.getContext("2d");
 
 function resize(){
-  canvas.width=innerWidth;
-  canvas.height=innerHeight;
+
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
+
 }
 
 resize();
 
-window.addEventListener("resize",resize);
+window.addEventListener(
+  "resize",
+  resize
+);
 
-const stars=Array.from({length:60},()=>({
-  x:Math.random()*canvas.width,
-  y:Math.random()*canvas.height,
-  r:Math.random()*1.5,
-  o:Math.random()
-}));
+const stars = [];
+
+for(let i=0;i<180;i++){
+
+  stars.push({
+
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+
+    radius:Math.random()*1.7,
+
+    speed:(Math.random()*0.25)+0.03,
+
+    opacity:(Math.random()*0.8)+0.2
+
+  });
+
+}
 
 function animate(){
 
-  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.clearRect(
+    0,
+    0,
+    canvas.width,
+    canvas.height
+  );
 
-  stars.forEach(s=>{
+  stars.forEach(star=>{
 
     ctx.beginPath();
-    ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
 
-    ctx.fillStyle=`rgba(255,255,255,${s.o})`;
+    ctx.arc(
+      star.x,
+      star.y,
+      star.radius,
+      0,
+      Math.PI*2
+    );
+
+    ctx.fillStyle=
+    `rgba(255,255,255,${star.opacity})`;
+
     ctx.fill();
 
-    s.y+=0.08;
+    star.y += star.speed;
 
-    if(s.y>canvas.height){
-      s.y=0;
+    if(star.y > canvas.height){
+
+      star.y = -5;
+
+      star.x =
+      Math.random()*canvas.width;
+
     }
 
   });
 
   requestAnimationFrame(animate);
+
 }
 
 animate();
 
-/* 🎧 MUSIC */
-
-const music = document.getElementById("bgMusic");
-const musicButton = document.querySelector(".music-player");
-
-music.volume = 0.4;
-
-/* mobile autoplay fix */
-function startMusic() {
-
-  music.play()
-  .then(() => {
-    musicButton.innerHTML = "🎵";
-  })
-  .catch(() => {
-    musicButton.innerHTML = "🔇";
-  });
-
-  document.removeEventListener("click", startMusic);
-  document.removeEventListener("touchstart", startMusic);
-}
-
-/* first interaction starts audio */
-document.addEventListener("click", startMusic);
-document.addEventListener("touchstart", startMusic);
-
-/* toggle button */
-function toggleMusic(){
-
-  if(music.paused){
-
-    music.play();
-    musicButton.innerHTML = "🎵";
-
-  } else {
-
-    music.pause();
-    musicButton.innerHTML = "🔇";
-
-  }
-
-}
-
-/* 💖 heart burst */
+/* 💖 particle burst */
 
 function burst(x,y){
 
-  for(let i=0;i<7;i++){
+  for(let i=0;i<8;i++){
 
-    const p=document.createElement("div");
+    const p =
+    document.createElement("div");
 
-    p.className="particle";
+    p.className = "particle";
 
-    let sec=currentSection();
+    let sec = currentSection();
 
-    p.innerHTML=sec==="space"?"✦":"❤";
+    p.innerHTML =
+    sec==="space" ? "✦" : "❤";
 
-    p.style.left=x+"px";
-    p.style.top=y+"px";
+    p.style.left = x+"px";
+    p.style.top = y+"px";
 
-    p.style.color=sec==="space"
-      ? "#fff4c7"
-      : "#ffc0d6";
+    p.style.color =
+    sec==="space"
+    ? "#fff4c7"
+    : "#ffc0d6";
 
     document.body.appendChild(p);
 
-    const angle=Math.random()*6.28;
-    const dist=40+Math.random()*30;
+    const angle =
+    Math.random()*6.28;
+
+    const dist =
+    40+Math.random()*45;
 
     setTimeout(()=>{
 
       p.style.transform=
-      `translate(${Math.cos(angle)*dist}px,
-      ${Math.sin(angle)*dist}px)`;
+      `translate(
+      ${Math.cos(angle)*dist}px,
+      ${Math.sin(angle)*dist}px
+      ) scale(0.5)`;
 
       p.style.opacity=0;
 
     },10);
 
-    setTimeout(()=>p.remove(),900);
+    setTimeout(
+      ()=>p.remove(),
+      1000
+    );
 
   }
 
 }
 
-/* 🌙 current section */
+/* 🌙 section detector */
 
 function currentSection(){
 
-  const sections=document.querySelectorAll("section");
+  const sections =
+  document.querySelectorAll("section");
 
   let current="intro";
 
   sections.forEach(sec=>{
 
-    const rect=sec.getBoundingClientRect();
+    const rect =
+    sec.getBoundingClientRect();
 
     if(rect.top<=innerHeight/2){
-      current=sec.id;
+
+      current = sec.id;
+
     }
 
   });
 
   return current;
+
 }
 
-/* ✨ touch particles */
+/* ✨ mobile particles */
 
 let moves=0;
 let shown=false;
 let last=0;
 
-document.addEventListener("touchmove",e=>{
+document.addEventListener(
+"touchmove",
+e=>{
 
   const now=Date.now();
 
@@ -569,31 +676,43 @@ document.addEventListener("touchmove",e=>{
 
   const sec=currentSection();
 
-  if(!["intro","story","space"].includes(sec)) return;
+  if(![
+    "intro",
+    "story",
+    "space"
+  ].includes(sec)) return;
 
-  const p=document.createElement("div");
+  const p =
+  document.createElement("div");
 
   p.className="particle";
 
-  p.innerHTML=sec==="space"?"✦":"❤";
+  p.innerHTML=
+  sec==="space"?"✦":"❤";
 
   p.style.left=t.clientX+"px";
   p.style.top=t.clientY+"px";
 
-  p.style.color=sec==="space"
-    ? "#fff4c7"
-    : "#ffc0d6";
+  p.style.color=
+  sec==="space"
+  ? "#fff4c7"
+  : "#ffc0d6";
 
   document.body.appendChild(p);
 
   setTimeout(()=>{
 
-    p.style.transform="translateY(-30px)";
+    p.style.transform=
+    "translateY(-40px)";
+
     p.style.opacity=0;
 
   },10);
 
-  setTimeout(()=>p.remove(),1000);
+  setTimeout(
+    ()=>p.remove(),
+    1200
+  );
 
   moves++;
 
@@ -601,15 +720,20 @@ document.addEventListener("touchmove",e=>{
 
     shown=true;
 
-    const msg=document.createElement("div");
+    const msg =
+    document.createElement("div");
 
     msg.className="secret-msg";
 
-    msg.innerText="You stayed… I like that.";
+    msg.innerText=
+    "You stayed… I like that.";
 
     document.body.appendChild(msg);
 
-    setTimeout(()=>msg.remove(),4000);
+    setTimeout(
+      ()=>msg.remove(),
+      4000
+    );
 
   }
 
@@ -618,24 +742,32 @@ document.addEventListener("touchmove",e=>{
 /* 🧠 personality */
 
 let personality={
+
   curious:0,
   playful:0,
   romantic:0
+
 };
 
 function pick(type){
+
   personality[type]++;
+
 }
 
 /* 💌 reveal */
 
 function reveal(id,e){
 
-  const el=document.getElementById(id);
+  const el=
+  document.getElementById(id);
 
   el.style.display="block";
 
-  burst(e.clientX,e.clientY);
+  burst(
+    e.clientX,
+    e.clientY
+  );
 
 }
 
@@ -643,12 +775,16 @@ function reveal(id,e){
 
 function go(id,e){
 
-  document.getElementById(id)
+  document
+  .getElementById(id)
   .scrollIntoView({
     behavior:"smooth"
   });
 
-  burst(e.clientX,e.clientY);
+  burst(
+    e.clientX,
+    e.clientY
+  );
 
 }
 
@@ -656,7 +792,8 @@ function go(id,e){
 
 function generateCode(){
 
-  let code=localStorage.getItem("mg_code");
+  let code=
+  localStorage.getItem("mg_code");
 
   if(code)return code;
 
@@ -668,12 +805,17 @@ function generateCode(){
   for(let i=0;i<5;i++){
 
     code+=chars[
-      Math.floor(Math.random()*chars.length)
+      Math.floor(
+        Math.random()*chars.length
+      )
     ];
 
   }
 
-  localStorage.setItem("mg_code",code);
+  localStorage.setItem(
+    "mg_code",
+    code
+  );
 
   return code;
 
@@ -681,39 +823,58 @@ function generateCode(){
 
 function copyCode(e){
 
-  navigator.clipboard.writeText(generateCode());
+  navigator.clipboard.writeText(
+    generateCode()
+  );
 
-  burst(e.clientX,e.clientY);
+  burst(
+    e.clientX,
+    e.clientY
+  );
 
 }
 
-/* 🧠 ending */
+/* 🧠 ending logic */
 
-window.addEventListener("scroll",()=>{
+window.addEventListener(
+"scroll",
+()=>{
 
-  const end=
-  document.getElementById("ending")
+  const end =
+  document
+  .getElementById("ending")
   .getBoundingClientRect();
 
-  if(end.top<innerHeight-100){
+  if(end.top < innerHeight-100){
 
-    document.getElementById("codeBox")
+    document
+    .getElementById("codeBox")
     .style.display="block";
 
-    document.getElementById("userCode")
-    .innerText=generateCode();
+    document
+    .getElementById("userCode")
+    .innerText=
+    generateCode();
 
-    let msg="I notice you.";
+    let msg=
+    "I notice you.";
 
     if(personality.curious>1){
-      msg="You’re curious. I like that.";
+
+      msg=
+      "You’re curious. I like that.";
+
     }
 
     else if(personality.romantic>1){
-      msg="You notice feelings. Rare.";
+
+      msg=
+      "You notice feelings. Rare.";
+
     }
 
-    document.getElementById("endingText")
+    document
+    .getElementById("endingText")
     .innerText=msg;
 
   }
