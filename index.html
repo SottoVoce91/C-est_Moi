@@ -7,7 +7,8 @@
 
 <title>MG</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<!-- ✨ fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -22,14 +23,14 @@ html{
 }
 
 body{
-  font-family:'Poppins',sans-serif;
   overflow-x:hidden;
+  background:#070814;
   color:white;
-  background:#050816;
+  font-family:'Quicksand',sans-serif;
   position:relative;
 }
 
-/* 🌌 cinematic space background */
+/* 🌌 dreamy galaxy background */
 
 body::before{
   content:"";
@@ -37,20 +38,7 @@ body::before{
   inset:0;
 
   background:
-    radial-gradient(circle at top left,
-    rgba(255,182,193,0.15),
-    transparent 30%),
-
-    radial-gradient(circle at bottom right,
-    rgba(160,120,255,0.14),
-    transparent 35%),
-
-    linear-gradient(
-      180deg,
-      #050816 0%,
-      #0d1328 45%,
-      #161b33 100%
-    );
+  radial-gradient(circle at top,#4b2d63 0%,#1a1633 35%,#070814 75%);
 
   z-index:-5;
 }
@@ -65,35 +53,61 @@ body::before{
   z-index:-4;
 }
 
-/* 🌙 aurora glow */
+/* 💖 sparkles */
+
+.sparkle{
+  position:fixed;
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:white;
+  box-shadow:
+    0 0 10px white,
+    0 0 20px #ffd6f5,
+    0 0 30px #ffb6e6;
+  animation:twinkle 3s infinite ease-in-out;
+  z-index:-3;
+}
+
+@keyframes twinkle{
+  0%,100%{
+    opacity:0.2;
+    transform:scale(0.8);
+  }
+
+  50%{
+    opacity:1;
+    transform:scale(1.4);
+  }
+}
+
+/* 🌸 floating glow */
 
 .glow{
   position:fixed;
+  width:320px;
+  height:320px;
   border-radius:50%;
   filter:blur(90px);
-  opacity:0.45;
-  pointer-events:none;
+  opacity:0.22;
+  z-index:-2;
+  animation:float 12s infinite ease-in-out;
 }
 
 .glow1{
-  width:260px;
-  height:260px;
-  background:#ff8fb1;
-  top:10%;
-  left:-5%;
-  animation:float1 10s ease-in-out infinite;
+  background:#ff8fd8;
+  top:-60px;
+  left:-60px;
 }
 
 .glow2{
-  width:320px;
-  height:320px;
-  background:#8f9bff;
-  bottom:0;
-  right:-10%;
-  animation:float2 12s ease-in-out infinite;
+  background:#b28dff;
+  bottom:-100px;
+  right:-80px;
+  animation-delay:4s;
 }
 
-@keyframes float1{
+@keyframes float{
 
   0%,100%{
     transform:translateY(0px);
@@ -105,111 +119,97 @@ body::before{
 
 }
 
-@keyframes float2{
-
-  0%,100%{
-    transform:translateY(0px);
-  }
-
-  50%{
-    transform:translateY(40px);
-  }
-
-}
-
 /* 📱 sections */
 
 section{
   min-height:100vh;
   display:flex;
-  justify-content:center;
   align-items:center;
-  padding:70px 22px;
+  justify-content:center;
+  padding:40px 20px;
 }
 
-/* 🌙 glass card */
+/* 🌸 glass container */
 
 .container{
-
   width:100%;
-  max-width:430px;
+  max-width:420px;
 
-  text-align:center;
+  background:rgba(255,255,255,0.08);
 
-  padding:34px 26px;
-
-  border-radius:30px;
-
-  background:rgba(255,255,255,0.06);
-
-  border:1px solid rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.12);
 
   backdrop-filter:blur(18px);
 
-  box-shadow:
-    0 10px 50px rgba(0,0,0,0.35),
-    inset 0 0 0.5px rgba(255,255,255,0.3);
+  border-radius:32px;
 
+  padding:34px 26px;
+
+  text-align:center;
+
+  box-shadow:
+    0 10px 40px rgba(0,0,0,0.35),
+    0 0 40px rgba(255,182,230,0.08);
 }
 
-/* ✨ typography */
+/* ✨ headings */
 
 h1{
-  font-size:2rem;
-  margin-bottom:18px;
-  color:#ffe3ef;
+  font-family:'Parisienne',cursive;
+  font-size:3rem;
+  color:#ffd7f3;
+
+  margin-bottom:20px;
 
   text-shadow:
-    0 0 15px rgba(255,227,239,0.25);
+    0 0 10px rgba(255,214,245,0.5),
+    0 0 20px rgba(255,182,230,0.25);
 }
+
+/* 🌙 paragraphs */
 
 p{
   font-size:14px;
   line-height:1.9;
-  color:#edf1ff;
+  color:#f5eaff;
 }
 
 /* 💖 buttons */
 
 .btn{
-
   margin-top:18px;
 
   padding:13px 24px;
 
   border:none;
-
   border-radius:999px;
 
-  background:
-    linear-gradient(
-      135deg,
-      #ff8fb1,
-      #c084fc
-    );
+  background:linear-gradient(
+    135deg,
+    #ff8fd8,
+    #d89cff
+  );
 
   color:white;
 
+  font-family:'Quicksand',sans-serif;
+  font-weight:700;
   font-size:13px;
-  font-weight:600;
 
   cursor:pointer;
 
-  transition:0.35s;
+  transition:0.35s ease;
 
   box-shadow:
-    0 6px 22px rgba(192,132,252,0.35);
-
+    0 6px 24px rgba(255,143,216,0.4);
 }
 
 .btn:hover{
 
-  transform:
-    translateY(-2px)
-    scale(1.03);
+  transform:translateY(-2px) scale(1.03);
 
   box-shadow:
-    0 10px 28px rgba(255,143,177,0.35);
+    0 10px 28px rgba(255,143,216,0.55);
 
 }
 
@@ -217,29 +217,35 @@ a{
   text-decoration:none;
 }
 
-/* 💌 hidden answers */
+/* ✨ hidden reveal */
 
 .hidden{
   display:none;
   margin-top:14px;
-  color:#ffe8f3;
+  color:#ffeefe;
 }
 
-/* ✨ particles */
+/* 🌸 floating particles */
 
 .particle{
   position:fixed;
   pointer-events:none;
   z-index:9999;
+
+  font-size:16px;
+
   opacity:0.95;
+
   transition:all 1s ease-out;
-  text-shadow:0 0 12px white;
+
+  text-shadow:
+    0 0 10px white,
+    0 0 20px pink;
 }
 
-/* 🌙 engagement message */
+/* 💌 secret message */
 
 .secret-msg{
-
   position:fixed;
 
   bottom:25px;
@@ -247,29 +253,28 @@ a{
 
   transform:translateX(-50%);
 
-  padding:12px 18px;
+  background:rgba(255,255,255,0.12);
+
+  backdrop-filter:blur(18px);
+
+  border:1px solid rgba(255,255,255,0.15);
+
+  padding:12px 20px;
 
   border-radius:999px;
 
-  background:rgba(255,255,255,0.08);
-
-  border:1px solid rgba(255,255,255,0.1);
-
-  backdrop-filter:blur(16px);
+  font-size:12px;
 
   color:white;
 
-  font-size:12px;
-
   z-index:999;
-
 }
 
-/* 🔐 code section */
+/* 🔐 code box */
 
 #codeBox{
   display:none;
-  margin-top:22px;
+  margin-top:24px;
 }
 
 #userCode{
@@ -280,31 +285,33 @@ a{
 
   padding:14px 18px;
 
-  border-radius:16px;
+  border-radius:18px;
 
   background:rgba(255,255,255,0.08);
 
-  border:1px solid rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.1);
 
-  color:#ffd8ea;
+  color:#ffd7f3;
 
   font-weight:bold;
 
   letter-spacing:2px;
 
+  box-shadow:
+    0 0 15px rgba(255,183,230,0.15);
 }
 
-/* 💻 desktop */
+/* 📱 mobile readability */
 
 @media(min-width:768px){
 
   .container{
     max-width:650px;
-    padding:52px;
+    padding:50px;
   }
 
   h1{
-    font-size:3rem;
+    font-size:4.2rem;
   }
 
   p{
@@ -322,15 +329,14 @@ a{
 
 <body>
 
-<!-- 🌌 animated layers -->
-
+<!-- 🌌 galaxy -->
 <canvas id="stars"></canvas>
 
+<!-- 🌸 glow -->
 <div class="glow glow1"></div>
 <div class="glow glow2"></div>
 
-<!-- 🌌 intro -->
-
+<!-- ✨ Intro -->
 <section id="intro">
 
 <div class="container">
@@ -349,8 +355,7 @@ Continue
 
 </section>
 
-<!-- 🌙 about -->
-
+<!-- 🌙 Story -->
 <section id="story">
 
 <div class="container">
@@ -358,16 +363,14 @@ Continue
 <h1>About me</h1>
 
 <p>
-I don’t say much at first,
-but I notice details and may internally judge.
+I don’t say much at first, but I notice details and may internally judge.
 </p>
 
 </div>
 
 </section>
 
-<!-- ✨ interests -->
-
+<!-- 🌌 Another side -->
 <section id="space">
 
 <div class="container">
@@ -375,17 +378,14 @@ but I notice details and may internally judge.
 <h1>Another side</h1>
 
 <p>
-Astrophotography, books,
-space objects,
-and getting lost in maps for fun.
+Astrophotography, books, space objects.
 </p>
 
 </div>
 
 </section>
 
-<!-- 💌 secrets -->
-
+<!-- 💌 Secrets -->
 <section id="secrets">
 
 <div class="container">
@@ -398,9 +398,7 @@ What I enjoy
 </button>
 
 <p id="s1" class="hidden">
-Cybersec challenges,
-Geoguessr,
-slow coffee bars.
+Cybersec challenges, Geoguessr, slow coffee bars.
 </p>
 
 <button class="btn"
@@ -409,8 +407,7 @@ What I notice
 </button>
 
 <p id="s2" class="hidden">
-Confidence is attractive.
-Forced perfection isn’t.
+Does it include a set of bulky veneered teeth?
 </p>
 
 <button class="btn"
@@ -419,18 +416,14 @@ What I admire
 </button>
 
 <p id="s3" class="hidden">
-Sharp mind,
-soft heart,
-good humor.
-Dangerous combination.
+Brainiac yet empathetic, small thoughtful gestures weaken my knees.
 </p>
 
 </div>
 
 </section>
 
-<!-- 🔐 final -->
-
+<!-- 🔐 Ending -->
 <section id="ending">
 
 <div class="container">
@@ -441,7 +434,7 @@ Dangerous combination.
 
 <div id="codeBox">
 
-<p style="margin-top:20px;">
+<p style="margin-top:18px;">
 Your code:
 </p>
 
@@ -453,8 +446,7 @@ Copy code
 </button>
 
 <p style="margin-top:14px;font-size:12px;">
-Send me this code…
-I’ll know you stayed.
+Send me this code… I’ll know you stayed.
 </p>
 
 </div>
@@ -491,55 +483,37 @@ Geoguessr
 
 <script>
 
-/* 🌌 cinematic stars */
+/* 🌌 moving stars */
 
-const canvas =
-document.getElementById("stars");
-
-const ctx =
-canvas.getContext("2d");
+const canvas=document.getElementById("stars");
+const ctx=canvas.getContext("2d");
 
 function resize(){
-
-  canvas.width = innerWidth;
-  canvas.height = innerHeight;
-
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
 }
 
 resize();
 
-window.addEventListener(
-  "resize",
-  resize
-);
+window.addEventListener("resize",resize);
 
-const stars = [];
+const stars=[];
 
-for(let i=0;i<180;i++){
+for(let i=0;i<140;i++){
 
   stars.push({
-
     x:Math.random()*canvas.width,
     y:Math.random()*canvas.height,
-
-    radius:Math.random()*1.7,
-
-    speed:(Math.random()*0.25)+0.03,
-
-    opacity:(Math.random()*0.8)+0.2
-
+    r:Math.random()*1.8,
+    speed:Math.random()*0.3+0.05,
+    opacity:Math.random()
   });
 
 }
 
-function animate(){
+function animateStars(){
 
-  ctx.clearRect(
-    0,
-    0,
-    canvas.width,
-    canvas.height
-  );
+  ctx.clearRect(0,0,canvas.width,canvas.height);
 
   stars.forEach(star=>{
 
@@ -548,7 +522,7 @@ function animate(){
     ctx.arc(
       star.x,
       star.y,
-      star.radius,
+      star.r,
       0,
       Math.PI*2
     );
@@ -558,234 +532,121 @@ function animate(){
 
     ctx.fill();
 
-    star.y += star.speed;
+    star.y+=star.speed;
 
-    if(star.y > canvas.height){
+    if(star.y>canvas.height){
 
-      star.y = -5;
-
-      star.x =
-      Math.random()*canvas.width;
+      star.y=0;
+      star.x=Math.random()*canvas.width;
 
     }
 
   });
 
-  requestAnimationFrame(animate);
+  requestAnimationFrame(animateStars);
 
 }
 
-animate();
+animateStars();
 
-/* 💖 particle burst */
+/* ✨ random sparkles */
+
+for(let i=0;i<35;i++){
+
+  const s=document.createElement("div");
+
+  s.className="sparkle";
+
+  s.style.left=Math.random()*100+"vw";
+  s.style.top=Math.random()*100+"vh";
+
+  s.style.animationDelay=
+  Math.random()*4+"s";
+
+  document.body.appendChild(s);
+
+}
+
+/* 💖 burst effect */
 
 function burst(x,y){
 
   for(let i=0;i<8;i++){
 
-    const p =
-    document.createElement("div");
+    const p=document.createElement("div");
 
-    p.className = "particle";
+    p.className="particle";
 
-    let sec = currentSection();
+    p.innerHTML=Math.random()>0.5
+      ? "✦"
+      : "❤";
 
-    p.innerHTML =
-    sec==="space" ? "✦" : "❤";
+    p.style.left=x+"px";
+    p.style.top=y+"px";
 
-    p.style.left = x+"px";
-    p.style.top = y+"px";
-
-    p.style.color =
-    sec==="space"
-    ? "#fff4c7"
-    : "#ffc0d6";
+    p.style.color=
+      Math.random()>0.5
+      ? "#ffd6f5"
+      : "#ffc6f2";
 
     document.body.appendChild(p);
 
-    const angle =
-    Math.random()*6.28;
-
-    const dist =
-    40+Math.random()*45;
+    const angle=Math.random()*6.28;
+    const dist=40+Math.random()*35;
 
     setTimeout(()=>{
 
       p.style.transform=
       `translate(
-      ${Math.cos(angle)*dist}px,
-      ${Math.sin(angle)*dist}px
-      ) scale(0.5)`;
+        ${Math.cos(angle)*dist}px,
+        ${Math.sin(angle)*dist}px
+      )`;
 
       p.style.opacity=0;
 
     },10);
 
-    setTimeout(
-      ()=>p.remove(),
-      1000
-    );
+    setTimeout(()=>p.remove(),1000);
 
   }
 
 }
 
-/* 🌙 section detector */
-
-function currentSection(){
-
-  const sections =
-  document.querySelectorAll("section");
-
-  let current="intro";
-
-  sections.forEach(sec=>{
-
-    const rect =
-    sec.getBoundingClientRect();
-
-    if(rect.top<=innerHeight/2){
-
-      current = sec.id;
-
-    }
-
-  });
-
-  return current;
-
-}
-
-/* ✨ mobile particles */
-
-let moves=0;
-let shown=false;
-let last=0;
-
-document.addEventListener(
-"touchmove",
-e=>{
-
-  const now=Date.now();
-
-  if(now-last<120)return;
-
-  last=now;
-
-  const t=e.touches[0];
-
-  const sec=currentSection();
-
-  if(![
-    "intro",
-    "story",
-    "space"
-  ].includes(sec)) return;
-
-  const p =
-  document.createElement("div");
-
-  p.className="particle";
-
-  p.innerHTML=
-  sec==="space"?"✦":"❤";
-
-  p.style.left=t.clientX+"px";
-  p.style.top=t.clientY+"px";
-
-  p.style.color=
-  sec==="space"
-  ? "#fff4c7"
-  : "#ffc0d6";
-
-  document.body.appendChild(p);
-
-  setTimeout(()=>{
-
-    p.style.transform=
-    "translateY(-40px)";
-
-    p.style.opacity=0;
-
-  },10);
-
-  setTimeout(
-    ()=>p.remove(),
-    1200
-  );
-
-  moves++;
-
-  if(moves>70 && !shown){
-
-    shown=true;
-
-    const msg =
-    document.createElement("div");
-
-    msg.className="secret-msg";
-
-    msg.innerText=
-    "You stayed… I like that.";
-
-    document.body.appendChild(msg);
-
-    setTimeout(
-      ()=>msg.remove(),
-      4000
-    );
-
-  }
-
-});
-
-/* 🧠 personality */
-
-let personality={
-
-  curious:0,
-  playful:0,
-  romantic:0
-
-};
-
-function pick(type){
-
-  personality[type]++;
-
-}
-
-/* 💌 reveal */
+/* ✨ reveal */
 
 function reveal(id,e){
 
-  const el=
-  document.getElementById(id);
+  const el=document.getElementById(id);
 
   el.style.display="block";
 
-  burst(
-    e.clientX,
-    e.clientY
-  );
+  burst(e.clientX,e.clientY);
 
 }
 
-/* 📱 smooth scroll */
+/* 🌙 scroll */
 
 function go(id,e){
 
-  document
-  .getElementById(id)
+  document.getElementById(id)
   .scrollIntoView({
     behavior:"smooth"
   });
 
-  burst(
-    e.clientX,
-    e.clientY
-  );
+  burst(e.clientX,e.clientY);
 
+}
+
+/* 🧠 personality */
+
+let personality={
+  curious:0,
+  playful:0,
+  romantic:0
+};
+
+function pick(type){
+  personality[type]++;
 }
 
 /* 🔐 unique code */
@@ -812,10 +673,7 @@ function generateCode(){
 
   }
 
-  localStorage.setItem(
-    "mg_code",
-    code
-  );
+  localStorage.setItem("mg_code",code);
 
   return code;
 
@@ -823,41 +681,95 @@ function generateCode(){
 
 function copyCode(e){
 
-  navigator.clipboard.writeText(
-    generateCode()
-  );
+  navigator.clipboard
+  .writeText(generateCode());
 
-  burst(
-    e.clientX,
-    e.clientY
-  );
+  burst(e.clientX,e.clientY);
 
 }
 
+/* 💌 hidden message */
+
+let moves=0;
+let shown=false;
+let last=0;
+
+document.addEventListener("touchmove",e=>{
+
+  const now=Date.now();
+
+  if(now-last<120)return;
+
+  last=now;
+
+  const t=e.touches[0];
+
+  const p=document.createElement("div");
+
+  p.className="particle";
+
+  p.innerHTML="✦";
+
+  p.style.left=t.clientX+"px";
+  p.style.top=t.clientY+"px";
+
+  p.style.color="#ffd6f5";
+
+  document.body.appendChild(p);
+
+  setTimeout(()=>{
+
+    p.style.transform=
+    "translateY(-30px)";
+
+    p.style.opacity=0;
+
+  },10);
+
+  setTimeout(()=>p.remove(),1000);
+
+  moves++;
+
+  if(moves>70 && !shown){
+
+    shown=true;
+
+    const msg=
+    document.createElement("div");
+
+    msg.className="secret-msg";
+
+    msg.innerText=
+    "You stayed… I like that.";
+
+    document.body.appendChild(msg);
+
+    setTimeout(
+      ()=>msg.remove(),
+      4000
+    );
+
+  }
+
+});
+
 /* 🧠 ending logic */
 
-window.addEventListener(
-"scroll",
-()=>{
+window.addEventListener("scroll",()=>{
 
-  const end =
-  document
-  .getElementById("ending")
+  const end=
+  document.getElementById("ending")
   .getBoundingClientRect();
 
-  if(end.top < innerHeight-100){
+  if(end.top<innerHeight-100){
 
-    document
-    .getElementById("codeBox")
+    document.getElementById("codeBox")
     .style.display="block";
 
-    document
-    .getElementById("userCode")
-    .innerText=
-    generateCode();
+    document.getElementById("userCode")
+    .innerText=generateCode();
 
-    let msg=
-    "I notice you.";
+    let msg="I notice you.";
 
     if(personality.curious>1){
 
@@ -873,8 +785,7 @@ window.addEventListener(
 
     }
 
-    document
-    .getElementById("endingText")
+    document.getElementById("endingText")
     .innerText=msg;
 
   }
