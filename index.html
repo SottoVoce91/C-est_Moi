@@ -7,8 +7,8 @@
 
 <title>MG</title>
 
-<!-- ✨ softer cursive fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Petit+Formal+Script&display=swap" rel="stylesheet">
+<!-- ✨ elegant readable cursive -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Parisienne&display=swap" rel="stylesheet">
 
 <style>
 
@@ -24,102 +24,123 @@ html{
 
 body{
   overflow-x:hidden;
-  background:#06050d;
-  color:#f8edf7;
+  color:#f8f0f7;
+  background:#05060b;
   position:relative;
 
   font-family:'Cormorant Garamond',serif;
 }
 
-/* 🌌 dreamy dark background */
+/* 🌌 full background image */
 
 body::before{
+
   content:"";
+
   position:fixed;
   inset:0;
 
   background:
-  radial-gradient(circle at top,
-  rgba(94,42,111,0.65) 0%,
-  rgba(28,18,49,0.9) 35%,
-  #06050d 75%);
+  linear-gradient(
+    rgba(4,6,12,0.55),
+    rgba(4,6,12,0.72)
+  ),
+  url("simon-delalande-otj8oAU1Iq8-unsplash.jpg");
 
-  z-index:-6;
+  background-size:cover;
+  background-position:center center;
+  background-repeat:no-repeat;
+
+  z-index:-8;
+
+  transform:scale(1.02);
+
 }
 
-/* ✨ moving stars */
+/* 🌌 moving stars canvas */
 
 #stars{
+
   position:fixed;
   inset:0;
+
   width:100%;
   height:100%;
-  z-index:-5;
+
+  z-index:-7;
+
 }
 
-/* 🌸 sparkles */
+/* ✨ sparkle particles */
 
 .sparkle{
+
   position:fixed;
-  width:3px;
-  height:3px;
+
+  width:2px;
+  height:2px;
+
   border-radius:50%;
+
   background:white;
 
   box-shadow:
   0 0 8px white,
-  0 0 16px #ffb8e6,
-  0 0 22px #d9a6ff;
+  0 0 14px #d8c7ff,
+  0 0 20px #ffffff;
 
-  animation:twinkle 3.5s infinite ease-in-out;
+  z-index:-6;
 
-  z-index:-4;
+  animation:twinkle 4s infinite ease-in-out;
+
 }
 
 @keyframes twinkle{
 
   0%,100%{
-    opacity:0.15;
-    transform:scale(0.8);
+    opacity:0.1;
+    transform:scale(0.7);
   }
 
   50%{
     opacity:1;
-    transform:scale(1.5);
+    transform:scale(1.8);
   }
 
 }
 
-/* 🌙 soft glow */
+/* 🌙 dreamy glow */
 
 .glow{
+
   position:fixed;
 
-  width:300px;
-  height:300px;
+  width:320px;
+  height:320px;
 
   border-radius:50%;
 
-  filter:blur(90px);
+  filter:blur(95px);
 
   opacity:0.18;
 
-  z-index:-3;
+  z-index:-5;
 
-  animation:float 12s ease-in-out infinite;
+  animation:float 10s ease-in-out infinite;
+
 }
 
 .glow1{
-  background:#ff84d7;
+  background:#ff8bc7;
   top:-100px;
-  left:-100px;
+  left:-80px;
 }
 
 .glow2{
-  background:#8d7cff;
-  right:-120px;
+  background:#8397ff;
   bottom:-120px;
-  animation-delay:5s;
+  right:-100px;
+  animation-delay:4s;
 }
 
 @keyframes float{
@@ -134,9 +155,10 @@ body::before{
 
 }
 
-/* 📱 layout */
+/* 📱 sections */
 
 section{
+
   min-height:100vh;
 
   display:flex;
@@ -144,67 +166,68 @@ section{
   align-items:center;
 
   padding:30px 18px;
+
 }
 
-/* 🌸 glass container */
+/* 🌸 glass card */
 
 .container{
 
   width:100%;
-  max-width:420px;
-
-  padding:30px 24px;
-
-  border-radius:28px;
+  max-width:460px;
 
   text-align:center;
 
-  background:rgba(255,255,255,0.06);
+  padding:34px 28px;
+
+  border-radius:30px;
+
+  background:rgba(10,12,20,0.34);
 
   backdrop-filter:blur(16px);
 
   border:1px solid rgba(255,255,255,0.08);
 
   box-shadow:
-  0 10px 35px rgba(0,0,0,0.35),
-  0 0 20px rgba(255,182,230,0.06);
+  0 10px 40px rgba(0,0,0,0.45),
+  0 0 20px rgba(255,255,255,0.04);
 
 }
 
-/* ✨ titles */
+/* ✨ headings */
 
 h1{
 
-  font-family:'Petit Formal Script',cursive;
+  font-family:'Parisienne',cursive;
 
-  font-size:2rem;
+  font-size:2.3rem;
 
   font-weight:400;
 
-  color:#ffd8ef;
+  color:#ffe1f2;
 
   margin-bottom:18px;
 
-  line-height:1.5;
+  letter-spacing:1px;
 
   text-shadow:
-  0 0 10px rgba(255,216,239,0.3);
+  0 0 10px rgba(255,255,255,0.2);
 
 }
 
-/* 🌙 readable soft text */
+/* 🌙 body text */
 
 p{
 
   font-size:15px;
 
-  font-weight:300;
-
   line-height:1.9;
 
-  color:#f6edf8;
+  font-weight:300;
 
-  letter-spacing:0.4px;
+  color:#f5edf8;
+
+  letter-spacing:0.3px;
 
 }
 
@@ -212,19 +235,21 @@ p{
 
 .btn{
 
-  margin-top:18px;
+  margin-top:20px;
 
-  padding:12px 24px;
+  padding:12px 26px;
 
   border:none;
 
   border-radius:999px;
 
+  cursor:pointer;
+
   background:
   linear-gradient(
-  135deg,
-  #f59adf,
-  #b28cff
+    135deg,
+    #f5a7dc,
+    #a5b8ff
   );
 
   color:white;
@@ -233,25 +258,25 @@ p{
 
   font-size:15px;
 
-  font-weight:500;
+  font-weight:400;
 
-  letter-spacing:0.6px;
-
-  cursor:pointer;
+  letter-spacing:0.5px;
 
   transition:0.35s ease;
 
   box-shadow:
-  0 5px 20px rgba(245,154,223,0.28);
+  0 5px 18px rgba(255,182,234,0.25);
 
 }
 
 .btn:hover{
 
-  transform:translateY(-2px) scale(1.03);
+  transform:
+  translateY(-2px)
+  scale(1.03);
 
   box-shadow:
-  0 8px 24px rgba(245,154,223,0.45);
+  0 8px 24px rgba(255,182,234,0.45);
 
 }
 
@@ -259,19 +284,19 @@ a{
   text-decoration:none;
 }
 
-/* ✨ reveal text */
+/* ✨ hidden text */
 
 .hidden{
 
   display:none;
 
-  margin-top:14px;
+  margin-top:16px;
 
-  color:#ffeef9;
+  color:#fff0f9;
 
 }
 
-/* 🌸 particles */
+/* 🌸 burst particles */
 
 .particle{
 
@@ -286,8 +311,8 @@ a{
   transition:all 1s ease-out;
 
   text-shadow:
-  0 0 10px white,
-  0 0 20px pink;
+  0 0 12px white,
+  0 0 20px #ffd5ef;
 
 }
 
@@ -297,20 +322,20 @@ a{
 
   position:fixed;
 
-  bottom:22px;
+  bottom:24px;
   left:50%;
 
   transform:translateX(-50%);
 
-  background:rgba(255,255,255,0.1);
-
-  border:1px solid rgba(255,255,255,0.08);
-
-  backdrop-filter:blur(14px);
+  padding:12px 20px;
 
   border-radius:999px;
 
-  padding:12px 20px;
+  background:rgba(255,255,255,0.12);
+
+  backdrop-filter:blur(14px);
+
+  border:1px solid rgba(255,255,255,0.08);
 
   font-size:12px;
 
@@ -320,11 +345,11 @@ a{
 
 }
 
-/* 🔐 code */
+/* 🔐 code section */
 
 #codeBox{
   display:none;
-  margin-top:22px;
+  margin-top:24px;
 }
 
 #userCode{
@@ -341,11 +366,30 @@ a{
 
   border:1px solid rgba(255,255,255,0.08);
 
-  color:#ffd7ef;
+  color:#ffd8ef;
+
+  letter-spacing:2px;
 
   font-size:14px;
 
-  letter-spacing:2px;
+}
+
+/* 📸 photo credit */
+
+.credit{
+
+  position:fixed;
+
+  bottom:12px;
+  right:14px;
+
+  font-size:11px;
+
+  color:rgba(255,255,255,0.6);
+
+  z-index:999;
+
+  letter-spacing:0.4px;
 
 }
 
@@ -354,12 +398,12 @@ a{
 @media(min-width:768px){
 
   .container{
-    max-width:650px;
-    padding:48px;
+    max-width:680px;
+    padding:52px;
   }
 
   h1{
-    font-size:2.8rem;
+    font-size:3rem;
   }
 
   p{
@@ -367,7 +411,7 @@ a{
   }
 
   .btn{
-    font-size:16px;
+    font-size:17px;
   }
 
 }
@@ -377,14 +421,14 @@ a{
 
 <body>
 
-<!-- 🌌 stars -->
+<!-- 🌌 moving stars -->
 <canvas id="stars"></canvas>
 
-<!-- 🌸 glow -->
+<!-- ✨ dreamy glow -->
 <div class="glow glow1"></div>
 <div class="glow glow2"></div>
 
-<!-- 🌌 intro -->
+<!-- 🌌 INTRO -->
 <section id="intro">
 
 <div class="container">
@@ -406,7 +450,7 @@ Continue →
 
 </section>
 
-<!-- 🌙 story -->
+<!-- 🌙 STORY -->
 <section id="story">
 
 <div class="container">
@@ -417,8 +461,8 @@ About me
 
 <p>
 I don’t say much at first,
-but I notice details
-and may internally judge.
+but I notice details quietly
+and may internally judge a little.
 </p>
 
 <button class="btn"
@@ -430,7 +474,7 @@ Continue →
 
 </section>
 
-<!-- ✨ space -->
+<!-- ✨ SPACE -->
 <section id="space">
 
 <div class="container">
@@ -443,7 +487,8 @@ Another side
 Astrophotography,
 books,
 space objects,
-quiet nights
+quiet nights,
+and disappearing into random rabbit holes.
 </p>
 
 <button class="btn"
@@ -455,7 +500,7 @@ Continue →
 
 </section>
 
-<!-- 💌 secrets -->
+<!-- 💌 SECRETS -->
 <section id="secrets">
 
 <div class="container">
@@ -472,7 +517,7 @@ What I enjoy
 <p id="s1" class="hidden">
 Cybersec challenges,
 Geoguessr,
-slow coffee bars
+slow coffee bars.
 </p>
 
 <button class="btn"
@@ -504,13 +549,13 @@ Continue →
 
 </section>
 
-<!-- 🔐 ending -->
+<!-- 🔐 END -->
 <section id="ending">
 
 <div class="container">
 
 <h1>
-Finale
+Final
 </h1>
 
 <div id="endingText"></div>
@@ -577,38 +622,54 @@ Geoguessr
 
 </section>
 
+<!-- 📸 credit -->
+<div class="credit">
+Photo by Simon Delalande — Unsplash
+</div>
+
 <script>
 
-/* 🌌 stars */
+/* 🌌 canvas stars */
 
-const canvas=document.getElementById("stars");
-const ctx=canvas.getContext("2d");
+const canvas =
+document.getElementById("stars");
+
+const ctx =
+canvas.getContext("2d");
 
 function resize(){
 
-  canvas.width=window.innerWidth;
-  canvas.height=window.innerHeight;
+  canvas.width =
+  window.innerWidth;
+
+  canvas.height =
+  window.innerHeight;
 
 }
 
 resize();
 
-window.addEventListener("resize",resize);
+window.addEventListener(
+  "resize",
+  resize
+);
 
 const stars=[];
 
-for(let i=0;i<160;i++){
+for(let i=0;i<220;i++){
 
   stars.push({
 
     x:Math.random()*canvas.width,
     y:Math.random()*canvas.height,
 
-    r:Math.random()*1.7,
+    r:Math.random()*1.8,
 
-    speed:Math.random()*0.35+0.05,
+    speed:
+    Math.random()*0.25+0.05,
 
-    opacity:Math.random()
+    opacity:
+    Math.random()
 
   });
 
@@ -640,48 +701,56 @@ function animateStars(){
 
     ctx.fill();
 
-    star.y+=star.speed;
+    star.y += star.speed;
 
     if(star.y>canvas.height){
 
       star.y=0;
-      star.x=Math.random()*canvas.width;
+
+      star.x=
+      Math.random()*canvas.width;
 
     }
 
   });
 
-  requestAnimationFrame(animateStars);
+  requestAnimationFrame(
+    animateStars
+  );
 
 }
 
 animateStars();
 
-/* ✨ sparkles */
+/* ✨ extra sparkles */
 
-for(let i=0;i<40;i++){
+for(let i=0;i<45;i++){
 
   const s=document.createElement("div");
 
   s.className="sparkle";
 
-  s.style.left=Math.random()*100+"vw";
-  s.style.top=Math.random()*100+"vh";
+  s.style.left=
+  Math.random()*100+"vw";
+
+  s.style.top=
+  Math.random()*100+"vh";
 
   s.style.animationDelay=
-  Math.random()*4+"s";
+  Math.random()*5+"s";
 
   document.body.appendChild(s);
 
 }
 
-/* 💖 burst */
+/* 💖 sparkle burst */
 
 function burst(x,y){
 
   for(let i=0;i<8;i++){
 
-    const p=document.createElement("div");
+    const p=
+    document.createElement("div");
 
     p.className="particle";
 
@@ -695,13 +764,16 @@ function burst(x,y){
 
     p.style.color=
     Math.random()>0.5
-    ? "#ffd6f5"
-    : "#ffc9ea";
+    ? "#ffe1f5"
+    : "#ffd0f0";
 
     document.body.appendChild(p);
 
-    const angle=Math.random()*6.28;
-    const dist=35+Math.random()*35;
+    const angle=
+    Math.random()*6.28;
+
+    const dist=
+    35+Math.random()*35;
 
     setTimeout(()=>{
 
@@ -715,17 +787,21 @@ function burst(x,y){
 
     },10);
 
-    setTimeout(()=>p.remove(),1000);
+    setTimeout(
+      ()=>p.remove(),
+      1000
+    );
 
   }
 
 }
 
-/* ✨ reveal */
+/* ✨ reveal text */
 
 function reveal(id,e){
 
-  const el=document.getElementById(id);
+  const el=
+  document.getElementById(id);
 
   el.style.display="block";
 
@@ -733,7 +809,7 @@ function reveal(id,e){
 
 }
 
-/* 🌙 continue button */
+/* 🌙 continue */
 
 function go(id,e){
 
@@ -749,13 +825,17 @@ function go(id,e){
 /* 🧠 personality */
 
 let personality={
+
   curious:0,
   playful:0,
   romantic:0
+
 };
 
 function pick(type){
+
   personality[type]++;
+
 }
 
 /* 🔐 unique code */
@@ -774,7 +854,7 @@ function generateCode(){
 
   for(let i=0;i<5;i++){
 
-    code+=chars[
+    code += chars[
       Math.floor(
       Math.random()*chars.length
       )
@@ -782,7 +862,10 @@ function generateCode(){
 
   }
 
-  localStorage.setItem("mg_code",code);
+  localStorage.setItem(
+    "mg_code",
+    code
+  );
 
   return code;
 
@@ -797,13 +880,15 @@ function copyCode(e){
 
 }
 
-/* 💌 hidden engagement */
+/* 💌 hidden message */
 
 let moves=0;
 let shown=false;
 let last=0;
 
-document.addEventListener("touchmove",e=>{
+document.addEventListener(
+"touchmove",
+e=>{
 
   const now=Date.now();
 
@@ -813,7 +898,8 @@ document.addEventListener("touchmove",e=>{
 
   const t=e.touches[0];
 
-  const p=document.createElement("div");
+  const p=
+  document.createElement("div");
 
   p.className="particle";
 
@@ -822,7 +908,7 @@ document.addEventListener("touchmove",e=>{
   p.style.left=t.clientX+"px";
   p.style.top=t.clientY+"px";
 
-  p.style.color="#ffd8ef";
+  p.style.color="#ffe1f5";
 
   document.body.appendChild(p);
 
@@ -835,7 +921,10 @@ document.addEventListener("touchmove",e=>{
 
   },10);
 
-  setTimeout(()=>p.remove(),1000);
+  setTimeout(
+    ()=>p.remove(),
+    1000
+  );
 
   moves++;
 
@@ -862,9 +951,11 @@ document.addEventListener("touchmove",e=>{
 
 });
 
-/* 🧠 ending */
+/* 🧠 ending text */
 
-window.addEventListener("scroll",()=>{
+window.addEventListener(
+"scroll",
+()=>{
 
   const end=
   document.getElementById("ending")
@@ -878,7 +969,8 @@ window.addEventListener("scroll",()=>{
     document.getElementById("userCode")
     .innerText=generateCode();
 
-    let msg="I notice you.";
+    let msg=
+    "I notice you.";
 
     if(personality.curious>1){
 
