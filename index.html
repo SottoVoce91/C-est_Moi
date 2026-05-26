@@ -7,7 +7,7 @@
 
 <title>MG</title>
 
-<!-- ✨ elegant readable cursive -->
+<!-- ✨ elegant cursive -->
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Parisienne&display=swap" rel="stylesheet">
 
 <style>
@@ -23,27 +23,35 @@ html{
 }
 
 body{
+
   overflow-x:hidden;
+
   color:#f8f0f7;
+
   background:#05060b;
+
   position:relative;
 
-  font-family:'Cormorant Garamond',serif;
+  font-family:
+  'Cormorant Garamond',
+  serif;
+
 }
 
-/* 🌌 full background image */
+/* 🌌 FULL BACKGROUND IMAGE */
 
 body::before{
 
   content:"";
 
   position:fixed;
+
   inset:0;
 
   background:
   linear-gradient(
-    rgba(4,6,12,0.55),
-    rgba(4,6,12,0.72)
+    rgba(4,6,12,0.58),
+    rgba(4,6,12,0.76)
   ),
   url("xhxt8o0p2m1h1.jpeg");
 
@@ -51,27 +59,28 @@ body::before{
   background-position:center center;
   background-repeat:no-repeat;
 
-  z-index:-8;
+  z-index:-10;
 
-  transform:scale(1.02);
+  transform:scale(1.03);
 
 }
 
-/* 🌌 moving stars canvas */
+/* ✨ MOVING STARS */
 
 #stars{
 
   position:fixed;
+
   inset:0;
 
   width:100%;
   height:100%;
 
-  z-index:-7;
+  z-index:-9;
 
 }
 
-/* ✨ sparkle particles */
+/* ✨ tiny sparkle dots */
 
 .sparkle{
 
@@ -87,9 +96,9 @@ body::before{
   box-shadow:
   0 0 8px white,
   0 0 14px #d8c7ff,
-  0 0 20px #ffffff;
+  0 0 18px white;
 
-  z-index:-6;
+  z-index:-8;
 
   animation:twinkle 4s infinite ease-in-out;
 
@@ -98,7 +107,7 @@ body::before{
 @keyframes twinkle{
 
   0%,100%{
-    opacity:0.1;
+    opacity:0.15;
     transform:scale(0.7);
   }
 
@@ -109,7 +118,7 @@ body::before{
 
 }
 
-/* 🌙 dreamy glow */
+/* 🌙 dreamy glows */
 
 .glow{
 
@@ -120,27 +129,34 @@ body::before{
 
   border-radius:50%;
 
-  filter:blur(95px);
+  filter:blur(100px);
 
   opacity:0.18;
 
-  z-index:-5;
+  z-index:-7;
 
   animation:float 10s ease-in-out infinite;
 
 }
 
 .glow1{
-  background:#ff8bc7;
+
+  background:#ff8fd6;
+
   top:-100px;
-  left:-80px;
+  left:-100px;
+
 }
 
 .glow2{
-  background:#8397ff;
+
+  background:#8fa0ff;
+
   bottom:-120px;
-  right:-100px;
+  right:-120px;
+
   animation-delay:4s;
+
 }
 
 @keyframes float{
@@ -162,14 +178,16 @@ section{
   min-height:100vh;
 
   display:flex;
+
   justify-content:center;
   align-items:center;
 
-  padding:30px 18px;
+  padding:28px 18px;
 
 }
 
-/* 🌸 glass card */
+/* 🌸 glass containers */
+/* ✅ borders removed */
 
 .container{
 
@@ -182,15 +200,13 @@ section{
 
   border-radius:30px;
 
-  background:rgba(10,12,20,0.34);
+  background:rgba(10,12,20,0.26);
 
-  backdrop-filter:blur(16px);
-
-  border:1px solid rgba(255,255,255,0.08);
+  backdrop-filter:blur(14px);
 
   box-shadow:
   0 10px 40px rgba(0,0,0,0.45),
-  0 0 20px rgba(255,255,255,0.04);
+  0 0 25px rgba(255,255,255,0.03);
 
 }
 
@@ -204,18 +220,18 @@ h1{
 
   font-weight:400;
 
-  color:#ffe1f2;
+  color:#ffe4f5;
 
   margin-bottom:18px;
 
   letter-spacing:1px;
 
   text-shadow:
-  0 0 10px rgba(255,255,255,0.2);
+  0 0 10px rgba(255,255,255,0.18);
 
 }
 
-/* 🌙 body text */
+/* 🌙 text */
 
 p{
 
@@ -225,9 +241,9 @@ p{
 
   font-weight:300;
 
-  color:#f5edf8;
-
   letter-spacing:0.3px;
+
+  color:#f7eef8;
 
 }
 
@@ -249,12 +265,14 @@ p{
   linear-gradient(
     135deg,
     #f5a7dc,
-    #a5b8ff
+    #a8b8ff
   );
 
   color:white;
 
-  font-family:'Cormorant Garamond',serif;
+  font-family:
+  'Cormorant Garamond',
+  serif;
 
   font-size:15px;
 
@@ -276,7 +294,7 @@ p{
   scale(1.03);
 
   box-shadow:
-  0 8px 24px rgba(255,182,234,0.45);
+  0 8px 24px rgba(255,182,234,0.42);
 
 }
 
@@ -284,7 +302,7 @@ a{
   text-decoration:none;
 }
 
-/* ✨ hidden text */
+/* ✨ hidden reveals */
 
 .hidden{
 
@@ -292,7 +310,7 @@ a{
 
   margin-top:16px;
 
-  color:#fff0f9;
+  color:#fff0f8;
 
 }
 
@@ -312,11 +330,11 @@ a{
 
   text-shadow:
   0 0 12px white,
-  0 0 20px #ffd5ef;
+  0 0 20px #ffd6ef;
 
 }
 
-/* 💌 secret */
+/* 💌 hidden message */
 
 .secret-msg{
 
@@ -331,11 +349,9 @@ a{
 
   border-radius:999px;
 
-  background:rgba(255,255,255,0.12);
+  background:rgba(255,255,255,0.1);
 
   backdrop-filter:blur(14px);
-
-  border:1px solid rgba(255,255,255,0.08);
 
   font-size:12px;
 
@@ -348,8 +364,11 @@ a{
 /* 🔐 code section */
 
 #codeBox{
+
   display:none;
+
   margin-top:24px;
+
 }
 
 #userCode{
@@ -364,8 +383,6 @@ a{
 
   background:rgba(255,255,255,0.08);
 
-  border:1px solid rgba(255,255,255,0.08);
-
   color:#ffd8ef;
 
   letter-spacing:2px;
@@ -374,7 +391,7 @@ a{
 
 }
 
-/* 📸 photo credit */
+/* 📸 updated credit */
 
 .credit{
 
@@ -385,11 +402,14 @@ a{
 
   font-size:11px;
 
-  color:rgba(255,255,255,0.6);
+  color:rgba(255,255,255,0.65);
 
   z-index:999;
 
   letter-spacing:0.4px;
+
+  text-shadow:
+  0 0 8px rgba(0,0,0,0.45);
 
 }
 
@@ -398,8 +418,11 @@ a{
 @media(min-width:768px){
 
   .container{
+
     max-width:680px;
+
     padding:52px;
+
   }
 
   h1{
@@ -421,10 +444,10 @@ a{
 
 <body>
 
-<!-- 🌌 moving stars -->
+<!-- 🌌 stars -->
 <canvas id="stars"></canvas>
 
-<!-- ✨ dreamy glow -->
+<!-- 🌙 glow -->
 <div class="glow glow1"></div>
 <div class="glow glow2"></div>
 
@@ -622,9 +645,10 @@ Geoguessr
 
 </section>
 
-<!-- 📸 credit -->
+<!-- 📸 updated credit -->
+
 <div class="credit">
-Photo by Simon Delalande — Unsplash
+Photo by Harsh1271 via Reddit
 </div>
 
 <script>
@@ -656,7 +680,7 @@ window.addEventListener(
 
 const stars=[];
 
-for(let i=0;i<220;i++){
+for(let i=0;i<240;i++){
 
   stars.push({
 
@@ -666,7 +690,7 @@ for(let i=0;i<220;i++){
     r:Math.random()*1.8,
 
     speed:
-    Math.random()*0.25+0.05,
+    Math.random()*0.28+0.05,
 
     opacity:
     Math.random()
@@ -722,9 +746,9 @@ function animateStars(){
 
 animateStars();
 
-/* ✨ extra sparkles */
+/* ✨ sparkle overlay */
 
-for(let i=0;i<45;i++){
+for(let i=0;i<50;i++){
 
   const s=document.createElement("div");
 
@@ -796,7 +820,7 @@ function burst(x,y){
 
 }
 
-/* ✨ reveal text */
+/* ✨ reveal */
 
 function reveal(id,e){
 
@@ -951,7 +975,7 @@ e=>{
 
 });
 
-/* 🧠 ending text */
+/* 🧠 ending */
 
 window.addEventListener(
 "scroll",
