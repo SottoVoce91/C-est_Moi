@@ -7,8 +7,7 @@
 
 <title>MG</title>
 
-<!-- ✨ elegant cursive -->
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Parisienne&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Parisienne&display=swap" rel="stylesheet">
 
 <style>
 
@@ -50,8 +49,8 @@ body::before{
 
   background:
   linear-gradient(
-    rgba(4,6,12,0.58),
-    rgba(4,6,12,0.76)
+    rgba(4,6,12,0.45),
+    rgba(4,6,12,0.68)
   ),
   url("xhxt8o0p2m1h1.jpeg");
 
@@ -80,7 +79,7 @@ body::before{
 
 }
 
-/* ✨ tiny sparkle dots */
+/* ✨ sparkles */
 
 .sparkle{
 
@@ -95,8 +94,8 @@ body::before{
 
   box-shadow:
   0 0 8px white,
-  0 0 14px #d8c7ff,
-  0 0 18px white;
+  0 0 15px #d6cbff,
+  0 0 22px white;
 
   z-index:-8;
 
@@ -118,7 +117,7 @@ body::before{
 
 }
 
-/* 🌙 dreamy glows */
+/* 🌙 dreamy glow */
 
 .glow{
 
@@ -129,9 +128,9 @@ body::before{
 
   border-radius:50%;
 
-  filter:blur(100px);
+  filter:blur(110px);
 
-  opacity:0.18;
+  opacity:0.15;
 
   z-index:-7;
 
@@ -141,10 +140,10 @@ body::before{
 
 .glow1{
 
-  background:#ff8fd6;
+  background:#ff9edb;
 
   top:-100px;
-  left:-100px;
+  left:-120px;
 
 }
 
@@ -182,41 +181,31 @@ section{
   justify-content:center;
   align-items:center;
 
-  padding:28px 18px;
+  padding:30px 20px;
 
 }
 
-/* 🌸 glass containers */
-/* ✅ borders removed */
+/* ✨ transparent content */
+/* ✅ NO MORE BOXES */
 
 .container{
 
   width:100%;
-  max-width:460px;
+  max-width:700px;
 
   text-align:center;
 
-  padding:34px 28px;
-
-  border-radius:30px;
-
-  background:rgba(10,12,20,0.26);
-
-  backdrop-filter:blur(14px);
-
-  box-shadow:
-  0 10px 40px rgba(0,0,0,0.45),
-  0 0 25px rgba(255,255,255,0.03);
+  padding:20px;
 
 }
 
-/* ✨ headings */
+/* ✨ titles */
 
 h1{
 
   font-family:'Parisienne',cursive;
 
-  font-size:2.3rem;
+  font-size:2.7rem;
 
   font-weight:400;
 
@@ -227,7 +216,7 @@ h1{
   letter-spacing:1px;
 
   text-shadow:
-  0 0 10px rgba(255,255,255,0.18);
+  0 0 12px rgba(255,255,255,0.25);
 
 }
 
@@ -235,15 +224,18 @@ h1{
 
 p{
 
-  font-size:15px;
+  font-size:17px;
 
   line-height:1.9;
 
   font-weight:300;
 
-  letter-spacing:0.3px;
+  color:#f8eff8;
 
-  color:#f7eef8;
+  letter-spacing:0.4px;
+
+  text-shadow:
+  0 0 10px rgba(0,0,0,0.4);
 
 }
 
@@ -253,7 +245,7 @@ p{
 
   margin-top:20px;
 
-  padding:12px 26px;
+  padding:12px 28px;
 
   border:none;
 
@@ -264,8 +256,8 @@ p{
   background:
   linear-gradient(
     135deg,
-    #f5a7dc,
-    #a8b8ff
+    rgba(245,167,220,0.88),
+    rgba(168,184,255,0.88)
   );
 
   color:white;
@@ -274,7 +266,7 @@ p{
   'Cormorant Garamond',
   serif;
 
-  font-size:15px;
+  font-size:16px;
 
   font-weight:400;
 
@@ -282,8 +274,10 @@ p{
 
   transition:0.35s ease;
 
+  backdrop-filter:blur(8px);
+
   box-shadow:
-  0 5px 18px rgba(255,182,234,0.25);
+  0 6px 18px rgba(255,182,234,0.28);
 
 }
 
@@ -294,7 +288,7 @@ p{
   scale(1.03);
 
   box-shadow:
-  0 8px 24px rgba(255,182,234,0.42);
+  0 10px 28px rgba(255,182,234,0.45);
 
 }
 
@@ -314,7 +308,7 @@ a{
 
 }
 
-/* 🌸 burst particles */
+/* 🌸 particles */
 
 .particle{
 
@@ -349,9 +343,9 @@ a{
 
   border-radius:999px;
 
-  background:rgba(255,255,255,0.1);
+  background:rgba(255,255,255,0.08);
 
-  backdrop-filter:blur(14px);
+  backdrop-filter:blur(12px);
 
   font-size:12px;
 
@@ -361,7 +355,7 @@ a{
 
 }
 
-/* 🔐 code section */
+/* 🔐 code */
 
 #codeBox{
 
@@ -389,9 +383,11 @@ a{
 
   font-size:14px;
 
+  backdrop-filter:blur(10px);
+
 }
 
-/* 📸 updated credit */
+/* 📸 credit */
 
 .credit{
 
@@ -417,24 +413,16 @@ a{
 
 @media(min-width:768px){
 
-  .container{
-
-    max-width:680px;
-
-    padding:52px;
-
-  }
-
   h1{
-    font-size:3rem;
+    font-size:3.2rem;
   }
 
   p{
-    font-size:18px;
+    font-size:20px;
   }
 
   .btn{
-    font-size:17px;
+    font-size:18px;
   }
 
 }
@@ -447,7 +435,7 @@ a{
 <!-- 🌌 stars -->
 <canvas id="stars"></canvas>
 
-<!-- 🌙 glow -->
+<!-- ✨ glow -->
 <div class="glow glow1"></div>
 <div class="glow glow2"></div>
 
@@ -645,7 +633,7 @@ Geoguessr
 
 </section>
 
-<!-- 📸 updated credit -->
+<!-- 📸 credit -->
 
 <div class="credit">
 Photo by Harsh1271 via Reddit
@@ -653,7 +641,7 @@ Photo by Harsh1271 via Reddit
 
 <script>
 
-/* 🌌 canvas stars */
+/* 🌌 STAR FIELD */
 
 const canvas =
 document.getElementById("stars");
@@ -680,17 +668,17 @@ window.addEventListener(
 
 const stars=[];
 
-for(let i=0;i<240;i++){
+for(let i=0;i<260;i++){
 
   stars.push({
 
     x:Math.random()*canvas.width,
     y:Math.random()*canvas.height,
 
-    r:Math.random()*1.8,
+    r:Math.random()*1.7,
 
     speed:
-    Math.random()*0.28+0.05,
+    Math.random()*0.25+0.03,
 
     opacity:
     Math.random()
@@ -748,7 +736,7 @@ animateStars();
 
 /* ✨ sparkle overlay */
 
-for(let i=0;i<50;i++){
+for(let i=0;i<55;i++){
 
   const s=document.createElement("div");
 
@@ -767,7 +755,7 @@ for(let i=0;i<50;i++){
 
 }
 
-/* 💖 sparkle burst */
+/* 💖 burst effect */
 
 function burst(x,y){
 
@@ -862,7 +850,7 @@ function pick(type){
 
 }
 
-/* 🔐 unique code */
+/* 🔐 code */
 
 function generateCode(){
 
