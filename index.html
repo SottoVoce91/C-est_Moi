@@ -9,6 +9,11 @@
 <title>MG</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Parisienne&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://aladin.cds.unistra.fr/AladinLite/api/v3/latest/aladin.min.css">
+<script src="https://aladin.cds.unistra.fr/AladinLite/api/v3/latest/aladin.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <style>
 
@@ -410,6 +415,196 @@ a{
 
 }
 
+
+/* 🔭 DIGITAL OBSERVATORY */
+
+.observatory-container{
+  max-width:1000px;
+}
+
+.observatory-intro{
+  margin-bottom:28px;
+}
+
+.observatory-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:28px;
+  width:100%;
+  margin-top:30px;
+}
+
+.observatory-card{
+  width:100%;
+  padding:22px;
+  border-radius:24px;
+  background:rgba(5,6,15,0.48);
+  border:1px solid rgba(255,255,255,0.13);
+  backdrop-filter:blur(12px);
+  box-shadow:
+    0 0 30px rgba(180,160,255,0.12),
+    0 12px 45px rgba(0,0,0,0.25);
+}
+
+.observatory-card h2{
+  font-family:'Parisienne',cursive;
+  font-size:2rem;
+  font-weight:400;
+  color:#ffe4f5;
+  margin-bottom:8px;
+  text-shadow:0 0 12px rgba(255,255,255,0.2);
+}
+
+.observatory-card p{
+  font-size:15px;
+  line-height:1.7;
+  margin-bottom:12px;
+}
+
+#aladin-lite-div{
+  width:100%;
+  height:520px;
+  margin-top:18px;
+  border-radius:18px;
+  overflow:hidden;
+  background:#05060b;
+  border:1px solid rgba(255,255,255,0.12);
+}
+
+#iss-map{
+  width:100%;
+  height:360px;
+  margin-top:18px;
+  border-radius:18px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,0.12);
+}
+
+.iss-stats{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-top:16px;
+}
+
+.iss-stat{
+  padding:12px;
+  border-radius:14px;
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.08);
+}
+
+.iss-stat-label{
+  display:block;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  opacity:0.65;
+}
+
+.iss-stat-value{
+  display:block;
+  margin-top:4px;
+  font-size:16px;
+}
+
+#iss-status{
+  margin-top:12px;
+  font-size:13px;
+  opacity:0.72;
+}
+
+.planet-selector{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:8px;
+  margin:18px 0;
+}
+
+.planet-btn{
+  border:1px solid rgba(255,255,255,0.16);
+  background:rgba(255,255,255,0.07);
+  color:#fff;
+  padding:8px 14px;
+  border-radius:999px;
+  cursor:pointer;
+  font-family:'Cormorant Garamond',serif;
+  font-size:14px;
+  transition:0.25s ease;
+}
+
+.planet-btn:hover,
+.planet-btn.active{
+  background:rgba(245,167,220,0.25);
+  transform:translateY(-1px);
+}
+
+.planet-display{
+  min-height:260px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+  border-radius:20px;
+  background:radial-gradient(
+    circle at center,
+    rgba(168,184,255,0.13),
+    rgba(5,6,15,0.25) 55%,
+    transparent 75%
+  );
+}
+
+.planet-orb{
+  width:105px;
+  height:105px;
+  border-radius:50%;
+  margin-bottom:16px;
+  box-shadow:
+    0 0 35px rgba(255,255,255,0.14),
+    inset -18px -12px 25px rgba(0,0,0,0.35);
+  transition:0.35s ease;
+}
+
+.planet-name{
+  font-family:'Parisienne',cursive;
+  font-size:2rem;
+  color:#ffe4f5;
+}
+
+.planet-fact{
+  max-width:600px;
+  margin-top:8px;
+}
+
+.observatory-source{
+  font-size:11px !important;
+  opacity:0.55;
+  margin-top:12px;
+}
+
+@media(max-width:767px){
+
+  #aladin-lite-div{
+    height:420px;
+  }
+
+  #iss-map{
+    height:300px;
+  }
+
+  .observatory-card{
+    padding:15px;
+  }
+
+  .iss-stats{
+    grid-template-columns:1fr 1fr;
+  }
+
+}
+
 /* 💻 desktop */
 
 @media(min-width:768px){
@@ -501,6 +696,128 @@ assortment of books,
 classical symphonies,
 heritage encounters
 </p>
+
+<button class="btn"
+onclick="go('observatory',event)">
+Explore the sky →
+</button>
+
+</div>
+
+</section>
+
+
+<!-- 🔭 DIGITAL OBSERVATORY -->
+<section id="observatory">
+
+<div class="container observatory-container">
+
+<h1>
+Digital Observatory
+</h1>
+
+<p class="observatory-intro">
+A small window into the sky.
+</p>
+
+<div class="observatory-grid">
+
+<!-- 🌌 ALADIN -->
+<div class="observatory-card">
+
+<h2>
+Sky Atlas
+</h2>
+
+<p>
+Explore the night sky through an interactive astronomical atlas.
+</p>
+
+<div id="aladin-lite-div"></div>
+
+<p class="observatory-source">
+Sky imagery and astronomical data powered by Aladin Lite / CDS.
+</p>
+
+</div>
+
+<!-- 🛰 ISS -->
+<div class="observatory-card">
+
+<h2>
+ISS Tracker
+</h2>
+
+<p>
+Where is the International Space Station right now?
+</p>
+
+<div id="iss-map"></div>
+
+<div class="iss-stats">
+
+<div class="iss-stat">
+<span class="iss-stat-label">Latitude</span>
+<span id="iss-lat" class="iss-stat-value">Loading…</span>
+</div>
+
+<div class="iss-stat">
+<span class="iss-stat-label">Longitude</span>
+<span id="iss-lon" class="iss-stat-value">Loading…</span>
+</div>
+
+<div class="iss-stat">
+<span class="iss-stat-label">Altitude</span>
+<span id="iss-alt" class="iss-stat-value">Loading…</span>
+</div>
+
+<div class="iss-stat">
+<span class="iss-stat-label">Velocity</span>
+<span id="iss-speed" class="iss-stat-value">Loading…</span>
+</div>
+
+</div>
+
+<p id="iss-status">
+Connecting to ISS telemetry…
+</p>
+
+<p class="observatory-source">
+Live position provided by the Where the ISS at? API.
+</p>
+
+</div>
+
+<!-- 🪐 PLANET EXPLORER -->
+<div class="observatory-card">
+
+<h2>
+Planet Explorer
+</h2>
+
+<p>
+Choose a world.
+</p>
+
+<div class="planet-selector" id="planet-selector"></div>
+
+<div class="planet-display">
+
+<div id="planet-orb" class="planet-orb"></div>
+
+<div id="planet-name" class="planet-name">
+Earth
+</div>
+
+<p id="planet-fact" class="planet-fact">
+Our home world — the only planet currently known to support life.
+</p>
+
+</div>
+
+</div>
+
+</div>
 
 <button class="btn"
 onclick="go('secrets',event)">
@@ -962,6 +1279,279 @@ e=>{
   }
 
 });
+
+
+/* 🔭 DIGITAL OBSERVATORY */
+
+/* 🌌 ALADIN LITE */
+
+let aladin;
+
+function initAladin(){
+
+  if(typeof A === "undefined"){
+    console.warn("Aladin Lite did not load.");
+    return;
+  }
+
+  aladin = A.aladin(
+    "#aladin-lite-div",
+    {
+      survey:"P/DSS2/color",
+      fov:60,
+      target:"0 +0",
+      cooFrame:"ICRS",
+      showReticle:true,
+      showZoomControl:true,
+      showFullscreenControl:true,
+      showLayersControl:true,
+      showGotoControl:true
+    }
+  );
+
+}
+
+/* 🛰 ISS TRACKER */
+
+let issMap;
+let issMarker;
+let issInitialized=false;
+
+function initISSMap(){
+
+  if(typeof L === "undefined"){
+    document.getElementById("iss-status").innerText =
+      "Map library could not be loaded.";
+    return;
+  }
+
+  issMap = L.map("iss-map", {
+    worldCopyJump:true,
+    zoomControl:true
+  }).setView([0,0],2);
+
+  L.tileLayer(
+    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+    {
+      maxZoom:5,
+      attribution:"&copy; OpenStreetMap contributors"
+    }
+  ).addTo(issMap);
+
+  issInitialized=true;
+
+  updateISS();
+
+}
+
+async function updateISS(){
+
+  const status =
+    document.getElementById("iss-status");
+
+  try{
+
+    const response =
+      await fetch(
+        "https://api.wheretheiss.at/v1/satellites/25544"
+      );
+
+    if(!response.ok){
+      throw new Error("ISS API request failed");
+    }
+
+    const data =
+      await response.json();
+
+    const lat =
+      Number(data.latitude);
+
+    const lon =
+      Number(data.longitude);
+
+    document.getElementById("iss-lat")
+      .innerText =
+      lat.toFixed(3) + "°";
+
+    document.getElementById("iss-lon")
+      .innerText =
+      lon.toFixed(3) + "°";
+
+    document.getElementById("iss-alt")
+      .innerText =
+      Number(data.altitude).toFixed(1) + " km";
+
+    document.getElementById("iss-speed")
+      .innerText =
+      Math.round(
+        Number(data.velocity) / 1000
+      ) + " km/s";
+
+    status.innerText =
+      "Live telemetry updated • " +
+      new Date().toLocaleTimeString();
+
+    if(!issInitialized){
+      return;
+    }
+
+    const point=[lat,lon];
+
+    if(!issMarker){
+
+      issMarker =
+        L.marker(point)
+        .addTo(issMap)
+        .bindPopup("🛰 International Space Station");
+
+    }else{
+
+      issMarker.setLatLng(point);
+
+    }
+
+    issMap.setView(
+      point,
+      issMap.getZoom(),
+      {animate:true}
+    );
+
+  }catch(error){
+
+    console.error(error);
+
+    status.innerText =
+      "ISS telemetry temporarily unavailable.";
+
+  }
+
+}
+
+/* 🪐 PLANET EXPLORER */
+
+const planets = {
+
+  Mercury:{
+    color:"linear-gradient(135deg,#9a8f87,#d5c7bc)",
+    fact:"The smallest planet and the closest planet to the Sun. Its surface experiences extreme temperature changes."
+  },
+
+  Venus:{
+    color:"linear-gradient(135deg,#d99a5b,#f2cf91)",
+    fact:"A cloud-covered world with a runaway greenhouse effect. Venus is the hottest planet in our Solar System."
+  },
+
+  Earth:{
+    color:"linear-gradient(135deg,#2354a6,#54a96b 55%,#d7e7ff)",
+    fact:"Our home world — the only planet currently known to support life."
+  },
+
+  Mars:{
+    color:"linear-gradient(135deg,#8d3528,#c96a45,#e3a16c)",
+    fact:"The Red Planet. Mars has the largest volcano in the Solar System, Olympus Mons."
+  },
+
+  Jupiter:{
+    color:"linear-gradient(180deg,#d8b48a,#a97852,#ead8b6,#9c6749)",
+    fact:"The largest planet. Jupiter is a gas giant famous for its enormous storms, including the Great Red Spot."
+  },
+
+  Saturn:{
+    color:"linear-gradient(180deg,#d7c08e,#b99565,#eadbb7,#a98255)",
+    fact:"A gas giant surrounded by a spectacular ring system made largely of ice and rocky debris."
+  },
+
+  Uranus:{
+    color:"linear-gradient(135deg,#82cbd2,#b9f0ee,#6bb7c1)",
+    fact:"An ice giant with a blue-green appearance. Uranus rotates on its side relative to most planets."
+  },
+
+  Neptune:{
+    color:"linear-gradient(135deg,#233e9a,#496bd4,#18296f)",
+    fact:"The farthest major planet from the Sun. Neptune has extremely fast winds and a deep blue appearance."
+  }
+
+};
+
+function initPlanetExplorer(){
+
+  const selector =
+    document.getElementById("planet-selector");
+
+  Object.keys(planets).forEach(
+    (planet,index)=>{
+
+      const button =
+        document.createElement("button");
+
+      button.className="planet-btn";
+
+      button.innerText=planet;
+
+      button.type="button";
+
+      button.onclick=()=>{
+        showPlanet(planet);
+      };
+
+      selector.appendChild(button);
+
+    }
+  );
+
+  showPlanet("Earth");
+
+}
+
+function showPlanet(planet){
+
+  const data=planets[planet];
+
+  if(!data)return;
+
+  document.getElementById("planet-orb")
+    .style.background=data.color;
+
+  document.getElementById("planet-name")
+    .innerText=planet;
+
+  document.getElementById("planet-fact")
+    .innerText=data.fact;
+
+  document
+    .querySelectorAll(".planet-btn")
+    .forEach(button=>{
+
+      button.classList.toggle(
+        "active",
+        button.innerText===planet
+      );
+
+    });
+
+}
+
+/* 🚀 INITIALIZE OBSERVATORY */
+
+window.addEventListener(
+  "load",
+  ()=>{
+
+    initAladin();
+
+    initISSMap();
+
+    initPlanetExplorer();
+
+  }
+);
+
+/* 🛰 refresh ISS telemetry every 10 seconds */
+
+setInterval(
+  updateISS,
+  10000
+);
 
 /* 🧠 ending */
 
