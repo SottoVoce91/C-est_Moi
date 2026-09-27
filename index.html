@@ -12,9 +12,34 @@
 <link rel="stylesheet" href="https://aladin.cds.unistra.fr/AladinLite/api/v3/latest/aladin.min.css">
 <script src="https://aladin.cds.unistra.fr/AladinLite/api/v3/latest/aladin.js">
 /* 🎵 YOUTUBE MUSIC PLAYER */
-const youtubeToggle=document.getElementById("youtubeToggle");
-const youtubePlayer=document.getElementById("youtubePlayer");
-youtubeToggle.addEventListener("click",()=>{const isOpen=youtubePlayer.classList.toggle("active");youtubeToggle.setAttribute("aria-expanded",isOpen?"true":"false");youtubeToggle.textContent=isOpen?"×":"♫";youtubeToggle.setAttribute("aria-label",isOpen?"Close music player":"Open music player");});
+const youtubeToggle = document.getElementById("youtubeToggle");
+const youtubePlayer = document.getElementById("youtubePlayer");
+const youtubeVideoId = "kcXGgMhHr5Q";
+
+youtubeToggle.addEventListener("click", () => {
+  const isOpen = youtubePlayer.classList.toggle("active");
+
+  youtubeToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  youtubeToggle.textContent = isOpen ? "×" : "♫";
+  youtubeToggle.setAttribute("aria-label", isOpen ? "Close music player" : "Play music");
+
+  if (isOpen && !youtubePlayer.querySelector("iframe")) {
+    const iframe = document.createElement("iframe");
+
+    iframe.src =
+      "https://www.youtube.com/embed/" +
+      youtubeVideoId +
+      "?autoplay=1&rel=0&playsinline=1";
+
+    iframe.title = "Music";
+    iframe.frameBorder = "0";
+    iframe.allow =
+      "autoplay; encrypted-media; picture-in-picture; web-share";
+    iframe.allowFullscreen = true;
+
+    youtubePlayer.appendChild(iframe);
+  }
+});
 </script>
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
@@ -967,10 +992,9 @@ Geoguessr
 
 \n<!-- 🎵 YOUTUBE MUSIC -->
 <div class="youtube-mini-player">
-  <div id="youtubePlayer" class="youtube-player-hidden">
-    <iframe src="https://www.youtube.com/embed/kcXGgMhHr5Q?rel=0" title="Music" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
-  </div>
-  <button id="youtubeToggle" class="youtube-music-button" type="button" aria-label="Open music player" aria-expanded="false">♫</button>
+  <div id="youtubePlayer" class="youtube-player-hidden" aria-hidden="true"></div>
+  <button id="youtubeToggle" class="youtube-music-button" type="button"
+    aria-label="Play music" aria-expanded="false">♫</button>
 </div>
 
 <!-- 📸 credit -->
