@@ -11,35 +11,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Parisienne&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://aladin.cds.unistra.fr/AladinLite/api/v3/latest/aladin.min.css">
 <script src="https://aladin.cds.unistra.fr/AladinLite/api/v3/latest/aladin.js">
-/* 🎵 YOUTUBE MUSIC PLAYER */
-const youtubeToggle = document.getElementById("youtubeToggle");
-const youtubePlayer = document.getElementById("youtubePlayer");
-const youtubeVideoId = "kcXGgMhHr5Q";
-
-youtubeToggle.addEventListener("click", () => {
-  const isOpen = youtubePlayer.classList.toggle("active");
-
-  youtubeToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-  youtubeToggle.textContent = isOpen ? "×" : "♫";
-  youtubeToggle.setAttribute("aria-label", isOpen ? "Close music player" : "Play music");
-
-  if (isOpen && !youtubePlayer.querySelector("iframe")) {
-    const iframe = document.createElement("iframe");
-
-    iframe.src =
-      "https://www.youtube.com/embed/" +
-      youtubeVideoId +
-      "?autoplay=1&rel=0&playsinline=1";
-
-    iframe.title = "Music";
-    iframe.frameBorder = "0";
-    iframe.allow =
-      "autoplay; encrypted-media; picture-in-picture; web-share";
-    iframe.allowFullscreen = true;
-
-    youtubePlayer.appendChild(iframe);
-  }
-});
 </script>
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
@@ -654,13 +625,6 @@ a{
 }
 
 
-/* 🎵 FLOATING YOUTUBE MUSIC PLAYER */
-.youtube-mini-player{position:fixed;right:20px;top:20px;z-index:10000;display:flex;align-items:flex-end;gap:10px}
-.youtube-music-button{width:48px;height:48px;border:1px solid rgba(255,255,255,.22);border-radius:50%;cursor:pointer;color:white;font-family:'Cormorant Garamond',serif;font-size:21px;background:linear-gradient(135deg,rgba(245,167,220,.92),rgba(168,184,255,.92));box-shadow:0 0 20px rgba(255,200,230,.35),0 6px 20px rgba(0,0,0,.25);backdrop-filter:blur(10px);transition:.3s ease}
-.youtube-music-button:hover{transform:scale(1.08);box-shadow:0 0 28px rgba(255,200,230,.5),0 8px 24px rgba(0,0,0,.3)}
-.youtube-player-hidden{display:none;width:280px;aspect-ratio:16/9;overflow:hidden;border-radius:16px;border:1px solid rgba(255,255,255,.18);background:#05060b;box-shadow:0 0 30px rgba(180,160,255,.18),0 12px 35px rgba(0,0,0,.4)}
-.youtube-player-hidden.active{display:block}.youtube-player-hidden iframe{width:100%;height:100%;border:0;display:block}
-@media(max-width:767px){.youtube-mini-player{right:14px;top:14px}.youtube-player-hidden{width:240px}}
 </style>
 </head>
 
@@ -990,14 +954,7 @@ Geoguessr
 
 </section>
 
-\n<!-- 🎵 YOUTUBE MUSIC -->
-<div class="youtube-mini-player">
-  <div id="youtubePlayer" class="youtube-player-hidden" aria-hidden="true"></div>
-  <button id="youtubeToggle" class="youtube-music-button" type="button"
-    aria-label="Play music" aria-expanded="false">♫</button>
-</div>
-
-<!-- 📸 credit -->
+\n<!-- 📸 credit -->
 
 <div class="credit">
 Photo by Harsh1271 via Reddit
@@ -1480,42 +1437,42 @@ const planets = {
 
   Mercury:{
     color:"linear-gradient(135deg,#9a8f87,#d5c7bc)",
-    fact:"The smallest planet and the closest planet to the Sun (Mercury stays 45 million km from the Sun even at its closest). Its surface experiences extreme temperature changes."
+    fact:"The smallest planet and the closest planet to the Sun. Due to its proximity to the Sun, Mercury's surface gets very hot over 400°C."
   },
 
   Venus:{
     color:"linear-gradient(135deg,#d99a5b,#f2cf91)",
-    fact:"A cloud-covered world with a runaway greenhouse effect. Venus is the hottest planet in our Solar System."
+    fact:"The second planet from the Sun. Venus can look very bright in the sky because the planet is near the Sun and is wrapped in a blanket of creamy white clouds ."
   },
 
   Earth:{
     color:"linear-gradient(135deg,#2354a6,#54a96b 55%,#d7e7ff)",
-    fact:"Our home world — the only planet currently known to support life."
+    fact:"You're my home planet. Hold up, isn't that from Holly Humberstone?"
   },
 
   Mars:{
     color:"linear-gradient(135deg,#8d3528,#c96a45,#e3a16c)",
-    fact:"The Red Planet. Mars has the largest volcano in the Solar System, Olympus Mons."
+    fact:"The fourth planet from the Sun. Mars is a small rocky planet, and has a day and night cycle last over 24 hours."
   },
 
   Jupiter:{
     color:"linear-gradient(180deg,#d8b48a,#a97852,#ead8b6,#9c6749)",
-    fact:"The largest planet. Jupiter is a gas giant famous for its enormous storms, including the Great Red Spot."
+    fact:"The largest planet. Jupiter is about five times as far from the Sun as Earth and takes under 12 years to complete an orbit."
   },
 
   Saturn:{
     color:"linear-gradient(180deg,#d7c08e,#b99565,#eadbb7,#a98255)",
-    fact:"A gas giant surrounded by a spectacular ring system made largely of ice and rocky debris."
+    fact:"The sixth planet from the Sun. Its spectacular ring system are debris from an icy moon that was smashed by an asteroid impact."
   },
 
   Uranus:{
     color:"linear-gradient(135deg,#82cbd2,#b9f0ee,#6bb7c1)",
-    fact:"An ice giant with a blue-green appearance. Uranus was discovered by William Herschel and the planet rotates on its side relative to most planets."
+    fact:"The seventh planet from the Sun. An ice giant with a blue-green appearance and the planet is surrounded by the rings made of fine dust and boulder-sized lumps from remnants of a moon that was smashed by a high-velocity impact."
   },
 
   Neptune:{
     color:"linear-gradient(135deg,#233e9a,#496bd4,#18296f)",
-    fact:"The farthest major planet from the Sun. Neptune has extremely fast winds and a deep blue appearance."
+    fact:"The eighth planet and farthest planet from the Sun. Its blue appearance is a giant cyclonic storm that has persisted for decades in the planet's atmosphere."
   }
 
 };
