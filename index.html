@@ -606,6 +606,17 @@ a{
 
 }
 
+/* 🎵 SOUNDTRACK */
+.soundtrack-container{max-width:900px;}
+.soundtrack-intro{margin-bottom:28px;}
+.soundtrack-card{width:100%;padding:22px;border-radius:24px;background:rgba(5,6,15,0.48);border:1px solid rgba(255,255,255,0.13);backdrop-filter:blur(12px);box-shadow:0 0 30px rgba(180,160,255,0.12),0 12px 45px rgba(0,0,0,0.25);}
+.soundtrack-player{width:100%;max-width:760px;aspect-ratio:16/9;margin:22px auto 0;overflow:hidden;border-radius:18px;border:1px solid rgba(255,255,255,0.12);background:#05060b;box-shadow:0 0 30px rgba(180,160,255,0.12),0 12px 35px rgba(0,0,0,0.28);}
+.soundtrack-player iframe{width:100%;height:100%;border:0;display:block;}
+.soundtrack-link{display:inline-block;margin-top:16px;color:#ffe4f5;font-size:14px;text-decoration:underline;text-underline-offset:4px;opacity:0.82;transition:0.25s ease;}
+.soundtrack-link:hover{opacity:1;}
+@media(max-width:767px){.soundtrack-card{padding:15px;}.soundtrack-player{aspect-ratio:16/10;}}
+
+
 /* 💻 desktop */
 
 @media(min-width:768px){
@@ -824,13 +835,58 @@ Our home world! Did you know that Earth and Mars have similar internal structure
 </div>
 
 <button class="btn"
-onclick="go('secrets',event)">
+onclick="go('soundtrack',event)">
 Continue →
 </button>
 
 </div>
 
 </section>
+
+<!-- 🎵 SOUNDTRACK -->
+<section id="soundtrack">
+
+  <div class="container soundtrack-container">
+
+    <h1>
+      Soundtrack
+    </h1>
+
+    <p class="soundtrack-intro">
+      A little music for the journey
+    </p>
+
+    <div class="soundtrack-card">
+
+      <div class="soundtrack-player">
+        <iframe
+          src="https://www.youtube.com/embed/videoseries?list=OLAK5uy_mlu0Q959hVkuU6U9eyE5G2-3GA2ERYxcw"
+          title="MG Soundtrack"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <a
+        class="soundtrack-link"
+        href="https://music.youtube.com/playlist?list=OLAK5uy_mlu0Q959hVkuU6U9eyE5G2-3GA2ERYxcw"
+        target="_blank"
+        rel="noopener noreferrer">
+        Open the playlist in YouTube Music ↗
+      </a>
+
+    </div>
+
+    <button class="btn"
+      onclick="go('secrets',event)">
+      Continue →
+    </button>
+
+  </div>
+
+</section>
+
 
 <!-- 💌 SECRETS -->
 <section id="secrets">
@@ -1602,6 +1658,3 @@ window.addEventListener(
 });
 
 </script>
-
-</body>
-</html>
