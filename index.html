@@ -176,6 +176,7 @@ a{text-decoration:none;}
   display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
   gap:13px;width:100%;margin:28px 0 34px;text-align:left;
 }
+.footprint-grid.collapsed .footprint-link:nth-child(n+5){display:none;}
 .footprint-link{
   position:relative;display:flex;flex-direction:column;justify-content:space-between;
   gap:17px;min-height:104px;padding:18px 17px;border-radius:17px;
@@ -205,6 +206,7 @@ a{text-decoration:none;}
 }
 @media(max-width:520px){
   .footprint-grid{grid-template-columns:1fr;gap:10px;}
+  .footprint-grid.collapsed .footprint-link:nth-child(n+5){display:none;}
   .footprint-link{min-height:88px;padding:16px;}
   .footprint-link-title{font-size:18px;}
 }
@@ -332,10 +334,10 @@ a{text-decoration:none;}
     </p>
     <div class="footprint-note">
       <span class="footprint-note-star" aria-hidden="true">✦</span>
-      <span>Collected bookmarks from my Finance - Data folder.</span>
+      <span>Collection of bookmarked finance articles</span>
     </div>
 
-    <div class="footprint-grid">
+    <div class="footprint-grid collapsed" id="footprint-grid">
       <a class="footprint-link" href="https://pages.stern.nyu.edu/~adamodar/" target="_blank" rel="noopener noreferrer">
         <span class="footprint-link-title">Financial Analytics</span><span class="footprint-link-domain">pages.stern.nyu.edu ↗</span>
       </a>
@@ -408,11 +410,9 @@ a{text-decoration:none;}
       <a class="footprint-link" href="https://www.risk.net/journals" target="_blank" rel="noopener noreferrer">
         <span class="footprint-link-title">Risk Journals - Quantitative Risk Management Resources - Risk.net</span><span class="footprint-link-domain">risk.net ↗</span>
       </a>
-      <a class="footprint-link" href="https://www.risk.net/" target="_blank" rel="noopener noreferrer">
-        <span class="footprint-link-title">Risk.net - Financial Risk Management News Analysis</span><span class="footprint-link-domain">risk.net ↗</span>
-      </a>
     </div>
 
+    <button class="btn" id="footprint-toggle" type="button" aria-expanded="false" onclick="toggleFootprints()">More Links</button>
     <button class="btn" onclick="go('secrets',event)">Continue →</button>
   </div>
 </section>
@@ -548,6 +548,14 @@ function burst(x,y){
 function reveal(id,e){
   document.getElementById(id).style.display="block";
   burst(e.clientX,e.clientY);
+}
+
+function toggleFootprints(){
+  const grid=document.getElementById("footprint-grid");
+  const button=document.getElementById("footprint-toggle");
+  const collapsed=grid.classList.toggle("collapsed");
+  button.setAttribute("aria-expanded",String(!collapsed));
+  button.innerText=collapsed?"Show all links":"More Links";
 }
 
 /* 🌙 CONTINUE */
